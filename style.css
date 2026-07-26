@@ -337,17 +337,13 @@ button {
 .button-secondary {
   color: var(--color-ink);
   background: var(--color-white);
-  border: 2px solid #e4e7f4;
-  font-weight: 700;
+  border-color: var(--color-border);
   box-shadow: var(--shadow-small);
 }
 
 .button-secondary:hover {
   color: var(--color-primary);
-  border-color: var(--color-primary);
-  box-shadow:
-    0 14px 32px rgba(76, 91, 255, 0.12);
-  transform: translateY(-2px);
+  border-color: rgba(76, 91, 255, 0.35);
 }
 
 .button-coral {
@@ -512,8 +508,8 @@ button {
   position: relative;
   z-index: 5;
   min-width: 0;
-  padding: 22px 0 90px 46px;
-  transform: translateY(-10px);
+  padding: 0 0 90px 4px;
+  transform: translateY(-20px);
 }
 
 .hero-content .eyebrow {
@@ -649,7 +645,7 @@ button {
   width: 580px;
   max-width: 100%;
   height: 530px;
-  opacity: 0.24;
+  opacity: 0.55;
   transform: scale(0.92);
   transform-origin: center;
 }
@@ -1988,14 +1984,6 @@ button {
 }
 
 
-
-
-@media (min-width: 901px) and (max-width: 1180px) {
-  .hero-content {
-    padding-left: 24px;
-  }
-}
-
 /* =========================================================
    17. REDUCCIÓN DE MOVIMIENTO
 ========================================================= */
@@ -2091,5 +2079,25 @@ button {
 
   .neural-network {
     transform: translateX(50%) scale(0.86);
+  }
+}
+
+
+/* =========================================================
+   CORRECCIÓN DE SEGURIDAD DEL HERO
+========================================================= */
+
+.hero-container {
+  margin-inline: auto;
+}
+
+.hero-content {
+  margin-left: 0;
+  left: auto;
+}
+
+@media (min-width: 901px) {
+  .hero-content {
+    padding-left: 4px;
   }
 }
