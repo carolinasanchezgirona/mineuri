@@ -626,8 +626,8 @@ button {
 
 .hero-person {
   position: absolute;
-  right: -10px;
-  bottom: 35px;
+  right: 0px;
+  bottom: 0px;
   z-index: 4;
   width: 700px;
   max-width: none;
@@ -636,7 +636,14 @@ button {
   object-position: 68% center;
   border-radius: 0;
 }
+.hero-wave{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
 
+    z-index:6;
+}
 .neural-network {
   position: absolute;
   top: 45px;
