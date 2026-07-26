@@ -1,1 +1,262 @@
-const header=document.querySelector('[data-header]');const button=document.querySelector('[data-menu-button]');const nav=document.querySelector('[data-nav]');const form=document.querySelector('[data-interest-form]');const message=document.querySelector('[data-form-message]');const year=document.querySelector('[data-current-year]');function closeMenu(){if(!button||!nav)return;button.setAttribute('aria-expanded','false');nav.classList.remove('is-open');document.body.classList.remove('menu-open')}button?.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!open));nav?.classList.toggle('is-open',!open);document.body.classList.toggle('menu-open',!open)});nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));window.addEventListener('scroll',()=>header?.classList.toggle('is-scrolled',window.scrollY>12),{passive:true});window.addEventListener('resize',()=>{if(innerWidth>820)closeMenu()});form?.addEventListener('submit',e=>{e.preventDefault();const input=form.querySelector('input[type=email]');if(!input?.checkValidity()){message.textContent='Introduce una dirección de correo válida.';input?.focus();return}message.textContent='Formulario de muestra listo. El envío se conectará en una fase posterior.';form.reset()});if(year)year.textContent=new Date().getFullYear();
+"use strict";
+
+/* =========================================================
+   MINEURI
+   JavaScript principal
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  initializeMobileMenu();
+  initializeCurrentYear();
+  initializeHeaderScroll();
+  initializeAnchorLinks();
+  initializeWaitlistForm();
+});
+
+
+/* =========================================================
+   MENÚ MÓVIL
+========================================================= */
+
+function initializeMobileMenu() {
+  const menuButton = document.querySelector(".menu-toggle");
+  const navigation = document.querySelector(".main-navigation");
+  const navigationLinks = document.querySelectorAll(
+    ".main-navigation a"
+  );
+
+  if (!menuButton || !navigation) {
+    return;
+  }
+
+  const closeMenu = () => {
+    menuButton.classList.remove("is-open");
+    navigation.classList.remove("is-open");
+
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Abrir menú");
+  };
+
+  const openMenu = () => {
+    menuButton.classList.add("is-open");
+    navigation.classList.add("is-open");
+
+    menuButton.setAttribute("aria-expanded", "true");
+    menuButton.setAttribute("aria-label", "Cerrar menú");
+  };
+
+  menuButton.addEventListener("click", () => {
+    const isOpen =
+      menuButton.getAttribute("aria-expanded") === "true";
+
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  navigationLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("click", (event) => {
+    const clickedInsideMenu = navigation.contains(event.target);
+    const clickedMenuButton = menuButton.contains(event.target);
+
+    if (!clickedInsideMenu && !clickedMenuButton) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) {
+      closeMenu();
+    }
+  });
+}
+
+
+/* =========================================================
+   AÑO AUTOMÁTICO
+========================================================= */
+
+function initializeCurrentYear() {
+  const yearElement = document.querySelector("#current-year");
+
+  if (!yearElement) {
+    return;
+  }
+
+  yearElement.textContent = new Date().getFullYear();
+}
+
+
+/* =========================================================
+   CABECERA AL HACER SCROLL
+========================================================= */
+
+function initializeHeaderScroll() {
+  const header = document.querySelector(".site-header");
+
+  if (!header) {
+    return;
+  }
+
+  const updateHeader = () => {
+    if (window.scrollY > 20) {
+      header.classList.add("is-scrolled");
+    } else {
+      header.classList.remove("is-scrolled");
+    }
+  };
+
+  updateHeader();
+
+  window.addEventListener("scroll", updateHeader, {
+    passive: true
+  });
+}
+
+
+/* =========================================================
+   ENLACES INTERNOS
+========================================================= */
+
+function initializeAnchorLinks() {
+  const internalLinks = document.querySelectorAll(
+    'a[href^="#"]:not([href="#"])'
+  );
+
+  internalLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const targetId = link.getAttribute("href");
+
+      if (!targetId) {
+        return;
+      }
+
+      const targetElement = document.querySelector(targetId);
+
+      if (!targetElement) {
+        return;
+      }
+
+      event.preventDefault();
+
+      const header = document.querySelector(".site-header");
+      const headerHeight = header
+        ? header.offsetHeight
+        : 0;
+
+      const targetPosition =
+        targetElement.getBoundingClientRect().top +
+        window.scrollY -
+        headerHeight;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
+      });
+
+      history.replaceState(null, "", targetId);
+    });
+  });
+}
+
+
+/* =========================================================
+   FORMULARIO DE LISTA DE ESPERA
+========================================================= */
+
+function initializeWaitlistForm() {
+  const form = document.querySelector(".cta-form");
+
+  if (!form) {
+    return;
+  }
+
+  const emailInput = form.querySelector('input[type="email"]');
+  const submitButton = form.querySelector('button[type="submit"]');
+  const formNote = document.querySelector(".form-note");
+
+  if (!emailInput || !submitButton) {
+    return;
+  }
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const email = emailInput.value.trim();
+
+    if (!isValidEmail(email)) {
+      showFormMessage(
+        formNote,
+        "Escribe un correo electrónico válido.",
+        "error"
+      );
+
+      emailInput.focus();
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Enviando...";
+
+    window.setTimeout(() => {
+      showFormMessage(
+        formNote,
+        "Gracias. Te avisaremos cuando Mineuri esté disponible.",
+        "success"
+      );
+
+      form.reset();
+
+      submitButton.disabled = false;
+      submitButton.textContent = "Quiero saber más";
+    }, 700);
+  });
+}
+
+
+/* =========================================================
+   VALIDACIÓN DE CORREO
+========================================================= */
+
+function isValidEmail(email) {
+  const emailPattern =
+    /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  return emailPattern.test(email);
+}
+
+
+/* =========================================================
+   MENSAJES DEL FORMULARIO
+========================================================= */
+
+function showFormMessage(element, message, type) {
+  if (!element) {
+    return;
+  }
+
+  element.textContent = message;
+  element.classList.remove(
+    "is-success",
+    "is-error"
+  );
+
+  if (type === "success") {
+    element.classList.add("is-success");
+  }
+
+  if (type === "error") {
+    element.classList.add("is-error");
+  }
+}
