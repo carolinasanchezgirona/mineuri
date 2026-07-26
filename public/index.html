@@ -8,347 +8,332 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Mineuri | Estimulación cognitiva basada en neuropsicología</title>
-
   <meta
     name="description"
-    content="Mineuri es una plataforma digital de estimulación cognitiva basada en neuropsicología para trabajar memoria, atención, lenguaje y funciones ejecutivas."
+    content="Mineuri es una plataforma digital de estimulación cognitiva basada en neuropsicología. Entrena memoria, atención, lenguaje y funciones ejecutivas."
   >
+
+  <meta
+    name="keywords"
+    content="estimulación cognitiva, neuropsicología, memoria, atención, lenguaje, funciones ejecutivas, entrenamiento cognitivo"
+  >
+
+  <meta name="author" content="Mineuri">
 
   <meta name="theme-color" content="#4C5BFF">
 
-  <!-- Favicon -->
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mineuri | Una mente activa para la vida cotidiana">
+  <meta
+    property="og:description"
+    content="Estimulación cognitiva basada en neuropsicología."
+  >
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:url" content="https://mineuri.com">
+
+  <!-- Favicons -->
   <link
     rel="icon"
     href="assets/favicon.svg"
     type="image/svg+xml"
   >
-
-  <!-- Open Graph -->
-  <meta
-    property="og:title"
-    content="Mineuri | Una mente activa para la vida cotidiana"
+  <link
+    rel="alternate icon"
+    href="assets/favicon.ico"
   >
-
-  <meta
-    property="og:description"
-    content="Programas de estimulación cognitiva diseñados desde la neuropsicología."
+  <link
+    rel="apple-touch-icon"
+    href="assets/apple-touch-icon.png"
   >
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mineuri.com">
 
   <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Sora:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
 
-  <!-- Estilos -->
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- JavaScript -->
-  <script src="script.js" defer></script>
+  <title>Mineuri | Una mente activa para la vida cotidiana</title>
 </head>
 
 <body>
 
-  <a class="skip-link" href="#contenido">
-    Saltar al contenido
+  <!-- Accesibilidad -->
+  <a class="skip-link" href="#contenido-principal">
+    Saltar al contenido principal
   </a>
 
-  <!-- CABECERA -->
+  <!-- ======================================================
+       CABECERA
+  ======================================================= -->
 
-  <header class="site-header" data-header>
-
-    <div class="container header-inner">
+  <header class="site-header" id="inicio">
+    <div class="container header-container">
 
       <a
         class="brand"
         href="#inicio"
-        aria-label="Mineuri, inicio"
+        aria-label="Mineuri, página de inicio"
       >
-        <span class="brand-word" aria-hidden="true">
-          <span class="brand-blue">mine</span><span class="brand-turquoise">u</span><span class="brand-blue">r</span><span class="brand-coral">i</span>
+        <span class="brand-wordmark" aria-hidden="true">
+          <span class="brand-blue">mine</span><span class="brand-turquoise">u</span><span class="brand-blue">ri</span>
+        </span>
+
+        <span class="sr-only">
+          Mineuri
         </span>
       </a>
 
       <button
-        class="menu-button"
+        class="menu-toggle"
         type="button"
+        aria-label="Abrir menú de navegación"
         aria-expanded="false"
         aria-controls="main-navigation"
-        data-menu-button
       >
-        <span class="sr-only">Abrir menú</span>
         <span></span>
         <span></span>
         <span></span>
       </button>
 
       <nav
+        class="main-navigation"
         id="main-navigation"
-        class="main-nav"
         aria-label="Navegación principal"
-        data-nav
       >
-        <a href="#como-funciona">Cómo funciona</a>
-        <a href="#programas">Programas</a>
-        <a href="#ciencia">Ciencia</a>
-        <a href="#familias">Familias</a>
-        <a class="nav-login" href="#acceso">
-          Iniciar sesión
-        </a>
+        <ul>
+          <li>
+            <a href="#como-funciona">Cómo funciona</a>
+          </li>
+
+          <li>
+            <a href="#ciencia">Ciencia</a>
+          </li>
+
+          <li>
+            <a href="#planes">Planes</a>
+          </li>
+
+          <li>
+            <a href="#recursos">Recursos</a>
+          </li>
+        </ul>
       </nav>
 
-    </div>
+      <div class="header-actions">
+        <a
+          class="button button-small button-primary"
+          href="#acceso"
+        >
+          Iniciar sesión
+        </a>
+      </div>
 
+    </div>
   </header>
 
-  <main id="contenido">
 
-    <!-- HERO -->
+  <main id="contenido-principal">
 
-    <section class="hero section" id="inicio">
+    <!-- ======================================================
+         HERO
+    ======================================================= -->
 
-      <div class="container hero-grid">
+    <section class="hero" aria-labelledby="hero-title">
 
-        <div class="hero-copy">
+      <div class="hero-decoration hero-decoration-one"></div>
+      <div class="hero-decoration hero-decoration-two"></div>
 
-          <div class="eyebrow">
-            <span class="eyebrow-dot"></span>
+      <div class="container hero-container">
+
+        <div class="hero-content">
+
+          <p class="eyebrow">
             Estimulación cognitiva basada en neuropsicología
-          </div>
+          </p>
 
-          <h1>
-            Tu mente también puede
+          <h1 id="hero-title">
+            Tu mente<br>
+            también puede<br>
             <span>entrenarse</span>
           </h1>
 
-          <p class="hero-intro">
-            Programas estructurados para trabajar memoria, atención,
-            lenguaje y funciones ejecutivas con actividades claras,
-            adultas y conectadas con la vida cotidiana.
+          <p class="hero-description">
+            Ejercita tu memoria, atención, lenguaje y funciones
+            ejecutivas con actividades diseñadas por especialistas.
           </p>
 
           <div class="hero-actions">
 
             <a
               class="button button-primary"
-              href="#programas"
+              href="#planes"
             >
-              Descubrir Mineuri
-              <span aria-hidden="true">→</span>
+              Empezar
+
+              <span aria-hidden="true">
+                →
+              </span>
             </a>
 
             <a
               class="button button-secondary"
               href="#como-funciona"
             >
-              Cómo funciona
+              Descubrir
             </a>
 
           </div>
 
-          <ul
-            class="trust-list"
-            aria-label="Características principales"
-          >
+          <ul class="hero-benefits" aria-label="Ventajas de Mineuri">
 
             <li>
-              <span class="trust-icon" aria-hidden="true">✓</span>
-              Basado en neuropsicología
+              <span class="benefit-icon" aria-hidden="true">✓</span>
+              Basado en neurociencia
             </li>
 
             <li>
-              <span class="trust-icon" aria-hidden="true">✓</span>
-              Progresivo
+              <span class="benefit-dot" aria-hidden="true"></span>
+              Seguro
             </li>
 
             <li>
-              <span class="trust-icon" aria-hidden="true">✓</span>
-              Diseñado para adultos
+              <span class="benefit-dot" aria-hidden="true"></span>
+              Personalizado
             </li>
 
           </ul>
 
         </div>
 
-        <!-- VISTA PREVIA DE LA PLATAFORMA -->
 
-        <div
-          class="hero-visual"
-          aria-label="Vista previa conceptual de la plataforma Mineuri"
-        >
+        <div class="hero-visual" aria-hidden="true">
 
-          <div class="visual-orbit orbit-one"></div>
-          <div class="visual-orbit orbit-two"></div>
+          <div class="hero-visual-background"></div>
 
-          <div class="visual-node node-blue"></div>
-          <div class="visual-node node-coral"></div>
-          <div class="visual-node node-yellow"></div>
+          <div class="neural-network">
 
-          <div class="dashboard-card">
+            <span class="network-line network-line-1"></span>
+            <span class="network-line network-line-2"></span>
+            <span class="network-line network-line-3"></span>
+            <span class="network-line network-line-4"></span>
 
-            <div class="dashboard-topbar">
-
-              <div>
-                <span class="mini-label">SESIÓN DE HOY</span>
-                <strong>Hola, Ana</strong>
-              </div>
-
-              <div class="streak">
-                <span aria-hidden="true">✦</span>
-                7 días
-              </div>
-
-            </div>
-
-            <div class="progress-block">
-
-              <div class="progress-heading">
-                <span>Progreso semanal</span>
-                <strong>72%</strong>
-              </div>
-
-              <div class="progress-track">
-                <span></span>
-              </div>
-
-            </div>
-
-            <div class="module-grid">
-
-              <article class="module-card module-blue">
-
-                <div class="module-icon" aria-hidden="true">
-                  ◉
-                </div>
-
-                <h3>Memoria</h3>
-
-                <p>
-                  Recuerdo y aprendizaje
-                </p>
-
-              </article>
-
-              <article class="module-card module-turquoise">
-
-                <div class="module-icon" aria-hidden="true">
-                  ◎
-                </div>
-
-                <h3>Atención</h3>
-
-                <p>
-                  Concentración y enfoque
-                </p>
-
-              </article>
-
-              <article class="module-card module-coral">
-
-                <div class="module-icon" aria-hidden="true">
-                  ◌
-                </div>
-
-                <h3>Lenguaje</h3>
-
-                <p>
-                  Fluidez y comprensión
-                </p>
-
-              </article>
-
-              <article class="module-card module-yellow">
-
-                <div class="module-icon" aria-hidden="true">
-                  ⌘
-                </div>
-
-                <h3>Ejecutiva</h3>
-
-                <p>
-                  Planificación y flexibilidad
-                </p>
-
-              </article>
-
-            </div>
+            <span class="network-node node-blue node-1"></span>
+            <span class="network-node node-turquoise node-2"></span>
+            <span class="network-node node-yellow node-3"></span>
+            <span class="network-node node-blue node-4"></span>
+            <span class="network-node node-coral node-5"></span>
 
           </div>
 
+          <img
+            class="hero-person"
+            src="assets/hero-mujer-tablet.png"
+            alt=""
+          >
+
+        </div>
+
+      </div>
+
+      <div class="hero-wave" aria-hidden="true">
+        <svg
+          viewBox="0 0 1440 200"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,128 C260,40 430,196 690,110 C900,42 1120,4 1440,80 L1440,200 L0,200 Z"
+            fill="#4C5BFF"
+            opacity="0.10"
+          />
+
+          <path
+            d="M0,165 C300,90 520,215 810,112 C1040,30 1210,54 1440,15 L1440,200 L0,200 Z"
+            fill="#4C5BFF"
+          />
+        </svg>
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         INTRODUCCIÓN DE MARCA
+    ======================================================= -->
+
+    <section class="brand-introduction section">
+
+      <div class="container brand-introduction-container">
+
+        <div class="section-heading">
+
+          <p class="section-number">
+            01
+          </p>
+
+          <p class="eyebrow">
+            Una mente activa para la vida cotidiana
+          </p>
+
+          <h2>
+            Entrenamiento cognitivo con sentido
+          </h2>
+
+        </div>
+
+        <div class="brand-introduction-content">
+
+          <p class="large-text">
+            Mineuri convierte la estimulación cognitiva en una
+            experiencia estructurada, accesible y conectada con las
+            actividades de la vida diaria.
+          </p>
+
+          <p>
+            Cada programa combina ejercicios de memoria, atención,
+            lenguaje y funciones ejecutivas, organizados para ofrecer
+            una experiencia progresiva y comprensible.
+          </p>
+
         </div>
 
       </div>
 
     </section>
 
-    <!-- PRINCIPIOS -->
+
+    <!-- ======================================================
+         CÓMO FUNCIONA
+    ======================================================= -->
 
     <section
-      class="proof-strip"
-      aria-label="Principios de Mineuri"
-    >
-
-      <div class="container proof-grid">
-
-        <div>
-          <strong>Breve</strong>
-          <span>Sesiones fáciles de integrar</span>
-        </div>
-
-        <div>
-          <strong>Claro</strong>
-          <span>Sin interfaces confusas</span>
-        </div>
-
-        <div>
-          <strong>Adulto</strong>
-          <span>Sin estética infantilizante</span>
-        </div>
-
-        <div>
-          <strong>Funcional</strong>
-          <span>Con conexión cotidiana</span>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- CÓMO FUNCIONA -->
-
-    <section
-      class="section section-soft"
+      class="how-it-works section section-soft"
       id="como-funciona"
+      aria-labelledby="how-title"
     >
 
       <div class="container">
 
-        <div class="section-heading">
+        <div class="section-heading section-heading-centered">
 
-          <span class="section-kicker">
-            CÓMO FUNCIONA
-          </span>
+          <p class="eyebrow">
+            Cómo funciona
+          </p>
 
-          <h2>
-            Entrenamiento cognitivo con estructura y propósito
+          <h2 id="how-title">
+            Un entrenamiento adaptado a ti
           </h2>
 
           <p>
-            Mineuri organiza las actividades en sesiones progresivas.
-            Cada ejercicio se vincula con procesos cognitivos concretos
-            y evita el formato de pasatiempo sin orientación.
+            Sesiones claras, progresivas y orientadas a diferentes
+            capacidades cognitivas.
           </p>
 
         </div>
@@ -359,64 +344,57 @@
 
             <span class="step-number">01</span>
 
-            <div
-              class="step-graphic graphic-one"
-              aria-hidden="true"
-            >
-              <span></span>
-              <span></span>
-              <span></span>
+            <div class="step-icon step-icon-blue" aria-hidden="true">
+              ✦
             </div>
 
-            <h3>Elige tu objetivo</h3>
+            <h3>
+              Elige tu objetivo
+            </h3>
 
             <p>
-              Memoria, atención, lenguaje, funciones ejecutivas
-              o entrenamiento cognitivo global.
+              Selecciona las capacidades que quieres entrenar y el
+              tiempo que deseas dedicar a cada sesión.
             </p>
 
           </article>
+
 
           <article class="step-card">
 
             <span class="step-number">02</span>
 
-            <div
-              class="step-graphic graphic-two"
-              aria-hidden="true"
-            >
-              <span></span>
-              <span></span>
-              <span></span>
+            <div class="step-icon step-icon-turquoise" aria-hidden="true">
+              ◎
             </div>
 
-            <h3>Entrena a tu ritmo</h3>
+            <h3>
+              Realiza tu sesión
+            </h3>
 
             <p>
-              Sesiones breves, instrucciones claras y dificultad
-              ajustada de forma gradual.
+              Completa actividades breves de memoria, atención,
+              lenguaje y funciones ejecutivas.
             </p>
 
           </article>
+
 
           <article class="step-card">
 
             <span class="step-number">03</span>
 
-            <div
-              class="step-graphic graphic-three"
-              aria-hidden="true"
-            >
-              <span></span>
-              <span></span>
-              <span></span>
+            <div class="step-icon step-icon-coral" aria-hidden="true">
+              ↗
             </div>
 
-            <h3>Observa tu recorrido</h3>
+            <h3>
+              Observa tu progreso
+            </h3>
 
             <p>
-              Seguimiento comprensible de la actividad, la constancia
-              y los programas completados.
+              Consulta tu regularidad, las actividades completadas y
+              la evolución de tu entrenamiento.
             </p>
 
           </article>
@@ -427,212 +405,189 @@
 
     </section>
 
-    <!-- PROGRAMAS -->
 
-    <section class="section" id="programas">
+    <!-- ======================================================
+         ÁREAS DE ENTRENAMIENTO
+    ======================================================= -->
+
+    <section
+      class="training section"
+      aria-labelledby="training-title"
+    >
 
       <div class="container">
 
-        <div class="section-heading section-heading-left">
+        <div class="section-heading">
 
-          <span class="section-kicker">
-            PROGRAMAS
-          </span>
+          <p class="eyebrow">
+            Entrenamiento cognitivo
+          </p>
 
-          <h2>
-            Capacidades diferentes, un mismo objetivo:
-            desenvolverte mejor
+          <h2 id="training-title">
+            Cuatro áreas para una mente activa
           </h2>
 
           <p>
-            Los programas están pensados para trabajar dominios
-            cognitivos específicos sin perder de vista la autonomía
-            y la vida diaria.
+            Las actividades se organizan por procesos cognitivos para
+            facilitar un entrenamiento variado y equilibrado.
           </p>
 
         </div>
 
-        <div class="programs-grid">
 
-          <!-- MEMORIA -->
+        <div class="training-grid">
 
-          <article class="program-card program-card-blue">
+          <article class="training-card training-card-memory">
 
-            <div class="program-card-top">
-
-              <span class="program-icon" aria-hidden="true">
-                M
-              </span>
-
-              <span class="program-tag">
-                Mineuri Memoria
-              </span>
-
+            <div class="training-icon" aria-hidden="true">
+              ◉
             </div>
 
-            <h3>
-              Recordar, aprender y utilizar estrategias
-            </h3>
+            <div class="training-card-content">
 
-            <p>
-              Actividades de memoria episódica, aprendizaje,
-              evocación y apoyo compensatorio.
-            </p>
-
-            <a href="#acceso">
-              Explorar programa
-              <span aria-hidden="true">→</span>
-            </a>
-
-          </article>
-
-          <!-- ATENCIÓN -->
-
-          <article class="program-card program-card-turquoise">
-
-            <div class="program-card-top">
-
-              <span class="program-icon" aria-hidden="true">
-                A
+              <span class="training-category">
+                Memoria
               </span>
 
-              <span class="program-tag">
-                Mineuri Atención
-              </span>
+              <h3>
+                Fortalece tu capacidad de recordar
+              </h3>
 
-            </div>
+              <p>
+                Trabaja el aprendizaje, la evocación y la memoria
+                cotidiana mediante actividades progresivas.
+              </p>
 
-            <h3>
-              Mantener el foco y gestionar interferencias
-            </h3>
+              <div class="training-progress">
 
-            <p>
-              Entrenamiento de atención sostenida, selectiva,
-              alternante y velocidad de procesamiento.
-            </p>
-
-            <a href="#acceso">
-              Explorar programa
-              <span aria-hidden="true">→</span>
-            </a>
-
-          </article>
-
-          <!-- LENGUAJE -->
-
-          <article class="program-card program-card-coral">
-
-            <div class="program-card-top">
-
-              <span class="program-icon" aria-hidden="true">
-                L
-              </span>
-
-              <span class="program-tag">
-                Mineuri Lenguaje
-              </span>
-
-            </div>
-
-            <h3>
-              Acceder a palabras y comprender mejor
-            </h3>
-
-            <p>
-              Denominación, fluidez verbal, comprensión,
-              vocabulario y comunicación funcional.
-            </p>
-
-            <a href="#acceso">
-              Explorar programa
-              <span aria-hidden="true">→</span>
-            </a>
-
-          </article>
-
-          <!-- FUNCIÓN EJECUTIVA -->
-
-          <article class="program-card program-card-yellow">
-
-            <div class="program-card-top">
-
-              <span class="program-icon" aria-hidden="true">
-                E
-              </span>
-
-              <span class="program-tag">
-                Mineuri Ejecutiva
-              </span>
-
-            </div>
-
-            <h3>
-              Planificar, decidir y adaptarse
-            </h3>
-
-            <p>
-              Flexibilidad cognitiva, inhibición, resolución
-              de problemas y organización.
-            </p>
-
-            <a href="#acceso">
-              Explorar programa
-              <span aria-hidden="true">→</span>
-            </a>
-
-          </article>
-
-          <!-- VIDA COTIDIANA -->
-
-          <article
-            class="program-card program-card-dark program-card-wide"
-          >
-
-            <div class="wide-card-content">
-
-              <div>
-
-                <div class="program-card-top">
-
-                  <span class="program-icon" aria-hidden="true">
-                    C
-                  </span>
-
-                  <span class="program-tag">
-                    Mineuri Cotidiana
-                  </span>
-
+                <div class="training-progress-header">
+                  <span>Nivel inicial</span>
+                  <span>1</span>
                 </div>
 
-                <h3>
-                  Entrenar capacidades dentro de situaciones reales
-                </h3>
-
-                <p>
-                  Compras, citas, organización doméstica, dinero,
-                  planificación y otras tareas con significado funcional.
-                </p>
+                <div class="progress-track">
+                  <span style="width: 28%;"></span>
+                </div>
 
               </div>
 
-              <a
-                class="button button-light"
-                href="#acceso"
-              >
-                Descubrir el enfoque funcional
-                <span aria-hidden="true">→</span>
-              </a>
+            </div>
+
+          </article>
+
+
+          <article class="training-card training-card-attention">
+
+            <div class="training-icon" aria-hidden="true">
+              ◎
+            </div>
+
+            <div class="training-card-content">
+
+              <span class="training-category">
+                Atención
+              </span>
+
+              <h3>
+                Mejora tu concentración y enfoque
+              </h3>
+
+              <p>
+                Entrena la atención sostenida, selectiva y alternante
+                con tareas claras y dinámicas.
+              </p>
+
+              <div class="training-progress">
+
+                <div class="training-progress-header">
+                  <span>Nivel inicial</span>
+                  <span>1</span>
+                </div>
+
+                <div class="progress-track">
+                  <span style="width: 28%;"></span>
+                </div>
+
+              </div>
 
             </div>
 
-            <div
-              class="wide-card-graphic"
-              aria-hidden="true"
-            >
-              <span class="ring ring-one"></span>
-              <span class="ring ring-two"></span>
-              <span class="ring ring-three"></span>
-              <span class="ring-dot"></span>
+          </article>
+
+
+          <article class="training-card training-card-language">
+
+            <div class="training-icon" aria-hidden="true">
+              ◌
+            </div>
+
+            <div class="training-card-content">
+
+              <span class="training-category">
+                Lenguaje
+              </span>
+
+              <h3>
+                Enriquece tu vocabulario y comunicación
+              </h3>
+
+              <p>
+                Practica el acceso al léxico, la comprensión, la
+                denominación y la fluidez verbal.
+              </p>
+
+              <div class="training-progress">
+
+                <div class="training-progress-header">
+                  <span>Nivel inicial</span>
+                  <span>1</span>
+                </div>
+
+                <div class="progress-track">
+                  <span style="width: 28%;"></span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="training-card training-card-executive">
+
+            <div class="training-icon" aria-hidden="true">
+              ⌘
+            </div>
+
+            <div class="training-card-content">
+
+              <span class="training-category">
+                Ejecutiva
+              </span>
+
+              <h3>
+                Planifica, organiza y toma decisiones
+              </h3>
+
+              <p>
+                Trabaja la flexibilidad cognitiva, la inhibición, la
+                planificación y la resolución de problemas.
+              </p>
+
+              <div class="training-progress">
+
+                <div class="training-progress-header">
+                  <span>Nivel inicial</span>
+                  <span>1</span>
+                </div>
+
+                <div class="progress-track">
+                  <span style="width: 28%;"></span>
+                </div>
+
+              </div>
+
             </div>
 
           </article>
@@ -643,154 +598,197 @@
 
     </section>
 
-    <!-- CIENCIA -->
+
+    <!-- ======================================================
+         CIENCIA
+    ======================================================= -->
 
     <section
-      class="section science-section"
+      class="science section section-dark"
       id="ciencia"
+      aria-labelledby="science-title"
     >
 
-      <div class="container science-grid">
+      <div class="container science-container">
 
         <div class="science-visual" aria-hidden="true">
 
-          <div class="science-panel">
+          <div class="science-orbit science-orbit-one"></div>
+          <div class="science-orbit science-orbit-two"></div>
+          <div class="science-orbit science-orbit-three"></div>
 
-            <span class="science-axis axis-x"></span>
-            <span class="science-axis axis-y"></span>
-
-            <span class="science-line line-one"></span>
-            <span class="science-line line-two"></span>
-
-            <span class="science-point point-one"></span>
-            <span class="science-point point-two"></span>
-            <span class="science-point point-three"></span>
-            <span class="science-point point-four"></span>
-
-          </div>
-
-          <div class="science-badge">
-
-            <strong>
-              Diseñado desde
-            </strong>
-
-            <span>
-              la neuropsicología
-            </span>
-
-          </div>
+          <span class="science-node science-node-center"></span>
+          <span class="science-node science-node-one"></span>
+          <span class="science-node science-node-two"></span>
+          <span class="science-node science-node-three"></span>
 
         </div>
 
-        <div class="science-copy">
 
-          <span class="section-kicker">
-            CRITERIO CLÍNICO
-          </span>
+        <div class="science-content">
 
-          <h2>
-            No es una colección de juegos mentales
+          <p class="eyebrow eyebrow-light">
+            Ciencia
+          </p>
+
+          <h2 id="science-title">
+            Diseñado desde la neuropsicología
           </h2>
 
-          <p>
-            Mineuri nace para traducir el razonamiento
-            neuropsicológico a una experiencia digital clara.
-            Cada programa se estructura según el proceso cognitivo
-            trabajado, la dificultad y su posible aplicación funcional.
+          <p class="large-text">
+            Mineuri organiza sus actividades según los principales
+            procesos cognitivos y los principios de la estimulación
+            cognitiva.
           </p>
 
           <ul class="science-list">
 
             <li>
-              <span aria-hidden="true">01</span>
-              Objetivos cognitivos definidos
+              Programas estructurados por dominios cognitivos.
             </li>
 
             <li>
-              <span aria-hidden="true">02</span>
-              Progresión estructurada de dificultad
+              Dificultad progresiva y actividades graduadas.
             </li>
 
             <li>
-              <span aria-hidden="true">03</span>
-              Lenguaje respetuoso y no infantilizante
+              Aplicación orientada a la vida cotidiana.
             </li>
 
             <li>
-              <span aria-hidden="true">04</span>
-              Límites clínicos y derivación cuando sea necesario
+              Contenidos desarrollados con criterio profesional.
             </li>
 
           </ul>
 
+          <a class="text-link text-link-light" href="#recursos">
+            Conocer nuestra metodología
+            <span aria-hidden="true">→</span>
+          </a>
+
         </div>
 
       </div>
 
     </section>
 
-    <!-- PERSONAS Y FAMILIAS -->
+
+    <!-- ======================================================
+         PLANES
+    ======================================================= -->
 
     <section
-      class="section section-soft"
-      id="familias"
+      class="plans section"
+      id="planes"
+      aria-labelledby="plans-title"
     >
 
-      <div class="container family-grid">
+      <div class="container">
 
-        <div class="family-copy">
+        <div class="section-heading section-heading-centered">
 
-          <span class="section-kicker">
-            PERSONAS Y FAMILIAS
-          </span>
+          <p class="eyebrow">
+            Planes
+          </p>
 
-          <h2>
-            Una plataforma comprensible desde el primer día
+          <h2 id="plans-title">
+            Empieza a entrenar a tu ritmo
           </h2>
 
           <p>
-            Mineuri está pensada para que la persona usuaria pueda
-            orientarse con facilidad y para que las familias encuentren
-            una propuesta estructurada, respetuosa y transparente.
+            Accede a programas de estimulación cognitiva desde
+            cualquier dispositivo.
           </p>
-
-          <div class="family-points">
-
-            <div>
-              <span aria-hidden="true">✓</span>
-              Instrucciones breves y claras
-            </div>
-
-            <div>
-              <span aria-hidden="true">✓</span>
-              Diseño accesible y adulto
-            </div>
-
-            <div>
-              <span aria-hidden="true">✓</span>
-              Programas organizados por objetivos
-            </div>
-
-          </div>
 
         </div>
 
-        <div class="quote-card">
 
-          <div class="quote-mark" aria-hidden="true">
-            “
-          </div>
+        <div class="plans-grid">
 
-          <blockquote>
-            Cuidar la cognición no consiste solo en completar
-            ejercicios. También significa conservar participación,
-            seguridad y autonomía en la vida cotidiana.
-          </blockquote>
+          <article class="plan-card">
 
-          <p>
-            Principio de diseño de Mineuri
-          </p>
+            <div class="plan-header">
+
+              <p class="plan-label">
+                Exploración
+              </p>
+
+              <h3>
+                Gratuito
+              </h3>
+
+              <p class="plan-price">
+                0 €
+              </p>
+
+              <p>
+                Para conocer Mineuri y probar las primeras actividades.
+              </p>
+
+            </div>
+
+            <ul class="plan-features">
+
+              <li>Actividades de muestra</li>
+              <li>Acceso a recursos básicos</li>
+              <li>Entrenamiento introductorio</li>
+
+            </ul>
+
+            <a
+              class="button button-secondary button-full"
+              href="#acceso"
+            >
+              Probar Mineuri
+            </a>
+
+          </article>
+
+
+          <article class="plan-card plan-card-featured">
+
+            <span class="recommended-label">
+              Recomendado
+            </span>
+
+            <div class="plan-header">
+
+              <p class="plan-label">
+                Entrenamiento completo
+              </p>
+
+              <h3>
+                Mineuri Plus
+              </h3>
+
+              <p class="plan-price">
+                Próximamente
+              </p>
+
+              <p>
+                Programas completos y seguimiento personalizado del
+                entrenamiento.
+              </p>
+
+            </div>
+
+            <ul class="plan-features">
+
+              <li>Sesiones completas</li>
+              <li>Todos los dominios cognitivos</li>
+              <li>Seguimiento del progreso</li>
+              <li>Nuevas actividades</li>
+
+            </ul>
+
+            <a
+              class="button button-primary button-full"
+              href="#acceso"
+            >
+              Unirme a la lista
+            </a>
+
+          </article>
 
         </div>
 
@@ -798,76 +796,197 @@
 
     </section>
 
-    <!-- LLAMADA A LA ACCIÓN -->
+
+    <!-- ======================================================
+         RECURSOS
+    ======================================================= -->
 
     <section
-      class="section final-cta"
+      class="resources section section-soft"
+      id="recursos"
+      aria-labelledby="resources-title"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <p class="eyebrow">
+            Recursos
+          </p>
+
+          <h2 id="resources-title">
+            Comprender también forma parte del entrenamiento
+          </h2>
+
+          <p>
+            Contenidos sobre memoria, atención, envejecimiento
+            cognitivo y hábitos que favorecen la salud cerebral.
+          </p>
+
+        </div>
+
+
+        <div class="resources-grid">
+
+          <article class="resource-card">
+
+            <div class="resource-illustration resource-blue">
+              <span aria-hidden="true">◎</span>
+            </div>
+
+            <div class="resource-content">
+
+              <p class="resource-category">
+                Memoria
+              </p>
+
+              <h3>
+                Cómo funciona la memoria cotidiana
+              </h3>
+
+              <p>
+                Una introducción a los procesos que intervienen en el
+                aprendizaje y la recuperación de información.
+              </p>
+
+              <a class="text-link" href="#">
+                Leer recurso
+                <span aria-hidden="true">→</span>
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <article class="resource-card">
+
+            <div class="resource-illustration resource-turquoise">
+              <span aria-hidden="true">✦</span>
+            </div>
+
+            <div class="resource-content">
+
+              <p class="resource-category">
+                Vida cotidiana
+              </p>
+
+              <h3>
+                Hábitos que ayudan a mantener una mente activa
+              </h3>
+
+              <p>
+                Actividad física, relaciones sociales, sueño y
+                aprendizaje como parte del cuidado cognitivo.
+              </p>
+
+              <a class="text-link" href="#">
+                Leer recurso
+                <span aria-hidden="true">→</span>
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <article class="resource-card">
+
+            <div class="resource-illustration resource-yellow">
+              <span aria-hidden="true">⌘</span>
+            </div>
+
+            <div class="resource-content">
+
+              <p class="resource-category">
+                Neuropsicología
+              </p>
+
+              <h3>
+                Estimulación cognitiva y entrenamiento cerebral
+              </h3>
+
+              <p>
+                Qué diferencias existen y qué podemos esperar de una
+                intervención cognitiva estructurada.
+              </p>
+
+              <a class="text-link" href="#">
+                Leer recurso
+                <span aria-hidden="true">→</span>
+              </a>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================================
+         LLAMADA A LA ACCIÓN
+    ======================================================= -->
+
+    <section
+      class="cta-section section"
       id="acceso"
+      aria-labelledby="cta-title"
     >
 
       <div class="container">
 
         <div class="cta-card">
 
-          <div class="cta-copy">
+          <div class="cta-content">
 
-            <span class="section-kicker section-kicker-light">
-              PRÓXIMAMENTE
-            </span>
+            <p class="eyebrow eyebrow-light">
+              Mineuri
+            </p>
 
-            <h2>
-              Mineuri está empezando a tomar forma
+            <h2 id="cta-title">
+              Una mente activa para la vida cotidiana
             </h2>
 
             <p>
-              Estamos construyendo una plataforma de estimulación
-              cognitiva clara, viva y basada en neuropsicología.
+              Sé de las primeras personas en conocer nuestros
+              programas de estimulación cognitiva.
             </p>
 
           </div>
 
-          <form
-            class="interest-form"
-            data-interest-form
-            novalidate
-          >
+          <form class="cta-form" action="#" method="post">
 
-            <label for="email">
-              Recibe novedades del lanzamiento
+            <label class="sr-only" for="email">
+              Correo electrónico
             </label>
 
-            <div class="form-row">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Tu correo electrónico"
+              autocomplete="email"
+              required
+            >
 
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autocomplete="email"
-                placeholder="tu@email.com"
-                required
-              >
-
-              <button
-                class="button button-coral"
-                type="submit"
-              >
-                Avisadme
-              </button>
-
-            </div>
-
-            <p
-              class="form-message"
-              data-form-message
-              aria-live="polite"
-            ></p>
-
-            <small>
-              Formulario demostrativo. Conectaremos el envío
-              cuando elijamos el servicio de newsletter.
-            </small>
+            <button
+              class="button button-coral"
+              type="submit"
+            >
+              Quiero saber más
+            </button>
 
           </form>
+
+          <p class="form-note">
+            Te avisaremos cuando Mineuri esté disponible. Sin correos
+            innecesarios.
+          </p>
 
         </div>
 
@@ -877,82 +996,136 @@
 
   </main>
 
-  <!-- PIE DE PÁGINA -->
+
+  <!-- ======================================================
+       PIE DE PÁGINA
+  ======================================================= -->
 
   <footer class="site-footer">
 
     <div class="container footer-grid">
 
-      <div>
+      <div class="footer-brand">
 
         <a
-          class="brand footer-brand"
+          class="brand"
           href="#inicio"
-          aria-label="Mineuri, inicio"
+          aria-label="Mineuri, volver al inicio"
         >
-          <span class="brand-word" aria-hidden="true">
-            <span class="brand-blue">mine</span><span class="brand-turquoise">u</span><span class="brand-blue">r</span><span class="brand-coral">i</span>
+          <span class="brand-wordmark" aria-hidden="true">
+            <span class="brand-blue">mine</span><span class="brand-turquoise">u</span><span class="brand-blue">ri</span>
+          </span>
+
+          <span class="sr-only">
+            Mineuri
           </span>
         </a>
 
-        <p>
+        <p class="footer-slogan">
           Una mente activa para la vida cotidiana.
+        </p>
+
+        <p>
+          Estimulación cognitiva basada en neuropsicología.
         </p>
 
       </div>
 
-      <div class="footer-links">
 
-        <a href="#como-funciona">
-          Cómo funciona
-        </a>
+      <div class="footer-column">
 
-        <a href="#programas">
-          Programas
-        </a>
+        <h2 class="footer-title">
+          Mineuri
+        </h2>
 
-        <a href="#ciencia">
-          Ciencia
-        </a>
+        <ul>
+          <li>
+            <a href="#como-funciona">Cómo funciona</a>
+          </li>
 
-        <a href="#familias">
-          Familias
-        </a>
+          <li>
+            <a href="#ciencia">Ciencia</a>
+          </li>
+
+          <li>
+            <a href="#planes">Planes</a>
+          </li>
+
+          <li>
+            <a href="#recursos">Recursos</a>
+          </li>
+        </ul>
 
       </div>
 
-      <div class="footer-legal">
 
-        <a href="#">
-          Privacidad
-        </a>
+      <div class="footer-column">
 
-        <a href="#">
-          Aviso legal
-        </a>
+        <h2 class="footer-title">
+          Legal
+        </h2>
 
-        <a href="#">
-          Cookies
-        </a>
+        <ul>
+          <li>
+            <a href="aviso-legal.html">Aviso legal</a>
+          </li>
+
+          <li>
+            <a href="privacidad.html">Privacidad</a>
+          </li>
+
+          <li>
+            <a href="cookies.html">Cookies</a>
+          </li>
+        </ul>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h2 class="footer-title">
+          Contacto
+        </h2>
+
+        <ul>
+          <li>
+            <a href="mailto:hola@mineuri.com">
+              hola@mineuri.com
+            </a>
+          </li>
+
+          <li>
+            <a href="https://mineuri.com">
+              mineuri.com
+            </a>
+          </li>
+        </ul>
 
       </div>
 
     </div>
 
+
     <div class="container footer-bottom">
 
       <p>
-        © <span data-current-year></span> Mineuri.
+        © <span id="current-year">2026</span> Mineuri.
+        Todos los derechos reservados.
       </p>
 
-      <p>
-        Mineuri no sustituye una evaluación neuropsicológica,
-        un diagnóstico ni un tratamiento sanitario individualizado.
+      <p class="footer-disclaimer">
+        Mineuri no sustituye una evaluación o intervención
+        neuropsicológica individualizada.
       </p>
 
     </div>
 
   </footer>
+
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 
 </body>
 </html>
