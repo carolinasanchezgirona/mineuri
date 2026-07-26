@@ -629,9 +629,9 @@ button {
   right: -10px;
   bottom: 35px;
   z-index: 4;
-  width: 700px;
+  width: 640px;
   max-width: none;
-  height: 610px;
+  height:auto;
   object-fit: cover;
   object-position: 68% center;
   border-radius: 0;
