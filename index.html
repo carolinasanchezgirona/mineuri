@@ -40,10 +40,68 @@
     href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Sora:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-<link
-  rel="stylesheet"
-  href="https://sibforms.com/forms/end-form/build/sib-styles.css"
->
+
+  <!-- Estilos específicos del formulario de Brevo -->
+  <style>
+    @font-face {
+      font-display: block;
+      font-family: Roboto;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
+    }
+
+    @font-face {
+      font-display: fallback;
+      font-family: Roboto;
+      font-weight: 600;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
+    }
+
+    @font-face {
+      font-display: fallback;
+      font-family: Roboto;
+      font-weight: 700;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
+    }
+
+    :where(.sib-form-message-panel) {
+      display: none;
+    }
+
+    :where(.sib-form-message-panel .sib-notification__icon) {
+      width: 20px;
+      height: 20px;
+    }
+
+
+    #sib-container input:-ms-input-placeholder {
+      font-family: Helvetica, sans-serif;
+      text-align: left;
+      color: #c0ccda;
+    }
+
+    #sib-container input::placeholder {
+      font-family: Helvetica, sans-serif;
+      text-align: left;
+      color: #c0ccda;
+    }
+
+    #sib-container textarea::placeholder {
+      font-family: Helvetica, sans-serif;
+      text-align: left;
+      color: #c0ccda;
+    }
+
+
+    #sib-container a {
+      text-decoration: underline;
+      color: #2BB2FC;
+    }
+  </style>
+
+  <link
+    rel="stylesheet"
+    href="https://sibforms.com/forms/end-form/build/sib-styles.css"
+  >
   <link rel="stylesheet" href="style.css?v=17">
 </head>
 
@@ -1144,73 +1202,6 @@
           <!-- Begin Brevo Form -->
 
 
-<!-- START - We recommend to place the below code in head tag of your website html  -->
-
-<style>
-  @font-face {
-    font-display: block;
-    font-family: Roboto;
-    src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
-  }
-
-  @font-face {
-    font-display: fallback;
-    font-family: Roboto;
-    font-weight: 600;
-    src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
-  }
-
-  @font-face {
-    font-display: fallback;
-    font-family: Roboto;
-    font-weight: 700;
-    src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
-  }
-
-  :where(.sib-form-message-panel) {
-    display: none;
-  }
-
-  :where(.sib-form-message-panel .sib-notification__icon) {
-    width: 20px;
-    height: 20px;
-  }
-
-
-  #sib-container input:-ms-input-placeholder {
-    font-family: Helvetica, sans-serif;
-    text-align: left;
-    color: #c0ccda;
-  }
-
-  #sib-container input::placeholder {
-    font-family: Helvetica, sans-serif;
-    text-align: left;
-    color: #c0ccda;
-  }
-
-  #sib-container textarea::placeholder {
-    font-family: Helvetica, sans-serif;
-    text-align: left;
-    color: #c0ccda;
-  }
-
-
-  #sib-container a {
-    text-decoration: underline;
-    color: #2BB2FC;
-  }
-</style>
-<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
-
-
-<!--  END - We recommend to place the above code in head tag of your website html -->
-
-
-
-
-
-
 <!-- START - We recommend to place the below code where you want the form in your website html  -->
 <div class="sib-form" style="text-align: center;
          background-color: #EFF2F7; 
@@ -1273,7 +1264,7 @@
 
           <div class="sib-form-block" style="font-family:Helvetica, sans-serif; font-size:16px; text-align:left; color:#3C4858; background-color:transparent; text-align:left">
             <div class="sib-text-form-block">
-              <p>Apúntate para conocer el desarrollo de Mineuri, recibir recursos sobre cognición y vida cotidiana y acceder a las primeras pruebas de la plataforma..</p>
+              <p>Apúntate para conocer el desarrollo de Mineuri, recibir recursos sobre cognición y vida cotidiana y acceder a las primeras pruebas de la plataforma.</p>
             </div>
           </div>
 
@@ -1827,57 +1818,7 @@
 </div>
 <!-- END - We recommend to place the above code where you want the form in your website html  -->
 
-<!-- START - We recommend to place the below code in footer or bottom of your website html  -->
-<script>
-  window.REQUIRED_CODE_ERROR_MESSAGE = 'Elige un código de país';
-  window.LOCALE = 'es';
 
-
-
-
-  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Alguno de los datos introducidos no es válido. Revisa los campos señalados e inténtalo de nuevo.";
-
-
-
-
-
-  window.REQUIRED_ERROR_MESSAGE = "Este campo es obligatorio. ";
-
-  window.GENERIC_INVALID_MESSAGE = "Alguno de los datos introducidos no es válido. Revisa los campos señalados e inténtalo de nuevo.";
-
-
-  window.INVALID_NUMBER = "Alguno de los datos introducidos no es válido. Revisa los campos señalados e inténtalo de nuevo.";
-
-
-
-
-  window.INVALID_DATE = "Introduce una fecha válida";
-
-
-
-  window.REQUIRED_MULTISELECT_MESSAGE = 'Selecciona al menos una opción';
-
-
-  window.translation = {
-    common: {
-      selectedList: '{quantity} lista seleccionada',
-      selectedLists: '{quantity} listas seleccionadas',
-      selectedOption: '{quantity} seleccionado',
-      selectedOptions: '{quantity} seleccionados',
-    }
-  };
-
-  var AUTOHIDE = Boolean(0);
-</script>
-
-
-
-<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
-
-
-
-
-<!-- END - We recommend to place the above code in footer or bottom of your website html  -->
 
 <!-- End Brevo Form -->
 
@@ -2032,7 +1973,7 @@
         neuropsicológica individualizada.
       </p>
 
-        </div>
+    </div>
 
   </footer>
 
