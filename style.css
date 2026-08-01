@@ -2223,3 +2223,87 @@ button {
     border-radius: 18px;
   }
 }
+/* =====================================================
+   AJUSTE FINAL · TABLET Y MÓVIL
+===================================================== */
+
+/* Tablet y móvil: altura realista del formulario */
+@media (max-width: 768px) {
+  .mineuri-waitlist-frame {
+    height: 2450px !important;
+  }
+}
+
+/* Tablet: pie en dos columnas */
+@media (min-width: 561px) and (max-width: 900px) {
+  .footer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: 42px 56px;
+    align-items: start;
+  }
+
+  .footer-brand,
+  .footer-column {
+    margin: 0;
+  }
+
+  .footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 44px;
+  }
+
+  .footer-bottom p {
+    margin: 0;
+  }
+}
+
+/* Móvil pequeño: una columna, pero compacta */
+@media (max-width: 560px) {
+  .mineuri-waitlist-frame {
+    height: 2600px !important;
+  }
+
+  .site-footer {
+    padding-top: 48px;
+    padding-bottom: 28px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-brand,
+  .footer-column {
+    margin: 0;
+  }
+
+  .footer-logo {
+    max-width: 180px;
+  }
+
+  .footer-title {
+    margin-bottom: 12px;
+  }
+
+  .footer-column ul {
+    display: grid;
+    gap: 7px;
+  }
+
+  .footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 34px;
+    padding-top: 22px;
+  }
+
+  .footer-bottom p {
+    margin: 0;
+  }
+}
