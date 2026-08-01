@@ -1584,8 +1584,18 @@ button {
   }
 
   .mineuri-waitlist-frame {
-  height: 3150px;
+  display: block;
+  width: 100%;
+  height: 1750px;
+  margin: 0;
+  border: 0;
+  background: #ffffff;
 }
+
+@media (max-width: 768px) {
+  .mineuri-waitlist-frame {
+    height: 3300px;
+  }
 }
 
 /* =========================================================
