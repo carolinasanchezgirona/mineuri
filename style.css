@@ -1620,11 +1620,9 @@ button {
 
 .footer-logo {
   width: 158px;
-  filter:
-    brightness(0)
-    invert(1);
+  height: auto;
+  filter: none;
 }
-
 .footer-brand {
   max-width: 350px;
 }
