@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Inscripción confirmada | Mineuri</title>
+  <meta
+    name="description"
+    content="Tu inscripción a la lista de Mineuri se ha confirmado correctamente."
+  >
+  <meta name="author" content="Mineuri">
+  <meta name="theme-color" content="#4C5BFF">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Sora:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="style.css?v=18">
+
+  <style>
+    .confirmation-page {
+      position: relative;
+      display: grid;
+      min-height: 100vh;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(76, 91, 255, 0.12), transparent 30%),
+        radial-gradient(circle at 88% 78%, rgba(27, 207, 201, 0.14), transparent 32%),
+        #f7f8fc;
+    }
+
+    .confirmation-header {
+      position: relative;
+      z-index: 2;
+      padding: 22px 0;
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid rgba(226, 230, 241, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .confirmation-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .confirmation-logo {
+      width: 175px;
+      height: auto;
+    }
+
+    .language-switch {
+      display: inline-flex;
+      padding: 4px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      background: #ffffff;
+      box-shadow: var(--shadow-small);
+    }
+
+    .language-button {
+      min-width: 48px;
+      padding: 8px 13px;
+      border: 0;
+      border-radius: var(--radius-pill);
+      color: var(--color-muted);
+      background: transparent;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition: background-color var(--transition), color var(--transition);
+    }
+
+    .language-button[aria-pressed="true"] {
+      color: #ffffff;
+      background: var(--color-primary);
+    }
+
+    .confirmation-main {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      align-items: center;
+      padding: 76px 0;
+    }
+
+    .confirmation-card {
+      position: relative;
+      overflow: hidden;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 68px 62px;
+      border: 1px solid rgba(76, 91, 255, 0.17);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 30px 90px rgba(23, 32, 57, 0.13);
+      text-align: center;
+    }
+
+    .confirmation-card::before,
+    .confirmation-card::after {
+      position: absolute;
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .confirmation-card::before {
+      top: -145px;
+      right: -120px;
+      width: 310px;
+      height: 310px;
+      background: rgba(76, 91, 255, 0.07);
+    }
+
+    .confirmation-card::after {
+      bottom: -95px;
+      left: -75px;
+      width: 210px;
+      height: 210px;
+      background: rgba(27, 207, 201, 0.1);
+    }
+
+    .confirmation-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .confirmation-icon {
+      display: inline-flex;
+      width: 92px;
+      height: 92px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      color: #ffffff;
+      background:
+        linear-gradient(145deg, var(--color-primary), var(--color-turquoise));
+      border: 9px solid #eef0ff;
+      border-radius: 50%;
+      box-shadow: 0 18px 42px rgba(76, 91, 255, 0.25);
+      font-size: 2.25rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .confirmation-eyebrow {
+      margin-bottom: 16px;
+      color: var(--color-turquoise);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .confirmation-card h1 {
+      max-width: 640px;
+      margin: 0 auto 22px;
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: clamp(2.35rem, 6vw, 4.35rem);
+      line-height: 1.08;
+      letter-spacing: -0.05em;
+    }
+
+    .confirmation-lead {
+      max-width: 600px;
+      margin: 0 auto 16px;
+      color: var(--color-text);
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .confirmation-note {
+      max-width: 590px;
+      margin: 0 auto 34px;
+      color: var(--color-muted);
+      font-size: 0.9rem;
+    }
+
+    .confirmation-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .confirmation-actions .button {
+      min-width: 205px;
+    }
+
+    .confirmation-secondary-link {
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      color: var(--color-primary);
+      border: 1px solid rgba(76, 91, 255, 0.25);
+      border-radius: var(--radius-pill);
+      background: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+
+    .confirmation-secondary-link:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+    }
+
+    .language-panel[hidden] {
+      display: none;
+    }
+
+    .confirmation-footer {
+      position: relative;
+      z-index: 1;
+      padding: 26px 0;
+      color: rgba(255, 255, 255, 0.68);
+      background: #11192d;
+    }
+
+    .confirmation-footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .confirmation-footer p {
+      margin: 0;
+      font-size: 0.78rem;
+    }
+
+    .confirmation-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.78rem;
+    }
+
+    .confirmation-footer-links a:hover {
+      color: var(--color-turquoise);
+    }
+
+    @media (max-width: 680px) {
+      .confirmation-header {
+        padding: 16px 0;
+      }
+
+      .confirmation-logo {
+        width: 145px;
+      }
+
+      .confirmation-main {
+        padding: 42px 0;
+      }
+
+      .confirmation-card {
+        padding: 48px 22px 42px;
+        border-radius: 26px;
+      }
+
+      .confirmation-icon {
+        width: 78px;
+        height: 78px;
+        margin-bottom: 24px;
+        border-width: 7px;
+        font-size: 1.9rem;
+      }
+
+      .confirmation-card h1 {
+        font-size: clamp(2.1rem, 11vw, 3.2rem);
+      }
+
+      .confirmation-actions {
+        flex-direction: column;
+      }
+
+      .confirmation-actions .button,
+      .confirmation-secondary-link {
+        width: 100%;
+      }
+
+      .confirmation-footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body class="confirmation-page">
+  <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+
+  <header class="confirmation-header">
+    <div class="container confirmation-header-inner">
+      <a href="index.html" aria-label="Mineuri, volver a la página de inicio">
+        <img
+          class="confirmation-logo"
+          src="assets/logo-mineuri.png"
+          alt="Mineuri"
+        >
+      </a>
+
+      <div class="language-switch" aria-label="Seleccionar idioma">
+        <button
+          class="language-button"
+          type="button"
+          data-language="es"
+          aria-pressed="true"
+        >
+          ES
+        </button>
+        <button
+          class="language-button"
+          type="button"
+          data-language="ca"
+          aria-pressed="false"
+        >
+          CAT
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="confirmation-main" id="contenido-principal">
+    <div class="container">
+      <section class="confirmation-card" aria-live="polite">
+        <div class="confirmation-content">
+          <div class="confirmation-icon" aria-hidden="true">✓</div>
+
+          <div class="language-panel" data-panel="es">
+            <p class="confirmation-eyebrow">Inscripción completada</p>
+            <h1>Tu inscripción está confirmada</h1>
+            <p class="confirmation-lead">
+              Ya formas parte del comienzo de Mineuri. Gracias por acompañarnos
+              mientras construimos una forma más clara y cotidiana de cuidar la cognición.
+            </p>
+            <p class="confirmation-note">
+              En unos minutos recibirás el mensaje de bienvenida. Revisa también
+              Promociones o correo no deseado si no lo encuentras en tu bandeja principal.
+            </p>
+            <div class="confirmation-actions">
+              <a class="button button-primary" href="index.html">
+                Volver a Mineuri
+              </a>
+              <a class="confirmation-secondary-link" href="mailto:hola@mineuri.com">
+                Contactar con Mineuri
+              </a>
+            </div>
+          </div>
+
+          <div class="language-panel" data-panel="ca" hidden>
+            <p class="confirmation-eyebrow">Inscripció completada</p>
+            <h1>La teva inscripció està confirmada</h1>
+            <p class="confirmation-lead">
+              Ja formes part del començament de Mineuri. Gràcies per acompanyar-nos
+              mentre construïm una manera més clara i quotidiana de cuidar la cognició.
+            </p>
+            <p class="confirmation-note">
+              En uns minuts rebràs el missatge de benvinguda. Revisa també Promocions
+              o el correu brossa si no el trobes a la safata principal.
+            </p>
+            <div class="confirmation-actions">
+              <a class="button button-primary" href="index.html">
+                Tornar a Mineuri
+              </a>
+              <a class="confirmation-secondary-link" href="mailto:hola@mineuri.com">
+                Contactar amb Mineuri
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="confirmation-footer">
+    <div class="container confirmation-footer-inner">
+      <p>© 2026 Mineuri. Todos los derechos reservados.</p>
+      <nav class="confirmation-footer-links" aria-label="Información legal">
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="politica-privacidad.html">Privacidad</a>
+        <a href="politica-cookies.html">Cookies</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const buttons = document.querySelectorAll('[data-language]');
+      const panels = document.querySelectorAll('[data-panel]');
+
+      function setLanguage(language) {
+        const normalizedLanguage = language === 'ca' ? 'ca' : 'es';
+
+        document.documentElement.lang = normalizedLanguage;
+
+        buttons.forEach(function (button) {
+          button.setAttribute(
+            'aria-pressed',
+            String(button.dataset.language === normalizedLanguage)
+          );
+        });
+
+        panels.forEach(function (panel) {
+          panel.hidden = panel.dataset.panel !== normalizedLanguage;
+        });
+      }
+
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          setLanguage(button.dataset.language);
+        });
+      });
+
+      const browserLanguage = (navigator.language || 'es').toLowerCase();
+      setLanguage(browserLanguage.startsWith('ca') ? 'ca' : 'es');
+    }());
+  </script>
+</body>
+</html>
