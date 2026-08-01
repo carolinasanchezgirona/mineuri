@@ -1507,7 +1507,7 @@ button {
 .mineuri-waitlist-frame {
   display: block;
   width: 100%;
-  height: 2300px;
+  height: 1750px;
   margin: 0 auto;
   border: 0;
   border-radius: 18px;
@@ -1536,6 +1536,10 @@ button {
   .mineuri-waitlist {
     padding: 18px;
     border-radius: 24px;
+  }
+
+  .mineuri-waitlist-frame {
+    height: 2050px;
   }
 }
 
@@ -1584,17 +1588,14 @@ button {
   }
 
   .mineuri-waitlist-frame {
-  display: block;
-  width: 100%;
-  height: 1750px;
-  margin: 0;
-  border: 0;
-  background: #ffffff;
+    height: 2350px;
+    border-radius: 14px;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 560px) {
   .mineuri-waitlist-frame {
-    height: 3300px;
+    height: 2700px;
   }
 }
 
@@ -2192,118 +2193,5 @@ button {
 @media (min-width: 901px) {
   .hero-content {
     padding-left: 4px;
-  }
-}
-/* =====================================================
-   FORMULARIO DE LISTA DE ESPERA · BREVO
-===================================================== */
-
-.mineuri-waitlist {
-  width: 100%;
-  margin-top: 32px;
-}
-
-.mineuri-waitlist-frame {
-  display: block;
-  width: 100%;
-  height: 2950px;
-  margin: 0 auto;
-  border: 0;
-  border-radius: 24px;
-  background-color: #ffffff;
-}
-
-@media (max-width: 768px) {
-  .mineuri-waitlist {
-    margin-top: 24px;
-  }
-
-  .mineuri-waitlist-frame {
-    height: 3700px;
-    border-radius: 18px;
-  }
-}
-/* =====================================================
-   AJUSTE FINAL · TABLET Y MÓVIL
-===================================================== */
-
-/* Tablet y móvil: altura realista del formulario */
-@media (max-width: 768px) {
-  .mineuri-waitlist-frame {
-    height: 2450px !important;
-  }
-}
-
-/* Tablet: pie en dos columnas */
-@media (min-width: 561px) and (max-width: 900px) {
-  .footer-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-    gap: 42px 56px;
-    align-items: start;
-  }
-
-  .footer-brand,
-  .footer-column {
-    margin: 0;
-  }
-
-  .footer-bottom {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    margin-top: 44px;
-  }
-
-  .footer-bottom p {
-    margin: 0;
-  }
-}
-
-/* Móvil pequeño: una columna, pero compacta */
-@media (max-width: 560px) {
-  .mineuri-waitlist-frame {
-    height: 2600px !important;
-  }
-
-  .site-footer {
-    padding-top: 48px;
-    padding-bottom: 28px;
-  }
-
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .footer-brand,
-  .footer-column {
-    margin: 0;
-  }
-
-  .footer-logo {
-    max-width: 180px;
-  }
-
-  .footer-title {
-    margin-bottom: 12px;
-  }
-
-  .footer-column ul {
-    display: grid;
-    gap: 7px;
-  }
-
-  .footer-bottom {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-    margin-top: 34px;
-    padding-top: 22px;
-  }
-
-  .footer-bottom p {
-    margin: 0;
   }
 }
