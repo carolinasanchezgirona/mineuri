@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de privacidad | Mineuri</title>
+  <meta name="description" content="Política de privacidad y protección de datos personales de Mineuri.">
+  <meta name="author" content="Mineuri">
+  <meta name="theme-color" content="#4C5BFF">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=18">
+
+  <style>
+    .legal-hero {
+      padding: 150px 0 72px;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(27, 207, 201, 0.12), transparent 30%),
+        radial-gradient(circle at 10% 10%, rgba(76, 91, 255, 0.11), transparent 28%),
+        #f7f8fc;
+    }
+
+    .legal-hero-content { max-width: 820px; }
+
+    .legal-hero h1 {
+      margin-bottom: 20px;
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 1.06;
+      letter-spacing: -0.05em;
+    }
+
+    .legal-hero p:last-child { max-width: 720px; margin-bottom: 0; font-size: 1.06rem; }
+    .legal-main { padding: 78px 0 110px; background: #ffffff; }
+    .legal-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; max-width: 920px; }
+
+    .legal-card {
+      padding: 34px 38px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-medium);
+      background: #ffffff;
+      box-shadow: var(--shadow-small);
+    }
+
+    .legal-card h2 {
+      margin-bottom: 16px;
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1.25;
+    }
+
+    .legal-card h3 { margin: 24px 0 10px; color: var(--color-ink); font-size: 1rem; }
+    .legal-card p:last-child, .legal-card ul:last-child { margin-bottom: 0; }
+    .legal-card ul { display: grid; gap: 9px; margin: 0 0 18px; padding-left: 22px; }
+    .legal-card li { list-style: disc; }
+    .legal-card a { color: var(--color-primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+    .legal-data {
+      display: grid;
+      grid-template-columns: minmax(170px, 0.34fr) minmax(0, 1fr);
+      gap: 11px 24px;
+      margin: 0;
+    }
+
+    .legal-data dt { color: var(--color-ink); font-weight: 700; }
+    .legal-data dd { margin: 0; }
+
+    .legal-note {
+      padding: 22px 24px;
+      border-left: 4px solid var(--color-primary);
+      border-radius: 0 var(--radius-small) var(--radius-small) 0;
+      background: var(--color-primary-light);
+    }
+
+    .privacy-table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+    .privacy-table th, .privacy-table td { padding: 14px; border: 1px solid var(--color-border); text-align: left; vertical-align: top; }
+    .privacy-table th { color: var(--color-ink); background: var(--color-soft); font-size: 0.88rem; }
+    .privacy-table td { font-size: 0.9rem; }
+    .legal-updated { margin: 8px 0 0; color: var(--color-muted); font-size: 0.88rem; }
+
+    @media (max-width: 760px) {
+      .privacy-table, .privacy-table tbody, .privacy-table tr, .privacy-table th, .privacy-table td { display: block; width: 100%; }
+      .privacy-table thead { display: none; }
+      .privacy-table tr { margin-bottom: 18px; border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; }
+      .privacy-table td { border: 0; border-bottom: 1px solid var(--color-border); }
+      .privacy-table td:last-child { border-bottom: 0; }
+      .privacy-table td::before { display: block; margin-bottom: 4px; color: var(--color-ink); font-size: 0.76rem; font-weight: 700; text-transform: uppercase; }
+      .privacy-table td:nth-child(1)::before { content: "Tratamiento"; }
+      .privacy-table td:nth-child(2)::before { content: "Finalidad"; }
+      .privacy-table td:nth-child(3)::before { content: "Base jurídica"; }
+      .privacy-table td:nth-child(4)::before { content: "Conservación"; }
+    }
+
+    @media (max-width: 680px) {
+      .legal-hero { padding: 118px 0 54px; }
+      .legal-main { padding: 52px 0 78px; }
+      .legal-card { padding: 26px 22px; }
+      .legal-data { grid-template-columns: 1fr; gap: 4px; }
+      .legal-data dd { margin-bottom: 12px; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+
+  <header class="site-header" id="inicio">
+    <div class="container header-container">
+      <a class="brand" href="index.html#inicio" aria-label="Mineuri, página de inicio">
+        <img class="brand-logo" src="assets/logo-mineuri.png" alt="Mineuri">
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-navigation" id="main-navigation" aria-label="Navegación principal">
+        <ul class="navigation-list">
+          <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+          <li><a href="index.html#ciencia">Ciencia</a></li>
+          <li><a href="index.html#planes">Planes</a></li>
+          <li><a href="index.html#recursos">Recursos</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="button button-primary button-small" href="index.html#acceso">Unirme a la lista</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido-principal">
+    <section class="legal-hero">
+      <div class="container legal-hero-content">
+        <p class="eyebrow">Protección de datos</p>
+        <h1>Política de privacidad</h1>
+        <p>Aquí explicamos qué datos recoge Mineuri, para qué se utilizan y cómo puedes ejercer tus derechos.</p>
+        <p class="legal-updated">Última actualización: 1 de agosto de 2026.</p>
+      </div>
+    </section>
+
+    <section class="legal-main">
+      <div class="container legal-layout">
+        <article class="legal-card">
+          <h2>1. Responsable del tratamiento</h2>
+          <dl class="legal-data">
+            <dt>Responsable</dt>
+            <dd>Carolina Sánchez Girona, profesional autónoma.</dd>
+            <dt>NIF</dt>
+            <dd>53067189W.</dd>
+            <dt>Nombre comercial</dt>
+            <dd>Mineuri.</dd>
+            <dt>Domicilio profesional</dt>
+            <dd>C/ Barcelona, 10, 08350 Arenys de Mar, Barcelona, España.</dd>
+            <dt>Correo de privacidad</dt>
+            <dd><a href="mailto:hola@mineuri.com">hola@mineuri.com</a>.</dd>
+          </dl>
+        </article>
+
+        <article class="legal-card">
+          <h2>2. Datos que podemos recoger</h2>
+          <p>En función del uso que hagas del sitio, Mineuri puede tratar:</p>
+          <ul>
+            <li>Datos identificativos y de contacto, como nombre y correo electrónico.</li>
+            <li>Información facilitada en el formulario de lista de espera: perfil, intereses, idioma preferido y grado de interés en participar en pruebas piloto.</li>
+            <li>Consentimientos otorgados, fecha de alta, confirmación mediante doble opt-in y bajas de comunicaciones.</li>
+            <li>Contenido de consultas enviadas por correo electrónico.</li>
+            <li>Datos técnicos básicos necesarios para la seguridad, funcionamiento y envío del formulario, como registros de acceso, fecha, hora, dirección IP o información del dispositivo cuando los proveedores técnicos los generen.</li>
+          </ul>
+          <div class="legal-note">
+            <p><strong>El formulario actual de lista de espera no solicita datos clínicos, diagnósticos, historias médicas ni otra información sanitaria.</strong> No envíes este tipo de datos por el formulario o por correo salvo que se habilite un canal asistencial específico y seguro.</p>
+          </div>
+        </article>
+
+        <article class="legal-card">
+          <h2>3. Finalidades, bases jurídicas y conservación</h2>
+          <div class="privacy-table-wrapper">
+            <table class="privacy-table">
+              <thead>
+                <tr>
+                  <th>Tratamiento</th>
+                  <th>Finalidad</th>
+                  <th>Base jurídica</th>
+                  <th>Conservación</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Lista de espera y comunicaciones</td>
+                  <td>Gestionar la inscripción, verificar el correo mediante doble opt-in y enviar novedades, recursos, información del desarrollo, precios o modalidades según los intereses indicados.</td>
+                  <td>Consentimiento de la persona interesada.</td>
+                  <td>Hasta que se retire el consentimiento o se solicite la baja. Después podrán conservarse datos mínimos bloqueados para acreditar el consentimiento y atender responsabilidades legales.</td>
+                </tr>
+                <tr>
+                  <td>Pruebas piloto</td>
+                  <td>Contactar para entrevistas, pruebas de usabilidad o futuros programas piloto cuando se haya marcado la autorización específica.</td>
+                  <td>Consentimiento específico.</td>
+                  <td>Hasta la retirada del consentimiento, el cierre del proceso correspondiente o cuando deje de ser necesario contactar.</td>
+                </tr>
+                <tr>
+                  <td>Consultas y solicitudes</td>
+                  <td>Responder mensajes, resolver dudas y gestionar solicitudes relacionadas con Mineuri.</td>
+                  <td>Aplicación de medidas precontractuales solicitadas, consentimiento o interés legítimo en atender la comunicación, según el caso.</td>
+                  <td>Durante el tiempo necesario para responder y, posteriormente, mientras puedan derivarse responsabilidades.</td>
+                </tr>
+                <tr>
+                  <td>Seguridad y funcionamiento</td>
+                  <td>Prevenir abusos, fraudes, accesos no autorizados, incidencias técnicas y proteger el sitio y sus formularios.</td>
+                  <td>Interés legítimo y cumplimiento de obligaciones legales.</td>
+                  <td>Durante los plazos técnicos y legales necesarios, aplicando criterios de minimización.</td>
+                </tr>
+                <tr>
+                  <td>Obligaciones legales</td>
+                  <td>Atender requerimientos de autoridades y cumplir obligaciones administrativas, fiscales, regulatorias o de protección de datos.</td>
+                  <td>Cumplimiento de una obligación legal.</td>
+                  <td>Durante los plazos exigidos por la normativa aplicable.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Cuando el tratamiento se base en tu consentimiento, puedes retirarlo en cualquier momento sin que ello afecte a la licitud del tratamiento realizado con anterioridad.</p>
+        </article>
+
+        <article class="legal-card">
+          <h2>4. Procedencia de los datos</h2>
+          <p>Los datos proceden principalmente de la propia persona interesada, mediante los formularios del sitio, la confirmación de la suscripción, el correo electrónico o las interacciones futuras con Mineuri.</p>
+          <p>Debes facilitar datos exactos y actualizados. Si aportas datos de otra persona, debes contar con autorización suficiente e informarla sobre este tratamiento.</p>
+        </article>
+
+        <article class="legal-card">
+          <h2>5. Destinatarios y proveedores</h2>
+          <p>No se venden datos personales. Solo podrán acceder a ellos:</p>
+          <ul>
+            <li>Proveedores tecnológicos que prestan servicios necesarios de alojamiento, correo, mantenimiento, seguridad o gestión de formularios.</li>
+            <li><strong>Brevo</strong>, utilizado para gestionar el formulario, las listas de contactos, el doble opt-in y las comunicaciones por correo electrónico, actuando como encargado del tratamiento en los términos contratados.</li>
+            <li>Asesores profesionales sujetos a deberes de confidencialidad cuando sea necesario.</li>
+            <li>Administraciones públicas, juzgados, tribunales u otras autoridades cuando exista una obligación legal.</li>
+          </ul>
+          <p>Brevo informa de que sus servidores de alojamiento y bases de datos se encuentran en la Unión Europea. Algunos proveedores o subencargados pueden intervenir desde otros territorios; en esos casos deberán aplicarse las garantías exigidas por la normativa de protección de datos.</p>
+        </article>
+
+        <article class="legal-card">
+          <h2>6. Transferencias internacionales</h2>
+          <p>Mineuri procura contratar servicios con tratamiento de datos dentro del Espacio Económico Europeo. Si algún proveedor realiza una transferencia internacional, esta se basará en una decisión de adecuación, cláusulas contractuales tipo, normas corporativas vinculantes u otro mecanismo válido previsto por el RGPD.</p>
+          <p>Puedes solicitar información adicional sobre las garantías aplicables escribiendo a <a href="mailto:hola@mineuri.com">hola@mineuri.com</a>.</p>
+        </article>
+
+        <article class="legal-card">
+          <h2>7. Tus derechos</h2>
+          <p>Puedes ejercer gratuitamente, cuando proceda, los derechos de:</p>
+          <ul>
+            <li>Acceso a tus datos personales.</li>
+            <li>Rectificación de datos inexactos o incompletos.</li>
+            <li>Supresión de tus datos.</li>
+            <li>Oposición al tratamiento.</li>
+            <li>Limitación del tratamiento.</li>
+            <li>Portabilidad de los datos.</li>
+            <li>Retirada del consentimiento en cualquier momento.</li>
+            <li>No ser objeto de decisiones basadas únicamente en tratamientos automatizados cuando produzcan efectos jurídicos o similares significativos.</li>
+          </ul>
+          <p>Para ejercerlos, escribe a <a href="mailto:hola@mineuri.com">hola@mineuri.com</a> indicando el derecho que deseas ejercer. Podrá solicitarse información razonable para verificar tu identidad cuando sea necesario.</p>
+          <p>También puedes presentar una reclamación ante la <a href="https://www.aepd.es/" target="_blank" rel="noopener noreferrer">Agencia Española de Protección de Datos</a> si consideras que el tratamiento no se ajusta a la normativa.</p>
+        </article>
+
+        <article class="legal-card">
+          <h2>8. Decisiones automatizadas y perfiles</h2>
+          <p>El formulario permite segmentar las comunicaciones según el perfil, los intereses, el idioma y la disponibilidad para pruebas piloto. Esta organización se utiliza para enviar información más pertinente y no produce decisiones automatizadas con efectos jurídicos o significativamente similares sobre las personas.</p>
+        </article>
+
+        <article class="legal-card">
+          <h2>9. Seguridad</h2>
+          <p>Mineuri aplica medidas técnicas y organizativas razonables para proteger los datos frente a pérdida, alteración, acceso, divulgación o destrucción no autorizados. Ningún sistema conectado a internet puede garantizar una seguridad absoluta, por lo que las medidas se revisarán atendiendo a los riesgos, la evolución tecnológica y el desarrollo de la plataforma.</p>
+        </article>
+
+        <article class="legal-card">
+          <h2>10. Menores</h2>
+          <p>La lista de espera y las comunicaciones de Mineuri están dirigidas a personas adultas y a profesionales o entidades. Las personas menores de edad no deben enviar datos mediante estos formularios sin la intervención y autorización de quienes ejerzan su representación legal.</p>
+        </article>
+
+        <article class="legal-card">
+          <h2>11. Cambios en esta política</h2>
+          <p>Esta política podrá actualizarse cuando cambien el sitio web, los tratamientos, los proveedores o la normativa. La versión vigente será la publicada en esta página con su fecha de actualización.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html#inicio" aria-label="Mineuri, volver al inicio">
+          <img class="brand-logo footer-logo" src="assets/logo-mineuri.png" alt="Mineuri">
+        </a>
+        <p class="footer-slogan">Una mente activa para la vida cotidiana.</p>
+        <p>Estimulación cognitiva basada en neuropsicología.</p>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="footer-title">Mineuri</h2>
+        <ul>
+          <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+          <li><a href="index.html#ciencia">Ciencia</a></li>
+          <li><a href="index.html#planes">Planes</a></li>
+          <li><a href="index.html#recursos">Recursos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="footer-title">Legal</h2>
+        <ul>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+          <li><a href="politica-privacidad.html" aria-current="page">Privacidad</a></li>
+          <li><a href="politica-cookies.html">Cookies</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h2 class="footer-title">Contacto</h2>
+        <ul>
+          <li><a href="mailto:hola@mineuri.com">hola@mineuri.com</a></li>
+          <li><a href="index.html#inicio">mineuri.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="current-year">2026</span> Mineuri. Todos los derechos reservados.</p>
+      <p class="footer-disclaimer">Mineuri no sustituye una evaluación o intervención neuropsicológica individualizada.</p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=4"></script>
+</body>
+</html>
