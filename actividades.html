@@ -18,18 +18,17 @@
 <main id="contenido">
   <section class="hero">
     <p class="eyebrow">ACTIVIDADES COGNITIVAS</p>
-    <h1>¿Qué quieres trabajar hoy?</h1>
-    <p class="intro">Elige un área para descubrir actividades breves, claras y conectadas con la vida cotidiana.</p>
-    <p class="privacy">No necesitas registrarte. La selección se guarda solo en este navegador.</p>
+    <h1>Elige un área para empezar</h1>
+    <p class="intro">Una entrada más visual, más clara y con menos texto.</p>
   </section>
 
   <section class="areas" aria-labelledby="areas-title">
     <div class="section-head">
       <div>
         <p class="eyebrow">EXPLORAR</p>
-        <h2 id="areas-title">Cuatro áreas para empezar</h2>
+        <h2 id="areas-title">Cuatro áreas cognitivas</h2>
       </div>
-      <p>Podrás cambiar de área en cualquier momento.</p>
+      <p>Selecciona una tarjeta para ver las primeras actividades previstas.</p>
     </div>
 
     <div class="grid">
@@ -40,26 +39,23 @@
         data-description="Actividades para observar, concentrarse y detectar información relevante."
         data-first="La ruta de los detalles"
         data-second="Encuentra el cambio">
-
-        <span class="visual attention-visual" aria-hidden="true">
-          <span class="search-grid">
-            <span class="shape circle"></span>
-            <span class="shape square"></span>
-            <span class="shape triangle"></span>
-            <span class="shape circle"></span>
-            <span class="shape square target"></span>
-            <span class="shape triangle"></span>
-            <span class="shape circle"></span>
-            <span class="shape square"></span>
-            <span class="shape triangle"></span>
+        <span class="illustration attention-illus" aria-hidden="true">
+          <span class="pattern-grid">
+            <span class="p circle"></span>
+            <span class="p square"></span>
+            <span class="p triangle"></span>
+            <span class="p square"></span>
+            <span class="p circle target"></span>
+            <span class="p square"></span>
+            <span class="p triangle"></span>
+            <span class="p square"></span>
+            <span class="p circle"></span>
           </span>
-          <span class="magnifier"></span>
+          <span class="lens"></span>
         </span>
-
-        <span class="micro-label">Observar y seleccionar</span>
         <strong>Atención</strong>
-        <span class="copy">Buscar, concentrarse y detectar lo importante entre varios estímulos.</span>
-        <span class="link">Explorar actividades <span aria-hidden="true">→</span></span>
+        <span class="micro">Observar y seleccionar</span>
+        <span class="cta">Explorar →</span>
       </button>
 
       <button class="card memory" type="button"
@@ -68,25 +64,18 @@
         data-description="Actividades para registrar, recuperar y organizar información cotidiana."
         data-first="Recuerda antes de mirar"
         data-second="La historia en tres momentos">
-
-        <span class="visual memory-visual" aria-hidden="true">
-          <span class="memory-row">
-            <span class="memory-item">
-              <span class="mini-icon key-icon"></span>
-            </span>
-            <span class="memory-item">
-              <span class="mini-icon cup-icon"></span>
-            </span>
-            <span class="memory-item hidden-item">?</span>
+        <span class="illustration memory-illus" aria-hidden="true">
+          <span class="memory-strip">
+            <span class="memory-card apple"></span>
+            <span class="memory-card star"></span>
+            <span class="memory-card hidden">?</span>
           </span>
-          <span class="recall-arrow">↶</span>
-          <span class="recall-label">RECORDAR</span>
+          <span class="recall-arrow">↺</span>
+          <span class="recovered"></span>
         </span>
-
-        <span class="micro-label">Registrar y recuperar</span>
         <strong>Memoria</strong>
-        <span class="copy">Guardar información, relacionarla y recuperarla cuando la necesitamos.</span>
-        <span class="link">Explorar actividades <span aria-hidden="true">→</span></span>
+        <span class="micro">Recordar y recuperar</span>
+        <span class="cta">Explorar →</span>
       </button>
 
       <button class="card language" type="button"
@@ -95,20 +84,17 @@
         data-description="Actividades para encontrar palabras, comprender y expresar ideas."
         data-first="Describe sin nombrar"
         data-second="Una palabra, tres caminos">
-
-        <span class="visual language-visual" aria-hidden="true">
-          <span class="speech speech-main">CASA</span>
-          <span class="speech speech-second">hogar</span>
-          <span class="speech speech-third">vivienda</span>
-          <span class="letters">
-            <span>A</span><span>B</span><span>C</span>
+        <span class="illustration language-illus" aria-hidden="true">
+          <span class="bubble main-bubble">palabra</span>
+          <span class="bubble side-bubble">idea</span>
+          <span class="bubble low-bubble">explicar</span>
+          <span class="letter-row">
+            <span>A</span><span>R</span><span>B</span>
           </span>
         </span>
-
-        <span class="micro-label">Comprender y expresar</span>
         <strong>Lenguaje</strong>
-        <span class="copy">Encontrar palabras, comprender mensajes y comunicar ideas con claridad.</span>
-        <span class="link">Explorar actividades <span aria-hidden="true">→</span></span>
+        <span class="micro">Comprender y expresar</span>
+        <span class="cta">Explorar →</span>
       </button>
 
       <button class="card executive" type="button"
@@ -117,24 +103,20 @@
         data-description="Actividades para planificar, decidir y adaptarse cuando algo cambia."
         data-first="Organiza la salida"
         data-second="Plan B">
-
-        <span class="visual executive-visual" aria-hidden="true">
-          <span class="checklist">
-            <span><b>1</b><i></i></span>
-            <span><b>2</b><i></i></span>
-            <span><b>3</b><i></i></span>
+        <span class="illustration executive-illus" aria-hidden="true">
+          <span class="plan-list">
+            <span></span><span></span><span></span>
           </span>
-          <span class="route-main"></span>
-          <span class="decision-point">?</span>
-          <span class="branch branch-a">A</span>
-          <span class="branch branch-b">B</span>
-          <span class="goal">✓</span>
+          <span class="route"></span>
+          <span class="node start">1</span>
+          <span class="node choice">?</span>
+          <span class="branch a">A</span>
+          <span class="branch b">B</span>
+          <span class="node goal">✓</span>
         </span>
-
-        <span class="micro-label">Planificar y decidir</span>
         <strong>Funciones ejecutivas</strong>
-        <span class="copy">Organizar pasos, elegir entre opciones y cambiar de plan cuando hace falta.</span>
-        <span class="link">Explorar actividades <span aria-hidden="true">→</span></span>
+        <span class="micro">Planificar y decidir</span>
+        <span class="cta">Explorar →</span>
       </button>
 
     </div>
@@ -153,19 +135,7 @@
         <li id="second-activity"></li>
       </ul>
     </div>
-    <p class="note">La selección queda guardada. El siguiente paso será conectar cada área con su catálogo de actividades.</p>
-  </section>
-
-  <section class="principles">
-    <div>
-      <p class="eyebrow">EN MINEURI</p>
-      <h2>La actividad debe adaptarse a la persona</h2>
-    </div>
-    <div class="principle-list">
-      <article><strong>Clara</strong><p>Instrucciones comprensibles y sin ruido innecesario.</p></article>
-      <article><strong>Progresiva</strong><p>Dificultad ajustable para evitar aburrimiento o frustración.</p></article>
-      <article><strong>Significativa</strong><p>Retos relacionados con situaciones reales y cotidianas.</p></article>
-    </div>
+    <p class="note">La selección queda guardada en este navegador. El siguiente paso será conectar cada área con su catálogo de actividades.</p>
   </section>
 </main>
 
