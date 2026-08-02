@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explora las áreas cognitivas del prototipo de Mineuri.">
   <title>Explorar actividades | Mineuri</title>
   <link rel="stylesheet" href="actividades.css">
@@ -35,95 +35,105 @@
     <div class="grid">
 
       <button class="card attention" type="button"
-        data-area="atencion" data-title="Atención"
+        data-area="atencion"
+        data-title="Atención"
         data-description="Actividades para observar, concentrarse y detectar información relevante."
-        data-first="La ruta de los detalles" data-second="Encuentra el cambio">
+        data-first="La ruta de los detalles"
+        data-second="Encuentra el cambio">
 
-        <span class="visual visual-attention" aria-hidden="true">
-          <span class="object object-a"></span>
-          <span class="object object-b"></span>
-          <span class="object object-c"></span>
-          <span class="object object-d"></span>
-          <span class="focus-ring"></span>
-          <span class="scan-line"></span>
+        <span class="visual attention-visual" aria-hidden="true">
+          <span class="search-grid">
+            <span class="shape circle"></span>
+            <span class="shape square"></span>
+            <span class="shape triangle"></span>
+            <span class="shape circle"></span>
+            <span class="shape square target"></span>
+            <span class="shape triangle"></span>
+            <span class="shape circle"></span>
+            <span class="shape square"></span>
+            <span class="shape triangle"></span>
+          </span>
+          <span class="magnifier"></span>
         </span>
 
-        <span class="card-meta">
-          <span class="num">01</span>
-          <span class="tagline">Observa, busca y encuentra</span>
-        </span>
-
+        <span class="micro-label">Observar y seleccionar</span>
         <strong>Atención</strong>
-        <span class="copy">Observar, concentrarse y detectar información relevante.</span>
+        <span class="copy">Buscar, concentrarse y detectar lo importante entre varios estímulos.</span>
         <span class="link">Explorar actividades <span aria-hidden="true">→</span></span>
       </button>
 
       <button class="card memory" type="button"
-        data-area="memoria" data-title="Memoria"
+        data-area="memoria"
+        data-title="Memoria"
         data-description="Actividades para registrar, recuperar y organizar información cotidiana."
-        data-first="Recuerda antes de mirar" data-second="La historia en tres momentos">
+        data-first="Recuerda antes de mirar"
+        data-second="La historia en tres momentos">
 
-        <span class="visual visual-memory" aria-hidden="true">
-          <span class="memory-card m1"><span>☀</span></span>
-          <span class="memory-card m2"><span>⌂</span></span>
-          <span class="memory-card m3"><span>●</span></span>
-          <span class="memory-trace"></span>
+        <span class="visual memory-visual" aria-hidden="true">
+          <span class="memory-row">
+            <span class="memory-item">
+              <span class="mini-icon key-icon"></span>
+            </span>
+            <span class="memory-item">
+              <span class="mini-icon cup-icon"></span>
+            </span>
+            <span class="memory-item hidden-item">?</span>
+          </span>
+          <span class="recall-arrow">↶</span>
+          <span class="recall-label">RECORDAR</span>
         </span>
 
-        <span class="card-meta">
-          <span class="num">02</span>
-          <span class="tagline">Recuerda, relaciona y recupera</span>
-        </span>
-
+        <span class="micro-label">Registrar y recuperar</span>
         <strong>Memoria</strong>
-        <span class="copy">Registrar, recuperar y organizar información de la vida diaria.</span>
+        <span class="copy">Guardar información, relacionarla y recuperarla cuando la necesitamos.</span>
         <span class="link">Explorar actividades <span aria-hidden="true">→</span></span>
       </button>
 
       <button class="card language" type="button"
-        data-area="lenguaje" data-title="Lenguaje"
+        data-area="lenguaje"
+        data-title="Lenguaje"
         data-description="Actividades para encontrar palabras, comprender y expresar ideas."
-        data-first="Describe sin nombrar" data-second="Una palabra, tres caminos">
+        data-first="Describe sin nombrar"
+        data-second="Una palabra, tres caminos">
 
-        <span class="visual visual-language" aria-hidden="true">
-          <span class="bubble bubble-main">palabra</span>
-          <span class="bubble bubble-small">idea</span>
-          <span class="bubble bubble-dot">•••</span>
-          <span class="word-line w1"></span>
-          <span class="word-line w2"></span>
+        <span class="visual language-visual" aria-hidden="true">
+          <span class="speech speech-main">CASA</span>
+          <span class="speech speech-second">hogar</span>
+          <span class="speech speech-third">vivienda</span>
+          <span class="letters">
+            <span>A</span><span>B</span><span>C</span>
+          </span>
         </span>
 
-        <span class="card-meta">
-          <span class="num">03</span>
-          <span class="tagline">Nombra, explica y conecta</span>
-        </span>
-
+        <span class="micro-label">Comprender y expresar</span>
         <strong>Lenguaje</strong>
-        <span class="copy">Encontrar palabras, comprender mensajes y expresar ideas.</span>
+        <span class="copy">Encontrar palabras, comprender mensajes y comunicar ideas con claridad.</span>
         <span class="link">Explorar actividades <span aria-hidden="true">→</span></span>
       </button>
 
       <button class="card executive" type="button"
-        data-area="funciones-ejecutivas" data-title="Funciones ejecutivas"
+        data-area="funciones-ejecutivas"
+        data-title="Funciones ejecutivas"
         data-description="Actividades para planificar, decidir y adaptarse cuando algo cambia."
-        data-first="Organiza la salida" data-second="Plan B">
+        data-first="Organiza la salida"
+        data-second="Plan B">
 
-        <span class="visual visual-executive" aria-hidden="true">
-          <span class="route"></span>
-          <span class="node n1">1</span>
-          <span class="node n2">2</span>
-          <span class="node n3">3</span>
-          <span class="decision">?</span>
-          <span class="flag">✓</span>
+        <span class="visual executive-visual" aria-hidden="true">
+          <span class="checklist">
+            <span><b>1</b><i></i></span>
+            <span><b>2</b><i></i></span>
+            <span><b>3</b><i></i></span>
+          </span>
+          <span class="route-main"></span>
+          <span class="decision-point">?</span>
+          <span class="branch branch-a">A</span>
+          <span class="branch branch-b">B</span>
+          <span class="goal">✓</span>
         </span>
 
-        <span class="card-meta">
-          <span class="num">04</span>
-          <span class="tagline">Organiza, decide y adapta</span>
-        </span>
-
+        <span class="micro-label">Planificar y decidir</span>
         <strong>Funciones ejecutivas</strong>
-        <span class="copy">Planificar, decidir, organizarse y adaptarse a los cambios.</span>
+        <span class="copy">Organizar pasos, elegir entre opciones y cambiar de plan cuando hace falta.</span>
         <span class="link">Explorar actividades <span aria-hidden="true">→</span></span>
       </button>
 
@@ -138,7 +148,10 @@
     </div>
     <div class="preview">
       <strong>Primeras actividades previstas</strong>
-      <ul><li id="first-activity"></li><li id="second-activity"></li></ul>
+      <ul>
+        <li id="first-activity"></li>
+        <li id="second-activity"></li>
+      </ul>
     </div>
     <p class="note">La selección queda guardada. El siguiente paso será conectar cada área con su catálogo de actividades.</p>
   </section>
@@ -157,7 +170,10 @@
 </main>
 
 <footer class="footer">
-  <div><strong>mineuri.</strong><p>Una mente activa para la vida cotidiana.</p></div>
+  <div>
+    <strong>mineuri.</strong>
+    <p>Una mente activa para la vida cotidiana.</p>
+  </div>
   <a href="mailto:hola@mineuri.com">hola@mineuri.com</a>
 </footer>
 
