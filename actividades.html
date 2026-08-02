@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Explora las áreas cognitivas del prototipo de Mineuri.">
+  <title>Explorar actividades | Mineuri</title>
+  <link rel="stylesheet" href="actividades.css">
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="header">
+  <a class="logo" href="index.html" aria-label="Volver a Mineuri">mineuri<span>.</span></a>
+  <span class="badge">Prototipo</span>
+</header>
+
+<main id="contenido">
+  <section class="hero">
+    <p class="eyebrow">ACTIVIDADES COGNITIVAS</p>
+    <h1>¿Qué quieres trabajar hoy?</h1>
+    <p class="intro">Elige un área para descubrir actividades breves, claras y conectadas con la vida cotidiana.</p>
+    <p class="privacy">No necesitas registrarte. La selección se guarda solo en este navegador.</p>
+  </section>
+
+  <section class="areas" aria-labelledby="areas-title">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">EXPLORAR</p>
+        <h2 id="areas-title">Cuatro áreas para empezar</h2>
+      </div>
+      <p>Podrás cambiar de área en cualquier momento.</p>
+    </div>
+
+    <div class="grid">
+      <button class="card attention" type="button"
+        data-area="atencion" data-title="Atención"
+        data-description="Actividades para observar, concentrarse y detectar información relevante."
+        data-first="La ruta de los detalles" data-second="Encuentra el cambio">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M5 24s7-11 19-11 19 11 19 11-7 11-19 11S5 24 5 24Z"/><circle cx="24" cy="24" r="6"/></svg>
+        </span>
+        <span class="num">01</span>
+        <strong>Atención</strong>
+        <span class="copy">Observar, concentrarse y detectar información relevante.</span>
+        <span class="link">Explorar actividades →</span>
+      </button>
+
+      <button class="card memory" type="button"
+        data-area="memoria" data-title="Memoria"
+        data-description="Actividades para registrar, recuperar y organizar información cotidiana."
+        data-first="Recuerda antes de mirar" data-second="La historia en tres momentos">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M17 39c-5 0-9-4-9-9 0-3 1-5 3-7-1-2-1-4 0-6 1-4 5-7 9-7 2-3 7-4 10-2 4-1 9 2 10 6 3 2 4 6 2 9 1 4-1 9-5 11-2 3-6 4-10 3-3 2-6 2-8 0Z"/><path d="M24 11v27M18 17c4 0 6 2 6 5M30 17c-4 0-6 2-6 5M17 29c4 0 7 2 7 6M31 29c-4 0-7 2-7 6"/></svg>
+        </span>
+        <span class="num">02</span>
+        <strong>Memoria</strong>
+        <span class="copy">Registrar, recuperar y organizar información de la vida diaria.</span>
+        <span class="link">Explorar actividades →</span>
+      </button>
+
+      <button class="card language" type="button"
+        data-area="lenguaje" data-title="Lenguaje"
+        data-description="Actividades para encontrar palabras, comprender y expresar ideas."
+        data-first="Describe sin nombrar" data-second="Una palabra, tres caminos">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M8 10h32v23H23l-9 7v-7H8V10Z"/><path d="M16 19h16M16 25h11"/></svg>
+        </span>
+        <span class="num">03</span>
+        <strong>Lenguaje</strong>
+        <span class="copy">Encontrar palabras, comprender mensajes y expresar ideas.</span>
+        <span class="link">Explorar actividades →</span>
+      </button>
+
+      <button class="card executive" type="button"
+        data-area="funciones-ejecutivas" data-title="Funciones ejecutivas"
+        data-description="Actividades para planificar, decidir y adaptarse cuando algo cambia."
+        data-first="Organiza la salida" data-second="Plan B">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M13 8h22v32H13z"/><path d="M19 6h10v6H19zM19 20h10M19 27h10M19 34h7"/><path d="m16 20 1 1 2-3M16 27l1 1 2-3M16 34l1 1 2-3"/></svg>
+        </span>
+        <span class="num">04</span>
+        <strong>Funciones ejecutivas</strong>
+        <span class="copy">Planificar, decidir, organizarse y adaptarse a los cambios.</span>
+        <span class="link">Explorar actividades →</span>
+      </button>
+    </div>
+  </section>
+
+  <section id="seleccion" class="selection" aria-live="polite" hidden>
+    <div>
+      <p class="eyebrow">ÁREA SELECCIONADA</p>
+      <h2 id="selection-title"></h2>
+      <p id="selection-description"></p>
+    </div>
+    <div class="preview">
+      <strong>Primeras actividades previstas</strong>
+      <ul><li id="first-activity"></li><li id="second-activity"></li></ul>
+    </div>
+    <p class="note">La selección queda guardada. El siguiente paso será conectar cada área con su catálogo de actividades.</p>
+  </section>
+
+  <section class="principles">
+    <div>
+      <p class="eyebrow">EN MINEURI</p>
+      <h2>La actividad debe adaptarse a la persona</h2>
+    </div>
+    <div class="principle-list">
+      <article><strong>Clara</strong><p>Instrucciones comprensibles y sin ruido innecesario.</p></article>
+      <article><strong>Progresiva</strong><p>Dificultad ajustable para evitar aburrimiento o frustración.</p></article>
+      <article><strong>Significativa</strong><p>Retos relacionados con situaciones reales y cotidianas.</p></article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div><strong>mineuri.</strong><p>Una mente activa para la vida cotidiana.</p></div>
+  <a href="mailto:hola@mineuri.com">hola@mineuri.com</a>
+</footer>
+
+<script src="actividades.js"></script>
+</body>
+</html>
