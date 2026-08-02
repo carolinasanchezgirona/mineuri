@@ -16,10 +16,12 @@ function selectArea(card,scroll=true){
   panel.hidden=false;
   if(scroll) panel.scrollIntoView({behavior:"smooth",block:"center"});
 }
+
 cards.forEach(card=>{
   card.setAttribute("aria-pressed","false");
   card.addEventListener("click",()=>selectArea(card));
 });
+
 const saved=localStorage.getItem("mineuri_area_seleccionada");
 if(saved){
   const card=document.querySelector(`[data-area="${saved}"]`);
