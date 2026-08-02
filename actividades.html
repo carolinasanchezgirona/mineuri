@@ -3,52 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explora actividades cognitivas de atención, memoria, lenguaje y funciones ejecutivas en Mineuri.">
-  <title>Explorar actividades | Mineuri</title>
-  <link rel="stylesheet" href="actividades-v5.css?v=5">
+  <meta name="description" content="Mineuri organiza la estimulación cognitiva en distintas áreas para la vida cotidiana.">
+  <title>Áreas cognitivas | Mineuri</title>
+  <link rel="stylesheet" href="actividades-v6.css?v=6">
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Volver a la página principal de Mineuri">
-      mineuri<span>.</span>
-    </a>
+    <a class="brand" href="index.html" aria-label="Volver a la página principal de Mineuri">mineuri<span>.</span></a>
     <span class="prototype-badge">Prototipo</span>
   </header>
 
   <main id="contenido">
     <section class="hero" aria-labelledby="page-title">
-      <p class="eyebrow">ACTIVIDADES COGNITIVAS</p>
-      <h1 id="page-title">Elige un área para empezar</h1>
+      <p class="eyebrow">ESTIMULACIÓN COGNITIVA</p>
+      <h1 id="page-title">Todo lo que Mineuri podrá ofrecerte</h1>
       <p class="hero-copy">
-        Actividades breves y claras para trabajar capacidades relacionadas con la vida cotidiana.
+        Una plataforma de estimulación cognitiva basada en neuropsicología, con actividades breves, claras y relacionadas con la vida cotidiana.
       </p>
     </section>
 
     <section class="areas-section" aria-labelledby="areas-title">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">EXPLORAR</p>
-          <h2 id="areas-title">Cuatro áreas cognitivas</h2>
+          <p class="eyebrow">ÁREAS COGNITIVAS</p>
+          <h2 id="areas-title">Explora el mapa de Mineuri</h2>
         </div>
-        <p>Selecciona una tarjeta para descubrir las primeras actividades previstas.</p>
+        <p>
+          Algunas áreas ya están disponibles en el prototipo y otras forman parte del desarrollo previsto.
+        </p>
       </div>
 
       <div class="areas-grid">
-        <button class="area-card" type="button"
+        <button class="area-card area-card--available" type="button"
           data-area="atencion"
+          data-status="Disponible"
           data-title="Atención"
           data-description="Actividades para observar, concentrarse y seleccionar la información relevante."
           data-first="La ruta de los detalles"
           data-second="Encuentra el cambio">
-          <span class="image-wrap image-attention">
-            <img src="assets/areas-v5/atencion-v5.webp"
-                 alt="Mujer adulta concentrada entre elementos visuales, con una diana y una tarea destacada."
-                 width="1200" height="900" loading="eager">
+          <span class="status-badge status-badge--available">Disponible</span>
+          <span class="image-wrap">
+            <img src="assets/areas-v6/atencion-v6.webp" alt="Mujer adulta centrada en una tarea de atención y selección de estímulos." width="1200" height="900" loading="eager">
           </span>
           <span class="card-content">
-            <span>
+            <span class="card-copy">
               <strong>Atención</strong>
               <small>Observar y seleccionar</small>
             </span>
@@ -56,19 +56,19 @@
           </span>
         </button>
 
-        <button class="area-card" type="button"
+        <button class="area-card area-card--available" type="button"
           data-area="memoria"
+          data-status="Disponible"
           data-title="Memoria"
           data-description="Actividades para registrar, relacionar y recuperar información."
           data-first="Recuerda antes de mirar"
           data-second="La historia en tres momentos">
-          <span class="image-wrap image-memory">
-            <img src="assets/areas-v5/memoria-v5.webp"
-                 alt="Hombre adulto recordando distintos elementos conectados mediante flechas de recuperación."
-                 width="1200" height="900" loading="lazy">
+          <span class="status-badge status-badge--available">Disponible</span>
+          <span class="image-wrap">
+            <img src="assets/areas-v6/memoria-v6.webp" alt="Hombre adulto evocando elementos y relaciones para trabajar la memoria." width="1200" height="900" loading="lazy">
           </span>
           <span class="card-content">
-            <span>
+            <span class="card-copy">
               <strong>Memoria</strong>
               <small>Recordar y recuperar</small>
             </span>
@@ -76,19 +76,19 @@
           </span>
         </button>
 
-        <button class="area-card" type="button"
+        <button class="area-card area-card--available" type="button"
           data-area="lenguaje"
+          data-status="Disponible"
           data-title="Lenguaje"
           data-description="Actividades para comprender mensajes, encontrar palabras y expresar ideas."
           data-first="Describe sin nombrar"
           data-second="Una palabra, tres caminos">
-          <span class="image-wrap image-language">
-            <img src="assets/areas-v5/lenguaje-v5.webp"
-                 alt="Mujer mayor rodeada de bocadillos de conversación y símbolos de comprensión y expresión."
-                 width="1200" height="900" loading="lazy">
+          <span class="status-badge status-badge--available">Disponible</span>
+          <span class="image-wrap">
+            <img src="assets/areas-v6/lenguaje-v6.webp" alt="Mujer mayor con elementos de comunicación, palabras y comprensión verbal." width="1200" height="900" loading="lazy">
           </span>
           <span class="card-content">
-            <span>
+            <span class="card-copy">
               <strong>Lenguaje</strong>
               <small>Comprender y expresar</small>
             </span>
@@ -96,21 +96,121 @@
           </span>
         </button>
 
-        <button class="area-card" type="button"
+        <button class="area-card area-card--available" type="button"
           data-area="funciones-ejecutivas"
+          data-status="Disponible"
           data-title="Funciones ejecutivas"
-          data-description="Actividades para planificar, organizar, tomar decisiones y adaptarse."
+          data-description="Actividades para planificar, organizar, decidir y adaptarse."
           data-first="Organiza la salida"
           data-second="Plan B">
-          <span class="image-wrap image-executive">
-            <img src="assets/areas-v5/funciones-ejecutivas-v5.webp"
-                 alt="Hombre mayor analizando una secuencia de pasos, decisiones y tareas organizadas."
-                 width="1200" height="900" loading="lazy">
+          <span class="status-badge status-badge--available">Disponible</span>
+          <span class="image-wrap">
+            <img src="assets/areas-v6/funciones-ejecutivas-v6.webp" alt="Hombre mayor organizando pasos, prioridades y decisiones." width="1200" height="900" loading="lazy">
           </span>
           <span class="card-content">
-            <span>
+            <span class="card-copy">
               <strong>Funciones ejecutivas</strong>
               <small>Planificar y decidir</small>
+            </span>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </span>
+        </button>
+
+        <button class="area-card area-card--upcoming" type="button"
+          data-area="percepcion-espacio"
+          data-status="Próximamente"
+          data-title="Percepción y espacio"
+          data-description="Actividades para reconocer formas, localizar elementos y trabajar relaciones espaciales."
+          data-first="Actividades en preparación"
+          data-second="Sección en desarrollo">
+          <span class="status-badge status-badge--upcoming">Próximamente</span>
+          <span class="image-wrap">
+            <img src="assets/areas-v6/percepcion-espacio-v6.svg" alt="Composición visual con formas, relaciones espaciales y una lupa de reconocimiento." width="1200" height="900" loading="lazy">
+          </span>
+          <span class="card-content">
+            <span class="card-copy">
+              <strong>Percepción y espacio</strong>
+              <small>Reconocer y localizar</small>
+            </span>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </span>
+        </button>
+
+        <button class="area-card area-card--upcoming" type="button"
+          data-area="calculo"
+          data-status="Próximamente"
+          data-title="Cálculo"
+          data-description="Actividades para trabajar cantidades, dinero, operaciones y estimación en contextos cotidianos."
+          data-first="Actividades en preparación"
+          data-second="Sección en desarrollo">
+          <span class="status-badge status-badge--upcoming">Próximamente</span>
+          <span class="image-wrap">
+            <img src="assets/areas-v6/calculo-v6.svg" alt="Escena visual con cálculo funcional, importes, números y seguimiento de cantidades." width="1200" height="900" loading="lazy">
+          </span>
+          <span class="card-content">
+            <span class="card-copy">
+              <strong>Cálculo</strong>
+              <small>Calcular y estimar</small>
+            </span>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </span>
+        </button>
+
+        <button class="area-card area-card--upcoming" type="button"
+          data-area="praxias"
+          data-status="Próximamente"
+          data-title="Praxias"
+          data-description="Actividades para organizar gestos, secuencias motoras y uso funcional de objetos."
+          data-first="Actividades en preparación"
+          data-second="Sección en desarrollo">
+          <span class="status-badge status-badge--upcoming">Próximamente</span>
+          <span class="image-wrap">
+            <img src="assets/areas-v6/praxias-v6.svg" alt="Composición visual con manos, objetos y secuencias de acción organizadas." width="1200" height="900" loading="lazy">
+          </span>
+          <span class="card-content">
+            <span class="card-copy">
+              <strong>Praxias</strong>
+              <small>Hacer y secuenciar</small>
+            </span>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </span>
+        </button>
+
+        <button class="area-card area-card--upcoming" type="button"
+          data-area="orientacion"
+          data-status="Próximamente"
+          data-title="Orientación"
+          data-description="Actividades para trabajar referencias temporales, espaciales, personales y situacionales."
+          data-first="Actividades en preparación"
+          data-second="Sección en desarrollo">
+          <span class="status-badge status-badge--upcoming">Próximamente</span>
+          <span class="image-wrap">
+            <img src="assets/areas-v6/orientacion-v6.svg" alt="Composición con reloj, mapa, calendario y referencias de lugar y tiempo." width="1200" height="900" loading="lazy">
+          </span>
+          <span class="card-content">
+            <span class="card-copy">
+              <strong>Orientación</strong>
+              <small>Ubicarse y situarse</small>
+            </span>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </span>
+        </button>
+
+        <button class="area-card area-card--upcoming" type="button"
+          data-area="cognicion-social"
+          data-status="Próximamente"
+          data-title="Cognición social"
+          data-description="Actividades para reconocer emociones, interpretar situaciones e interacciones sociales."
+          data-first="Actividades en preparación"
+          data-second="Sección en desarrollo">
+          <span class="status-badge status-badge--upcoming">Próximamente</span>
+          <span class="image-wrap">
+            <img src="assets/areas-v6/cognicion-social-v6.svg" alt="Escena con rostros, conversación y lectura de estados emocionales e interacción social." width="1200" height="900" loading="lazy">
+          </span>
+          <span class="card-content">
+            <span class="card-copy">
+              <strong>Cognición social</strong>
+              <small>Interpretar y relacionarse</small>
             </span>
             <span class="card-arrow" aria-hidden="true">→</span>
           </span>
@@ -120,22 +220,54 @@
 
     <section id="seleccion" class="selection-panel" aria-live="polite" hidden>
       <div>
-        <p class="eyebrow">ÁREA SELECCIONADA</p>
+        <p class="eyebrow" id="selection-status-eyebrow">ÁREA SELECCIONADA</p>
         <h2 id="selection-title"></h2>
         <p id="selection-description"></p>
       </div>
 
       <div class="activity-preview">
-        <p>Primeras actividades previstas</p>
+        <p id="preview-heading">Primeras actividades previstas</p>
         <ul>
           <li id="first-activity"></li>
           <li id="second-activity"></li>
         </ul>
       </div>
 
-      <p class="prototype-note">
+      <p class="prototype-note" id="selection-note">
         La selección queda guardada únicamente en este navegador.
       </p>
+    </section>
+
+    <section class="value-section" aria-labelledby="value-title">
+      <div class="section-heading section-heading--stacked">
+        <div>
+          <p class="eyebrow">QUÉ ENCONTRARÁS EN MINEURI</p>
+          <h2 id="value-title">Una base funcional para la estimulación cognitiva</h2>
+        </div>
+      </div>
+
+      <div class="value-grid">
+        <article class="value-card">
+          <strong>Actividades estructuradas</strong>
+          <p>Organizadas por áreas cognitivas y orientadas a objetivos claros.</p>
+        </article>
+        <article class="value-card">
+          <strong>Retos breves y funcionales</strong>
+          <p>Diseñados para resultar accesibles y conectados con la vida cotidiana.</p>
+        </article>
+        <article class="value-card">
+          <strong>Dificultad ajustable</strong>
+          <p>Con posibilidad de ampliar progresivamente la complejidad.</p>
+        </article>
+        <article class="value-card">
+          <strong>Seguimiento del progreso</strong>
+          <p>Para registrar áreas exploradas y futuras actividades realizadas.</p>
+        </article>
+        <article class="value-card">
+          <strong>Base neuropsicológica</strong>
+          <p>Con una arquitectura coherente y pensada desde funciones cognitivas reales.</p>
+        </article>
+      </div>
     </section>
   </main>
 
@@ -147,6 +279,6 @@
     <a href="mailto:hola@mineuri.com">hola@mineuri.com</a>
   </footer>
 
-  <script src="actividades-v5.js?v=5"></script>
+  <script src="actividades-v6.js?v=6"></script>
 </body>
 </html>
