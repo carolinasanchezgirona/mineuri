@@ -417,7 +417,7 @@ button {
 .navigation-list {
   display: flex;
   align-items: center;
-  gap: 34px;
+  gap: 26px;
 }
 
 .navigation-list a {
@@ -425,6 +425,7 @@ button {
   color: var(--color-text);
   font-size: 0.91rem;
   font-weight: 600;
+  white-space: nowrap;
   transition: color var(--transition);
 }
 
