@@ -1401,6 +1401,26 @@ button {
 
 
 /* =====================================================
+   PROFESIONALES · CTA
+===================================================== */
+
+.professionals-cta {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.professionals-cta p {
+  margin-bottom: 20px;
+  color: var(--color-ink);
+  font-size: 1rem;
+}
+
+.professionals-cta .button {
+  display: inline-flex;
+}
+
+
+/* =====================================================
    CTA · LISTA DE ESPERA MINEURI
 ===================================================== */
 
