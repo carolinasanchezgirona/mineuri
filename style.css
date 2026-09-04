@@ -417,7 +417,7 @@ button {
 .navigation-list {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 30px;
 }
 
 .navigation-list a {
@@ -455,6 +455,62 @@ button {
   align-items: center;
   gap: 12px;
   justify-self: end;
+}
+
+.access-menu {
+  position: relative;
+}
+
+.access-menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.access-menu-caret {
+  font-size: 0.7rem;
+  transition: transform var(--transition);
+}
+
+.access-menu-toggle[aria-expanded="true"] .access-menu-caret {
+  transform: rotate(180deg);
+}
+
+.access-menu-list {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 20;
+  display: none;
+  flex-direction: column;
+  min-width: 200px;
+  padding: 8px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-medium);
+}
+
+.access-menu-list.is-open {
+  display: flex;
+}
+
+.access-menu-list a {
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: var(--color-ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+.access-menu-list a:hover {
+  color: var(--color-primary);
+  background: var(--color-primary-light);
 }
 
 .menu-toggle {
