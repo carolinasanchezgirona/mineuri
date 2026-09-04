@@ -7,11 +7,62 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   initializeMobileMenu();
+  initializeAccessMenu();
   initializeCurrentYear();
   initializeHeaderScroll();
   initializeAnchorLinks();
   initializeWaitlistForm();
 });
+
+
+/* =========================================================
+   MENÚ DE ACCESO (PACIENTE / PROFESIONAL)
+========================================================= */
+
+function initializeAccessMenu() {
+  const toggleButton = document.querySelector(".access-menu-toggle");
+  const menu = document.querySelector(".access-menu");
+  const list = document.querySelector(".access-menu-list");
+
+  if (!toggleButton || !menu || !list) {
+    return;
+  }
+
+  const closeMenu = () => {
+    list.classList.remove("is-open");
+    toggleButton.setAttribute("aria-expanded", "false");
+  };
+
+  const openMenu = () => {
+    list.classList.add("is-open");
+    toggleButton.setAttribute("aria-expanded", "true");
+  };
+
+  toggleButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    const isOpen =
+      toggleButton.getAttribute("aria-expanded") === "true";
+
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!menu.contains(event.target)) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
+}
 
 
 /* =========================================================
