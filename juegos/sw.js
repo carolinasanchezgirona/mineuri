@@ -1,10 +1,10 @@
 'use strict';
-const CACHE='mineuri-mente-en-juego-v9';
+const CACHE='mineuri-mente-en-juego-v10';
 const FILES=[
   '/juegos/',
   '/juegos/juegos.css?v=5',
   '/juegos/scene-loader.js?v=1',
-  '/juegos/pwa.js?v=3',
+  '/juegos/pwa.js?v=4',
   '/juegos/manifest.webmanifest',
   '/juegos/icons/icon-192.png',
   '/juegos/icons/icon-512.png',
@@ -15,9 +15,8 @@ const FILES=[
   '/assets/logo-mineuri.png',
   '/assets/favicon.svg',
   '/juegos/objetos-ocultos/',
-  '/juegos/objetos-ocultos/style.css?v=3',
-  '/juegos/objetos-ocultos/runtime-guard.js?v=2',
-  '/juegos/objetos-ocultos/app.js?v=3',
+  '/juegos/objetos-ocultos/style.css?v=4',
+  '/juegos/objetos-ocultos/app.js?v=4',
   '/juegos/objetos-ocultos/assets/scene-parts/part1.txt',
   '/juegos/objetos-ocultos/assets/scene-parts/part2.txt',
   '/juegos/objetos-ocultos/assets/scene-parts/part3.txt',

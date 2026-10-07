@@ -10,16 +10,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../style.css?v=31">
+<link rel="stylesheet" href="../../style.css?v=41">
 <link rel="stylesheet" href="style.css?v=2">
-<script defer src="runtime-guard.js?v=2"></script>\n<script defer src="../scene-loader.js?v=1"></script>
-<script defer src="app.js?v=3"></script>
-<script defer src="../pwa.js?v=3"></script>
-<style id="game-header-critical">
-.game-sitebar{min-height:64px;background:#10273a;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px clamp(16px,4vw,42px);position:sticky;top:0;z-index:100;box-shadow:0 6px 18px rgba(7,23,36,.16)}
-.game-brand{display:block;flex:0 0 auto}.game-brand img{display:block;width:132px;max-width:42vw;height:auto}.game-back{color:#f9f1df;text-decoration:none;font-weight:600}
-@media(max-width:760px){.game-sitebar{min-height:56px;padding:8px 16px}.game-brand img{width:112px}}
-</style>
+<script defer src="../scene-loader.js?v=1"></script>
+<script defer src="app.js?v=4"></script>
+<script defer src="../pwa.js?v=4"></script>
 </head>
 <body class="hidden-game-page">
 <a class="skip-link" href="#contenido-principal">Saltar al juego</a>
@@ -106,6 +101,13 @@
       <div id="scene-canvas" class="scene-canvas">
         <img id="scene-image" data-scene-parts="assets/scene-parts" data-scene-parts-count="5" alt="Salón acogedor al anochecer lleno de objetos y detalles para explorar." aria-busy="true">
         <div id="hit-layer" class="hit-layer" aria-label="Zona de búsqueda"></div>
+        <div id="scene-loading" class="scene-loading" role="status" aria-live="polite">
+          <div class="scene-loading-card">
+            <span class="scene-spinner" aria-hidden="true"></span>
+            <strong id="scene-loading-text">Cargando escena…</strong>
+            <button id="scene-retry" class="scene-retry" type="button" hidden>Reintentar</button>
+          </div>
+        </div>
       </div>
     </div>
 
