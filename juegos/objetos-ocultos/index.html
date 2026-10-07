@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Objetos ocultos | Mente en juego · Mineuri</title>
+<meta name="description" content="Busca objetos en escenas ilustradas de Mineuri. Elige dificultad, número de objetos, pistas y si quieres jugar con o sin tiempo.">
+<meta name="theme-color" content="#10273a">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css?v=21">
+<link rel="stylesheet" href="style.css?v=1">
+<script defer src="../scene-loader.js?v=1"></script>
+<script defer src="app.js?v=1"></script>
+<script defer src="../pwa.js?v=2"></script>
+</head>
+<body class="hidden-game-page">
+<a class="skip-link" href="#contenido-principal">Saltar al juego</a>
+<header class="game-sitebar">
+  <a class="game-brand" href="../../index.html" aria-label="Mineuri, inicio"><img src="../../assets/logo-mineuri.png" alt="Mineuri"></a>
+  <a class="game-back" href="../">← Mente en juego</a>
+</header>
+
+<main id="contenido-principal" class="hidden-game-shell">
+  <section id="setup-screen" class="setup-screen" aria-labelledby="game-title">
+    <div class="setup-copy">
+      <p class="game-kicker">MENTE EN JUEGO · OBJETOS OCULTOS</p>
+      <h1 id="game-title">Busca. Encuentra. Sigue.</h1>
+      <p>Una escena, objetos escondidos y ninguna obligación de correr. Tú decides cuánto reto quieres.</p>
+      <span class="verified-badge">✓ Escena revisada: todos los objetos existen</span>
+    </div>
+
+    <div class="setup-grid">
+      <fieldset class="setup-group">
+        <legend>Dificultad</legend>
+        <div class="choice-grid four">
+          <label><input type="radio" name="difficulty" value="easy"><span>Fácil<small>Objetos más evidentes</small></span></label>
+          <label><input type="radio" name="difficulty" value="medium" checked><span>Media<small>Más integrados</small></span></label>
+          <label><input type="radio" name="difficulty" value="hard"><span>Difícil<small>Más discretos</small></span></label>
+          <label><input type="radio" name="difficulty" value="expert"><span>Experto<small>Los más sutiles</small></span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="setup-group">
+        <legend>Objetos a buscar</legend>
+        <div class="choice-grid counts">
+          <label><input type="radio" name="objectCount" value="6"><span>6</span></label>
+          <label><input type="radio" name="objectCount" value="8" checked><span>8</span></label>
+          <label><input type="radio" name="objectCount" value="10"><span>10</span></label>
+          <label><input type="radio" name="objectCount" value="12"><span>12</span></label>
+          <label><input type="radio" name="objectCount" value="15"><span>15</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="setup-group">
+        <legend>Modo</legend>
+        <div class="choice-grid two">
+          <label><input type="radio" name="timeMode" value="relax" checked><span>🌿 Sin tiempo<small>Explora a tu ritmo</small></span></label>
+          <label><input type="radio" name="timeMode" value="timed"><span>⏱ Con tiempo<small>Un reto contra reloj</small></span></label>
+        </div>
+      </fieldset>
+
+      <div class="setup-group hints-setting">
+        <label for="hint-count">Pistas disponibles</label>
+        <div class="hint-row">
+          <select id="hint-count" aria-label="Número de pistas">
+            <option value="0">0</option><option value="1">1</option><option value="2">2</option>
+            <option value="3">3</option><option value="4" selected>4</option><option value="5">5</option>
+          </select>
+          <p id="time-estimate">Sin límite de tiempo</p>
+        </div>
+      </div>
+    </div>
+
+    <button id="start-game" class="start-game" type="button">Empezar partida</button>
+  </section>
+
+  <section id="play-screen" class="play-screen" hidden aria-labelledby="scene-title">
+    <div class="play-heading">
+      <div>
+        <p class="game-kicker">ESCENA 01</p>
+        <h1 id="scene-title">Noche en casa</h1>
+      </div>
+      <button id="change-settings" class="quiet-button" type="button">Cambiar partida</button>
+    </div>
+
+    <div class="game-status" aria-label="Estado de la partida">
+      <div class="status-pill"><small>Encontrados</small><strong id="progress">0/8</strong></div>
+      <button id="hint-button" class="status-pill status-action" type="button"><small>Pista</small><strong>💡 <span id="hint-value">4</span></strong></button>
+      <div id="timer-pill" class="status-pill" hidden><small>Tiempo</small><strong id="timer">02:00</strong></div>
+      <div class="zoom-group" aria-label="Zoom de la escena">
+        <button id="zoom-out" type="button" aria-label="Alejar">−</button>
+        <span id="zoom-value">100%</span>
+        <button id="zoom-in" type="button" aria-label="Acercar">+</button>
+      </div>
+    </div>
+
+    <div id="scene-viewport" class="scene-viewport">
+      <div id="scene-canvas" class="scene-canvas">
+        <img id="scene-image" data-scene-parts="assets/scene-parts" data-scene-parts-count="5" alt="Salón acogedor al anochecer lleno de objetos y detalles para explorar." aria-busy="true">
+        <div id="hit-layer" class="hit-layer" aria-label="Zona de búsqueda"></div>
+      </div>
+    </div>
+
+    <div class="search-panel">
+      <div class="search-panel-heading">
+        <div><p class="game-kicker">ENCUENTRA ESTOS OBJETOS</p><p id="feedback" class="feedback" role="status">Toca un objeto cuando lo encuentres.</p></div>
+        <strong id="progress-large">0/8</strong>
+      </div>
+      <div id="target-tray" class="target-tray"></div>
+    </div>
+  </section>
+</main>
+
+<dialog id="finish-dialog" class="finish-dialog">
+  <p class="game-kicker">ESCENA COMPLETADA</p>
+  <h2 id="finish-title">Encontrados todos</h2>
+  <p id="finish-summary"></p>
+  <div class="finish-actions">
+    <button id="play-again" type="button" class="start-game">Otra partida</button>
+    <button id="finish-settings" type="button" class="quiet-button">Cambiar ajustes</button>
+  </div>
+</dialog>
+</body>
+</html>
