@@ -1,10 +1,10 @@
 'use strict';
-const CACHE='mineuri-mente-en-juego-v8';
+const CACHE='mineuri-mente-en-juego-v9';
 const FILES=[
   '/juegos/',
   '/juegos/juegos.css?v=5',
   '/juegos/scene-loader.js?v=1',
-  '/juegos/pwa.js?v=2',
+  '/juegos/pwa.js?v=3',
   '/juegos/manifest.webmanifest',
   '/juegos/icons/icon-192.png',
   '/juegos/icons/icon-512.png',
@@ -15,8 +15,9 @@ const FILES=[
   '/assets/logo-mineuri.png',
   '/assets/favicon.svg',
   '/juegos/objetos-ocultos/',
-  '/juegos/objetos-ocultos/style.css?v=2',
-  '/juegos/objetos-ocultos/app.js?v=2',
+  '/juegos/objetos-ocultos/style.css?v=3',
+  '/juegos/objetos-ocultos/runtime-guard.js?v=2',
+  '/juegos/objetos-ocultos/app.js?v=3',
   '/juegos/objetos-ocultos/assets/scene-parts/part1.txt',
   '/juegos/objetos-ocultos/assets/scene-parts/part2.txt',
   '/juegos/objetos-ocultos/assets/scene-parts/part3.txt',
@@ -29,11 +30,7 @@ const FILES=[
   '/juegos/objetos-ocultos/assets/scenes/ultimo-tren.webp'
 ];
 self.addEventListener('install',event=>{
-  event.waitUntil(
-    caches.open(CACHE)
-      .then(cache=>cache.addAll(FILES))
-      .then(()=>self.skipWaiting())
-  );
+  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()));
 });
 self.addEventListener('activate',event=>{
   event.waitUntil(
@@ -45,32 +42,19 @@ self.addEventListener('activate',event=>{
 self.addEventListener('fetch',event=>{
   const url=new URL(event.request.url);
   if(event.request.method!=='GET'||url.origin!==self.location.origin)return;
-  const known=FILES.some(path=>new URL(path,self.location.origin).href===url.href);
   const inGames=url.pathname.startsWith('/juegos/');
-  if(!known&&!inGames)return;
-  if(event.request.mode==='navigate'){
-    event.respondWith(
-      fetch(event.request).then(response=>{
-        if(response.ok){
-          const copy=response.clone();
-          event.waitUntil(caches.open(CACHE).then(cache=>cache.put(event.request,copy)));
-        }
-        return response;
-      }).catch(async()=>{
-        const cache=await caches.open(CACHE);
-        const canonical=url.pathname.replace(/index\.html$/,'');
-        return await cache.match(event.request)||await cache.match(canonical)||await cache.match('/juegos/');
-      })
-    );
-    return;
-  }
-  event.respondWith(
-    caches.open(CACHE).then(async cache=>{
-      const saved=await cache.match(event.request);
-      if(saved)return saved;
-      const response=await fetch(event.request);
-      if(response.ok)await cache.put(event.request,response.clone());
+  if(!inGames)return;
+  event.respondWith((async()=>{
+    const cache=await caches.open(CACHE);
+    try{
+      const response=await fetch(event.request,{cache:'no-store'});
+      if(response.ok)event.waitUntil(cache.put(event.request,response.clone()));
       return response;
-    })
-  );
+    }catch{
+      return await cache.match(event.request)
+        || await cache.match(url.pathname)
+        || (event.request.mode==='navigate'?await cache.match('/juegos/'):undefined)
+        || Response.error();
+    }
+  })());
 });

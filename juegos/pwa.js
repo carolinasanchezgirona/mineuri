@@ -15,7 +15,20 @@
   });
   document.getElementById('close-install-games')?.addEventListener('click',()=>installDialog.close());
   if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('/juegos/sw.js',{scope:'/juegos/'}).then(()=>navigator.serviceWorker.ready).then(()=>{
+    navigator.serviceWorker.register('/juegos/sw.js',{scope:'/juegos/',updateViaCache:'none'}).then(async registration=>{
+      try{await registration.update();}catch{}
+      let refreshing=false;
+      navigator.serviceWorker.addEventListener('controllerchange',()=>{
+        if(refreshing)return;
+        refreshing=true;
+        if(sessionStorage.getItem('mineuri-sw-refresh')!=='1'){
+          sessionStorage.setItem('mineuri-sw-refresh','1');
+          location.reload();
+        }
+      });
+      setTimeout(()=>sessionStorage.removeItem('mineuri-sw-refresh'),4000);
+      return navigator.serviceWorker.ready;
+    }).then(()=>{
       if(status)status.textContent='Los juegos de Mineuri están disponibles sin conexión en este dispositivo.';
     }).catch(()=>{if(status)status.textContent='Puedes jugar conectado a internet. La partida se guarda en este navegador.';});
   }
