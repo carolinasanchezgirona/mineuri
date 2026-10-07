@@ -1,5 +1,5 @@
 'use strict';
-const CACHE='mineuri-mente-en-juego-v5';
+const CACHE='mineuri-mente-en-juego-v6';
 const FILES=[
   '/juegos/',
   '/juegos/juegos.css?v=5',
@@ -16,12 +16,17 @@ const FILES=[
   '/assets/favicon.svg',
   '/juegos/objetos-ocultos/',
   '/juegos/objetos-ocultos/style.css?v=1',
-  '/juegos/objetos-ocultos/app.js?v=1',
+  '/juegos/objetos-ocultos/app.js?v=2',
   '/juegos/objetos-ocultos/assets/scene-parts/part1.txt',
   '/juegos/objetos-ocultos/assets/scene-parts/part2.txt',
   '/juegos/objetos-ocultos/assets/scene-parts/part3.txt',
   '/juegos/objetos-ocultos/assets/scene-parts/part4.txt',
-  '/juegos/objetos-ocultos/assets/scene-parts/part5.txt'
+  '/juegos/objetos-ocultos/assets/scene-parts/part5.txt',
+  '/juegos/objetos-ocultos/assets/scenes/cafe-entre-libros.webp',
+  '/juegos/objetos-ocultos/assets/scenes/estudio-artista.webp',
+  '/juegos/objetos-ocultos/assets/scenes/mercadillo-domingo.webp',
+  '/juegos/objetos-ocultos/assets/scenes/invernadero.webp',
+  '/juegos/objetos-ocultos/assets/scenes/ultimo-tren.webp'
 ];
 self.addEventListener('install',event=>{
   event.waitUntil(
