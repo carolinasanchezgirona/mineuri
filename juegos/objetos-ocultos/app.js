@@ -2,19 +2,19 @@
 (() => {
   const OBJECTS=[
     {id:'lamp',label:'Lámpara de mesa',icon:'💡',score:1,box:[8.5,23,15,16]},
-    {id:'suitcase',label:'Maleta azul',icon:'🧳',score:1,box:[67,36,17,24]},
-    {id:'cat',label:'Gato dormido',icon:'🐈',score:1,box:[19,48,23,11]},
-    {id:'popcorn',label:'Palomitas',icon:'🍿',score:1,box:[60,58,13,13]},
-    {id:'banana',label:'Plátano',icon:'🍌',score:1,box:[54.5,67,16.5,8]},
+    {id:'suitcase',label:'Maleta azul',icon:'🧳',score:1,box:[68,37,12,22]},
+    {id:'cat',label:'Gato dormido',icon:'🐈',score:1,box:[22,49,20,9]},
+    {id:'popcorn',label:'Palomitas',icon:'🍿',score:1,box:[60,58,11,12]},
+    {id:'banana',label:'Plátano',icon:'🍌',score:1,box:[55.5,68,13,6]},
     {id:'clapper',label:'Claqueta',icon:'🎬',score:2,box:[87,41,12,9]},
-    {id:'chair',label:'Silla plegable',icon:'🪑',score:2,box:[60,34,15,18]},
-    {id:'sneakers',label:'Zapatillas',icon:'👟',score:2,box:[73,58,15,10]},
-    {id:'orangeCushion',label:'Cojín naranja',icon:'🟧',score:2,box:[34,36,19,14]},
-    {id:'stripedCushion',label:'Cojín de rayas',icon:'▤',score:2,box:[14,41,21,14]},
+    {id:'chair',label:'Silla plegable',icon:'🪑',score:2,box:[59,34,10,19]},
+    {id:'sneakers',label:'Zapatillas',icon:'👟',score:2,box:[75,57,13,8]},
+    {id:'orangeCushion',label:'Cojín naranja',icon:'🟧',score:2,box:[35,36,17,12]},
+    {id:'stripedCushion',label:'Cojín de rayas',icon:'▤',score:2,box:[14,41,17,13]},
     {id:'mug',label:'Taza',icon:'☕',score:3,box:[25,65,11,11]},
     {id:'basket',label:'Cesta de mimbre',icon:'🧺',score:3,box:[47,78,23,14]},
-    {id:'remote',label:'Mando a distancia',icon:'🎛️',score:4,box:[70,66,11,8]},
-    {id:'candle',label:'Vela',icon:'🕯️',score:4,box:[50.5,64,8.5,8]},
+    {id:'remote',label:'Mando a distancia',icon:'🎛️',score:4,box:[72,67,7,5]},
+    {id:'candle',label:'Vela',icon:'🕯️',score:4,box:[51,64,5,6]},
     {id:'catPicture',label:'Cuadro del gato',icon:'🖼️',score:4,box:[35.5,10.5,7,10]}
   ];
   const DIFFICULTY={easy:{target:1,hints:5,mult:1.15},medium:{target:2,hints:4,mult:1},hard:{target:3,hints:3,mult:.9},expert:{target:4,hints:2,mult:.8}};
@@ -25,13 +25,13 @@
 
   function selected(name){return document.querySelector('input[name="'+name+'"]:checked')?.value}
   function shuffle(list){return list.map(v=>({v:v,n:Math.random()})).sort((a,b)=>a.n-b.n).map(x=>x.v)}
-  function updateSetup(){
+  function updateSetup(resetHints=false){
     state.difficulty=selected('difficulty')||'medium';
     state.count=Number(selected('objectCount')||8);
     state.mode=selected('timeMode')||'relax';
     const cfg=DIFFICULTY[state.difficulty];
     const hintSelect=$('hint-count');
-    hintSelect.value=String(cfg.hints);
+    if(resetHints) hintSelect.value=String(cfg.hints);
     state.hints=Number(hintSelect.value);
     const seconds=Math.round((BASE_TIME[state.count]||120)*cfg.mult);
     $('time-estimate').textContent=state.mode==='timed'?'Tiempo de partida: '+formatTime(seconds):'Sin límite de tiempo';
@@ -152,12 +152,13 @@
       if(Number.isFinite(saved.hints))$('hint-count').value=String(Math.max(0,Math.min(5,saved.hints)));
     }catch{}
   }
-  document.querySelectorAll('input[name="difficulty"],input[name="objectCount"],input[name="timeMode"]').forEach(el=>el.addEventListener('change',updateSetup));
+  document.querySelectorAll('input[name="difficulty"]').forEach(el=>el.addEventListener('change',()=>updateSetup(true)));
+  document.querySelectorAll('input[name="objectCount"],input[name="timeMode"]').forEach(el=>el.addEventListener('change',()=>updateSetup(false)));
   $('hint-count').addEventListener('change',()=>{state.hints=Number($('hint-count').value)});
   $('start-game').addEventListener('click',startGame);$('hint-button').addEventListener('click',useHint);
   $('zoom-in').addEventListener('click',()=>setZoom(state.zoom+.25));$('zoom-out').addEventListener('click',()=>setZoom(state.zoom-.25));
-  $('scene-viewport').addEventListener('click',event=>{if(event.target.id==='scene-image'||event.target.id==='scene-canvas')$('feedback').textContent='No está ahí. Sigue buscando.'});
+  $('scene-viewport').addEventListener('click',event=>{if(!event.target.closest('.hitbox'))$('feedback').textContent='No está ahí. Sigue buscando.'});
   $('change-settings').addEventListener('click',showSetup);$('finish-settings').addEventListener('click',showSetup);
   $('play-again').addEventListener('click',()=>{$('finish-dialog').close();startGame()});
-  restore();updateSetup();setZoom(1);
+  restore();updateSetup(false);setZoom(1);
 })();
