@@ -331,7 +331,7 @@
     $('progress').textContent=text;
     $('progress-large').textContent=text;
     $('hint-value').textContent=state.hints;
-    $('hint-button').disabled=state.hints<=0 || state.found.size===state.targets.length;
+    $('hint-button').disabled=!state.isReady || state.hints<=0 || state.found.size===state.targets.length;
   }
 
   function useHint(){
@@ -490,6 +490,8 @@
     $('progress').textContent='0/'+state.targets.length;
     $('progress-large').textContent='0/'+state.targets.length;
     $('hint-value').textContent=state.hints;
+    $('timer-pill').hidden=true;
+    $('timer').textContent='--:--';
     $('feedback').textContent='Preparando la escena…';
 
     const loaded=await loadCurrentScene();
