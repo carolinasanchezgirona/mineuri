@@ -72,7 +72,7 @@ function bind(){
 }
 function choose(i){const c=state.dialogue.choices?.[i];if(c&&typeof actions[c.action]==='function')actions[c.action]()}
 const actions={
- puriAuth(){say('Puri','Para subir necesita la autorización B.','')},
+ puriAuth(){say('Puri','Para subir necesita la autorización B.')},
  puriWhere(){say('Puri','En la tercera planta.',[{label:'Pero necesito la autorización para llegar a la tercera planta.',action:'puriLoop'}])},
  puriLoop(){say('Puri','Exactamente. El sistema funciona.')},
  puriFloor(){say('Puri','Administrativamente, no existe. Arquitectónicamente, es más complejo.')},
