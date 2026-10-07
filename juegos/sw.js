@@ -1,11 +1,12 @@
 'use strict';
-const CACHE='mineuri-mente-en-juego-v1';
+const CACHE='mineuri-mente-en-juego-v2';
 const FILES=[
-  '/juegos/', '/juegos/juegos.css?v=1', '/juegos/pwa.js?v=1',
+  '/juegos/', '/juegos/juegos.css?v=2', '/juegos/pwa.js?v=2',
   '/juegos/manifest.webmanifest', '/juegos/icons/icon-192.png', '/juegos/icons/icon-512.png', '/juegos/icons/icon-maskable-512.png',
   '/style.css?v=21', '/games-navigation.css?v=1', '/script.js?v=games-1', '/assets/logo-mineuri.png', '/assets/favicon.svg',
   '/juegos/detective-de-barrio/', '/juegos/detective-de-barrio/style.css', '/juegos/detective-de-barrio/app.js',
-  '/juegos/detective-de-barrio/assets/biblioteca.webp', '/juegos/detective-de-barrio/assets/plaza.webp', '/juegos/detective-de-barrio/assets/quiosco.webp'
+  '/juegos/detective-de-barrio/assets/biblioteca.webp', '/juegos/detective-de-barrio/assets/plaza.webp', '/juegos/detective-de-barrio/assets/quiosco.webp',
+  '/juegos/consulta-404/', '/juegos/consulta-404/style.css?v=1', '/juegos/consulta-404/app.js?v=1'
 ];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('mineuri-mente-en-juego-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));});
