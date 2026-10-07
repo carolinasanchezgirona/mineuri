@@ -1,8 +1,8 @@
 'use strict';
-const CACHE='mineuri-mente-en-juego-v4';
+const CACHE='mineuri-mente-en-juego-v5';
 const FILES=[
   '/juegos/',
-  '/juegos/juegos.css?v=4',
+  '/juegos/juegos.css?v=5',
   '/juegos/scene-loader.js?v=1',
   '/juegos/pwa.js?v=2',
   '/juegos/manifest.webmanifest',
