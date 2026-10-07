@@ -18,15 +18,15 @@
     navigator.serviceWorker.register('/juegos/sw.js',{scope:'/juegos/',updateViaCache:'none'}).then(async registration=>{
       try{await registration.update();}catch{}
       let refreshing=false;
+      if(sessionStorage.getItem('mineuri-sw-refresh')==='1'){
+        sessionStorage.removeItem('mineuri-sw-refresh');
+      }
       navigator.serviceWorker.addEventListener('controllerchange',()=>{
         if(refreshing)return;
         refreshing=true;
-        if(sessionStorage.getItem('mineuri-sw-refresh')!=='1'){
-          sessionStorage.setItem('mineuri-sw-refresh','1');
-          location.reload();
-        }
+        sessionStorage.setItem('mineuri-sw-refresh','1');
+        location.reload();
       });
-      setTimeout(()=>sessionStorage.removeItem('mineuri-sw-refresh'),4000);
       return navigator.serviceWorker.ready;
     }).then(()=>{
       if(status)status.textContent='Los juegos de Mineuri están disponibles sin conexión en este dispositivo.';

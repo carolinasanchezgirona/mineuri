@@ -188,7 +188,8 @@
     $('hint-button').disabled=true;
     $('zoom-in').disabled=true;
     $('zoom-out').disabled=true;
-    sceneImage.setAttribute('aria-busy','true');
+    if(failed)sceneImage.removeAttribute('aria-busy');
+    else sceneImage.setAttribute('aria-busy','true');
   }
 
   function setSceneReady(){
@@ -204,12 +205,13 @@
 
   function loadImageUrl(url,token,retry=false){
     return new Promise((resolve,reject)=>{
-      const timeout=setTimeout(()=>reject(new Error('timeout')),12000);
+      let timeout=null;
       const clean=()=>{
         clearTimeout(timeout);
         sceneImage.removeEventListener('load',onLoad);
         sceneImage.removeEventListener('error',onError);
       };
+      timeout=setTimeout(()=>{clean();reject(new Error('timeout'));},12000);
       const onLoad=async()=>{
         if(token!==state.loadToken){clean();return reject(new Error('stale'));}
         try{await sceneImage.decode?.();}catch{}
