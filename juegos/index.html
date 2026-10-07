@@ -13,8 +13,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=21"><link rel="stylesheet" href="../games-navigation.css?v=1"><link rel="stylesheet" href="juegos.css?v=3">
+<link rel="stylesheet" href="../style.css?v=21"><link rel="stylesheet" href="../games-navigation.css?v=1"><link rel="stylesheet" href="juegos.css?v=4">
 <script defer src="../script.js?v=games-1"></script>
+<script defer src="scene-loader.js?v=1"></script>
 <script defer src="pwa.js?v=2"></script>
 </head><body>
 <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
@@ -148,14 +149,60 @@
 
   </header>
 <main id="contenido-principal" class="games-main container">
- <header class="games-heading"><p class="eyebrow">JUEGOS DE MINEURI</p><h1>Mente en juego</h1><p>Juegos visuales, entretenidos y con personalidad. Entra porque te apetece jugar; lo demás ocurre mientras juegas.</p></header>
- <section class="games-reset" aria-labelledby="games-reset-title">
-  <p class="game-case">NUEVA ETAPA</p>
-  <h2 id="games-reset-title">Estamos preparando el nuevo Mente en juego</h2>
-  <p>Este espacio se está reconstruyendo como una colección de juegos que funcionen primero como juegos: visuales, agradables, rejugables y con ganas de volver.</p>
-  <ul class="game-tags" aria-label="Principios de Mente en juego"><li>Visual</li><li>Entretenido</li><li>Para adultos</li><li>Sin apariencia de ejercicio</li></ul>
- </section>
- <aside class="games-notes"><p>Próximamente se incorporarán nuevas experiencias. Las antiguas aventuras han sido retiradas de esta sección.</p></aside>
+  <header class="games-heading">
+    <p class="eyebrow">JUEGOS DE MINEURI</p>
+    <h1>Mente en juego</h1>
+    <p class="games-lead">Juega porque sí. Tu cerebro ya hará el resto.</p>
+    <p class="games-sublead">Juegos visuales, entretenidos y pensados para adultos. Sin fichas disfrazadas, sin puntuaciones cognitivas y sin obligación de competir.</p>
+  </header>
+
+  <section class="featured-game" aria-labelledby="hidden-title">
+    <div class="featured-visual">
+      <img
+        data-scene-parts="objetos-ocultos/assets/scene-parts"
+        data-scene-parts-count="5"
+        alt="Salón ilustrado y acogedor con numerosos objetos escondidos para encontrar."
+        aria-busy="true"
+      >
+      <div class="featured-ribbon">NUEVO</div>
+      <div class="featured-floating featured-floating-one">🍌</div>
+      <div class="featured-floating featured-floating-two">🎬</div>
+      <div class="featured-floating featured-floating-three">🧳</div>
+    </div>
+    <div class="featured-copy">
+      <p class="game-case">BUSCA Y ENCUENTRA</p>
+      <h2 id="hidden-title">Objetos ocultos</h2>
+      <p class="featured-intro">Explora una escena llena de detalles y encuentra los objetos antes de que se te escapen a la vista. O no corras: también puedes jugar sin tiempo.</p>
+      <ul class="game-tags" aria-label="Opciones de Objetos ocultos">
+        <li>6–15 objetos</li>
+        <li>4 dificultades</li>
+        <li>Pistas configurables</li>
+        <li>Con o sin tiempo</li>
+        <li>Zoom</li>
+      </ul>
+      <a class="button button-primary game-launch" href="objetos-ocultos/">Jugar ahora <span aria-hidden="true">→</span></a>
+      <p class="game-guide">La primera escena está revisada manualmente: todos los objetos que pueden aparecer en la lista están realmente dentro de la imagen.</p>
+    </div>
+  </section>
+
+  <section class="games-philosophy" aria-labelledby="philosophy-title">
+    <div>
+      <p class="game-case">LA REGLA DE ESTA CASA</p>
+      <h2 id="philosophy-title">Si no apetece jugar, no cuenta.</h2>
+    </div>
+    <p>Mente en juego irá creciendo con experiencias distintas entre sí. Lo importante aquí no es parecer un ejercicio, sino tener una mecánica que enganche, una estética cuidada y ganas de hacer otra partida.</p>
+  </section>
+
+  <section class="coming-games" aria-labelledby="coming-title">
+    <div class="coming-copy">
+      <p class="game-case">EN PREPARACIÓN</p>
+      <h2 id="coming-title">Más mundos, no más fichas.</h2>
+      <p>Estamos construyendo nuevos juegos con mecánicas diferentes. Cuando entren aquí, será porque se sostienen como juegos por sí mismos.</p>
+    </div>
+    <div class="coming-tiles" aria-hidden="true">
+      <span>Relatos</span><span>Cozy</span><span>Puzles</span><span>Misterio</span>
+    </div>
+  </section>
 </main>
 <footer class="games-footer"><div class="container games-footer-inner"><a class="brand" href="../index.html" aria-label="Mineuri, volver al inicio"><img class="brand-logo" src="../assets/logo-mineuri.png" alt="Mineuri" width="145"></a><nav aria-label="Enlaces de Mineuri"><a href="../actividades.html">Áreas cognitivas</a><a href="../politica-privacidad.html">Privacidad</a><a href="../index.html">Volver a Mineuri</a></nav></div></footer>
 </body></html>
