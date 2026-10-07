@@ -16,7 +16,7 @@
   document.getElementById('close-install-games')?.addEventListener('click',()=>installDialog.close());
   if('serviceWorker' in navigator){
     navigator.serviceWorker.register('/juegos/sw.js',{scope:'/juegos/'}).then(()=>navigator.serviceWorker.ready).then(()=>{
-      if(status)status.textContent='La caja azul está disponible sin conexión en este dispositivo.';
+      if(status)status.textContent='Los juegos de Mineuri están disponibles sin conexión en este dispositivo.';
     }).catch(()=>{if(status)status.textContent='Puedes jugar conectado a internet. La partida se guarda en este navegador.';});
   }
   const fullscreenButton=document.getElementById('fullscreen-game');
