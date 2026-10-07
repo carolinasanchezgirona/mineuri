@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../../style.css?v=21">
 <link rel="stylesheet" href="style.css?v=1">
 <script defer src="../scene-loader.js?v=1"></script>
-<script defer src="app.js?v=1"></script>
+<script defer src="app.js?v=2"></script>
 <script defer src="../pwa.js?v=2"></script>
 </head>
 <body class="hidden-game-page">
@@ -28,8 +28,8 @@
     <div class="setup-copy">
       <p class="game-kicker">MENTE EN JUEGO · OBJETOS OCULTOS</p>
       <h1 id="game-title">Busca. Encuentra. Sigue.</h1>
-      <p>Una escena, objetos escondidos y ninguna obligación de correr. Tú decides cuánto reto quieres.</p>
-      <span class="verified-badge">✓ Escena revisada: todos los objetos existen</span>
+      <p>Seis escenas, objetos escondidos y ninguna obligación de correr. Tú decides cuánto reto quieres.</p>
+      <span class="verified-badge">✓ 6 escenas revisadas · objetos localizados manualmente</span>
     </div>
 
     <div class="setup-grid">
@@ -63,7 +63,7 @@
       </fieldset>
 
       <div class="setup-group hints-setting">
-        <label for="hint-count">Pistas disponibles</label>
+        <label for="hint-count">Pistas disponibles por escena</label>
         <div class="hint-row">
           <select id="hint-count" aria-label="Número de pistas">
             <option value="0">0</option><option value="1">1</option><option value="2">2</option>
@@ -74,13 +74,13 @@
       </div>
     </div>
 
-    <button id="start-game" class="start-game" type="button">Empezar partida</button>
+    <button id="start-game" class="start-game" type="button">Empezar recorrido</button>
   </section>
 
   <section id="play-screen" class="play-screen" hidden aria-labelledby="scene-title">
     <div class="play-heading">
       <div>
-        <p class="game-kicker">ESCENA 01</p>
+        <p id="scene-kicker" class="game-kicker">ESCENA 01 DE 06</p>
         <h1 id="scene-title">Noche en casa</h1>
       </div>
       <button id="change-settings" class="quiet-button" type="button">Cambiar partida</button>
@@ -115,11 +115,12 @@
 </main>
 
 <dialog id="finish-dialog" class="finish-dialog">
-  <p class="game-kicker">ESCENA COMPLETADA</p>
+  <p id="finish-kicker" class="game-kicker">ESCENA COMPLETADA</p>
   <h2 id="finish-title">Encontrados todos</h2>
   <p id="finish-summary"></p>
   <div class="finish-actions">
-    <button id="play-again" type="button" class="start-game">Otra partida</button>
+    <button id="finish-primary" type="button" class="start-game">Siguiente escena →</button>
+    <button id="repeat-scene" type="button" class="quiet-button">Repetir escena</button>
     <button id="finish-settings" type="button" class="quiet-button">Cambiar ajustes</button>
   </div>
 </dialog>
