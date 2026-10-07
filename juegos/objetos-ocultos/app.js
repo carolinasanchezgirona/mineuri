@@ -180,6 +180,7 @@
 
   function setSceneLoading(message='Cargando escena…',failed=false){
     state.isReady=false;
+    sceneCanvas.dataset.loading='true';
     sceneLoading.hidden=false;
     sceneLoading.classList.toggle('is-error',failed);
     sceneLoadingText.textContent=message;
@@ -194,6 +195,7 @@
 
   function setSceneReady(){
     state.isReady=true;
+    delete sceneCanvas.dataset.loading;
     sceneLoading.hidden=true;
     sceneLoading.classList.remove('is-error');
     layer.style.pointerEvents='';
@@ -222,13 +224,14 @@
       sceneImage.addEventListener('load',onLoad,{once:true});
       sceneImage.addEventListener('error',onError,{once:true});
       const join=url.includes('?')?'&':'?';
-      sceneImage.src=url+join+'v=4'+(retry?'&retry='+Date.now():'');
+      sceneImage.src=url+join+'scene='+encodeURIComponent(currentScene().id)+'&build=7'+(retry?'&retry='+Date.now():'');
       if(sceneImage.complete&&sceneImage.naturalWidth)onLoad();
     });
   }
 
   async function loadCurrentScene(){
     const scene=currentScene();
+    sceneCanvas.dataset.sceneId=scene.id;
     const token=++state.loadToken;
     $('scene-kicker').textContent='ESCENA '+String(state.sceneIndex+1).padStart(2,'0')+' DE '+String(SCENES.length).padStart(2,'0');
     $('scene-title').textContent=scene.title;
@@ -249,6 +252,8 @@
         if(!sceneImage.naturalWidth)throw new Error('empty');
       }else{
         delete sceneImage.dataset.sceneParts;
+        sceneImage.removeAttribute('src');
+        sceneImage.dataset.expectedScene=scene.id;
         delete sceneImage.dataset.scenePartsCount;
         try{
           await loadImageUrl(scene.image,token,false);
@@ -264,7 +269,7 @@
       if(error.message==='stale')return false;
       sceneImage.dataset.sceneError='true';
       sceneImage.removeAttribute('aria-busy');
-      setSceneLoading('No se ha podido cargar esta escena.',true);
+      setSceneLoading('No se ha podido cargar '+scene.title+'.',true);
       $('feedback').textContent='La partida está en pausa. Pulsa “Reintentar”.';
       return false;
     }
@@ -275,7 +280,7 @@
     if(!next||!next.image)return;
     const img=new Image();
     img.decoding='async';
-    img.src=next.image+(next.image.includes('?')?'&':'?')+'v=4';
+    img.src=next.image+(next.image.includes('?')?'&':'?')+'scene='+encodeURIComponent(next.id)+'&build=7';
   }
 
   function renderTargets(){
