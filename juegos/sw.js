@@ -1,34 +1,24 @@
 'use strict';
-const CACHE='mineuri-mente-en-juego-v13';
+const CACHE='mineuri-mente-en-juego-v15';
 const FILES=[
   '/juegos/',
   '/juegos/juegos.css?v=5',
   '/juegos/scene-loader.js?v=1',
-  '/juegos/pwa.js?v=7',
+  '/juegos/pwa.js?v=15',
   '/juegos/manifest.webmanifest',
   '/juegos/icons/icon-192.png',
   '/juegos/icons/icon-512.png',
   '/juegos/icons/icon-maskable-512.png',
-  '/style.css?v=21',
+  '/style.css?v=51',
   '/games-navigation.css?v=1',
   '/script.js?v=games-1',
   '/assets/logo-mineuri.png',
   '/assets/favicon.svg',
-  '/juegos/objetos-ocultos/style.css?v=7',
-  '/juegos/objetos-ocultos/app.js?v=7',
-  '/juegos/objetos-ocultos/assets/scene-parts/part1.txt',
-  '/juegos/objetos-ocultos/assets/scene-parts/part2.txt',
-  '/juegos/objetos-ocultos/assets/scene-parts/part3.txt',
-  '/juegos/objetos-ocultos/assets/scene-parts/part4.txt',
-  '/juegos/objetos-ocultos/assets/scene-parts/part5.txt',
-  '/juegos/objetos-ocultos/assets/scenes/cafe-entre-libros.webp',
-  '/juegos/objetos-ocultos/assets/scenes/estudio-artista.webp',
-  '/juegos/objetos-ocultos/assets/scenes/mercadillo-domingo.webp',
-  '/juegos/objetos-ocultos/assets/scenes/invernadero.webp',
-  '/juegos/objetos-ocultos/assets/scenes/ultimo-tren.webp'
+  '/juegos/objetos-ocultos/style.css?v=15',
+  '/juegos/objetos-ocultos/app.js?v=15',
 ];
 self.addEventListener('install',event=>{
-  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()));
+  event.waitUntil(caches.open(CACHE).then(cache=>Promise.allSettled(FILES.map(url=>cache.add(url)))).then(()=>self.skipWaiting()));
 });
 self.addEventListener('activate',event=>{
   event.waitUntil(
