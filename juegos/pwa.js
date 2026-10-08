@@ -16,7 +16,7 @@
   });
   document.getElementById('close-install-games')?.addEventListener('click',()=>installDialog.close());
   if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('/juegos/sw.js?v=15',{scope:'/juegos/',updateViaCache:'none'}).then(async registration=>{
+    navigator.serviceWorker.register('/juegos/sw-v15.js',{scope:'/juegos/',updateViaCache:'none'}).then(async registration=>{
       try{await registration.update();}catch{}
       let refreshing=false;
       if(sessionStorage.getItem('mineuri-sw-refresh')==='1'){
