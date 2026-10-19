@@ -7,3 +7,16 @@
 @media(max-width:960px){.nav-links{gap:16px}.hero-grid,.school-grid,.school-hero-grid{grid-template-columns:1fr}.hero-art{min-height:480px}.school-art{display:none}.course-grid,.editorial-grid{grid-template-columns:repeat(2,1fr)}.school-grid{gap:0}.school-preview{max-width:500px}.school-intro-bar .container{flex-wrap:wrap}.footer-columns{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:680px){.container{width:min(100% - 32px,550px)}.header-inner{min-height:80px;align-items:start;flex-direction:column;justify-content:center;gap:12px;padding:15px 0}.brand{font-size:29px}.brand-mark{width:25px;height:25px;border-width:5px}.brand-mark:after{left:4px;top:4px;width:6px;height:6px}.nav-links{width:100%;gap:17px;overflow-x:auto;white-space:nowrap;padding-bottom:4px}.nav-links a{font-size:12px}.nav-links .nav-cta{padding:5px 9px}.hero,.school-hero{padding:56px 0 40px}.display,.school-hero .display{font-size:clamp(49px,13vw,72px)}.hero-grid{gap:15px}.hero-art{min-height:395px;transform:scale(.76);transform-origin:center center;margin:-35px -40px}.stamp{right:13px}.section{padding:56px 0}.section-head{display:block}.section-head h2{font-size:40px;margin-bottom:12px}.cards-3,.course-grid,.editorial-grid{grid-template-columns:1fr}.path-card{min-height:240px}.resource-strip,.school-bottom .container{display:block}.resource-strip .action,.school-bottom .action{margin-top:23px}.school-grid h2,.school-bottom h2{font-size:46px}.school-preview{min-height:300px}.school-preview .preview-word{font-size:70px}.school-intro-bar .container{display:block}.school-intro-bar span{display:block;margin-bottom:8px}.course-card{min-height:0}.course-cover{min-height:175px}.footer-columns{grid-template-columns:1fr;gap:25px}.footer-small{display:block}.footer-small p+p{margin-top:10px}.school-art{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+/* Información legal del nuevo sitio */
+.legal-page{max-width:900px;padding-top:66px;padding-bottom:90px}
+.legal-page>.text-link{display:inline-block;margin-bottom:34px}
+.legal-page>.eyebrow{display:block}
+.legal-page h1{font-size:clamp(48px,7vw,74px);line-height:1.07;margin:12px 0 19px}
+.legal-page .lead{max-width:760px}
+.legal-page .legal-updated{font-size:12px;color:var(--muted);margin:24px 0 30px}
+.legal-page section{padding:25px 0;border-top:1px solid var(--line)}
+.legal-page h2{font-size:29px;line-height:1.2;letter-spacing:-.04em;margin-bottom:14px}
+.legal-page section p{font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:12px}
+.legal-page section strong{color:var(--ink)}
+.legal-page section a{color:var(--brand-dark);text-underline-offset:3px}
+@media(max-width:680px){.legal-page{padding-top:45px;padding-bottom:65px}.legal-page h2{font-size:26px}}
