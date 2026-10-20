@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Solicitar incorporación al directorio | Mineuri</title>
+<meta name="description" content="Prepara una solicitud de incorporación al directorio piloto de psicología y neuropsicología de Mineuri. La incorporación está sujeta a revisión.">
+<meta name="robots" content="noindex,follow"><meta name="theme-color" content="#0E5C7C">
+<link rel="icon" href="../../assets/favicon-mineuri-v2.png" type="image/png">
+<link rel="stylesheet" href="../../assets/mineuri-paleta-v2.css"><link rel="stylesheet" href="../../assets/ecosistema.css">
+<script defer src="../../assets/solicitud-directorio.js"></script></head>
+<body><div class="mini-ribbon">Directorio Mineuri · Fase piloto</div>
+<header class="site-header"><div class="container header-inner">
+<a class="brand" href="../../"><span class="brand-mark" aria-hidden="true"></span>mineuri.</a>
+<nav class="nav-links eco-nav" aria-label="Navegación principal"><a href="../">Volver al directorio</a><a href="../../escuela/">Escuela</a><a href="../../politica-privacidad.html">Privacidad</a></nav></div></header>
+<main><section class="eco-hero eco-lavender eco-hero-short"><div class="container">
+<span class="eyebrow">Mineuri / Profesionales</span><h1>Tu trabajo merece <em>un buen perfil.</em></h1>
+<p class="lead">Estamos preparando un directorio que prioriza información verificable, especialización y transparencia. La solicitud no garantiza incorporación ni implica un pago.</p>
+</div></section>
+<section class="section section--white"><div class="container eco-onboard">
+<div><span class="eyebrow">Solicitud de incorporación</span><h2>Cuéntanos a qué te dedicas.</h2>
+<p class="eco-onboard-lead">Rellena los datos profesionales públicos. Al finalizar se preparará un correo electrónico en tu dispositivo. <strong>La web no envía ni guarda el formulario:</strong> tendrás que revisar y enviar tú mismo el mensaje.</p>
+<form id="solicitud-mineuri" class="eco-onboard-form">
+<div class="eco-fields-two">
+<label>Nombre profesional <span aria-hidden="true">*</span><input name="nombre" autocomplete="name" maxlength="100" required></label>
+<label>Correo profesional <span aria-hidden="true">*</span><input name="correo" type="email" autocomplete="email" maxlength="120" required></label>
+<label>Colegio profesional <span aria-hidden="true">*</span><input name="colegio" placeholder="Ej.: COPC" maxlength="90" required></label>
+<label>Número de colegiación <span aria-hidden="true">*</span><input name="colegiacion" maxlength="35" required></label>
+<label>Perfil profesional <span aria-hidden="true">*</span>
+<select name="perfil" required><option value="">Seleccionar...</option><option>Psicólogo/a General Sanitario/a</option><option>Especialista en Psicología Clínica</option><option>Psicólogo/a (otro ámbito)</option><option>Neuropsicólogo/a</option><option>Otro perfil profesional relacionado</option></select></label>
+<label>Zona de atención <span aria-hidden="true">*</span><input name="zona" placeholder="Ciudad o comarca" maxlength="90" required></label>
+<label>Modalidad <span aria-hidden="true">*</span><select name="modalidad" required><option value="">Seleccionar...</option><option>Presencial</option><option>Online</option><option>Presencial y online</option></select></label>
+<label>Página web profesional (opcional)<input name="web" type="url" placeholder="https://" maxlength="180"></label>
+</div>
+<label>Áreas de intervención <span aria-hidden="true">*</span><input name="areas" placeholder="Ej.: ansiedad, adultos, evaluación neuropsicológica" maxlength="180" required></label>
+<label>Descripción profesional breve (opcional)<textarea name="descripcion" maxlength="340" rows="4" placeholder="Formación, experiencia y personas a las que atiendes, sin incluir información de pacientes."></textarea></label>
+<div class="eco-privacy-check"><label><input name="privacidad" type="checkbox" required> He leído la <a href="../../politica-privacidad.html" target="_blank" rel="noopener noreferrer">política de privacidad</a> y comprendo que el correo se preparará en mi dispositivo y que deberé enviarlo voluntariamente. <span aria-hidden="true">*</span></label></div>
+<p class="eco-muted">No adjuntes DNI, historiales clínicos, informes de pacientes ni datos sanitarios. Antes de publicar un perfil se solicitará una autorización de publicación específica y la documentación de verificación necesaria a través de un canal adecuado.</p>
+<button class="action" type="submit">Preparar correo de solicitud ↗</button>
+</form>
+<div class="eco-request-result" id="solicitud-resultado" hidden aria-live="polite">
+<h3>Tu solicitud está preparada</h3><p>Se ha intentado abrir tu programa de correo. <strong>Comprueba el borrador y pulsa «Enviar».</strong> No podemos saber si el mensaje se ha enviado.</p>
+<label>Si no se abre el correo, copia este texto y envíalo a <a href="mailto:hola@mineuri.com">hola@mineuri.com</a>:<textarea id="resumen-solicitud" rows="12" readonly></textarea></label>
+<button type="button" class="eco-copy" id="copiar-solicitud">Copiar texto</button><p id="estado-copia" role="status"></p></div>
+</div></section></main>
+<footer class="site-footer"><div class="container"><p>© 2026 Mineuri · <a href="../../politica-privacidad.html">Privacidad</a> · <a href="../">Directorio</a></p></div></footer></body></html>
