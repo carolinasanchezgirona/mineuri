@@ -20,7 +20,7 @@ Enviar al profesional los campos exactos de su ficha para revisión y solicitar 
 Abrir `herramientas/editor-directorio.html` en un navegador. El editor es un **archivo independiente y local**; no autentica, no transmite, no publica ni guarda en servidores. Permite importar, modificar, archivar, eliminar y exportar JSON. Requiere estado «aprobado», casilla «verificado», casilla «autorizado» y una URL https para preparar una ficha publicable.
 
 ## 5. Publicación
-Revisar los campos exportados, comprobar que corresponden a un consentimiento vigente y actualizar manualmente la web por el repositorio de GitHub. Comprobar enlaces, accesibilidad y que la ficha no afirma ventajas o eficacia clínica no verificadas. No subir borradores, expedientes de revisión ni justificantes a un repositorio público.
+Revisar los campos exportados, comprobar que corresponden a un consentimiento vigente y sustituir manualmente el archivo `directorio/perfiles-publicos.json` del repositorio de GitHub (tras revisar las fichas exportadas y preservar la ficha inicial, si continúa autorizada). Comprobar enlaces, accesibilidad y que la ficha no afirma ventajas o eficacia clínica no verificadas. No subir borradores, expedientes de revisión ni justificantes a un repositorio público.
 
 ## 6. Cambios y retirada
 Canal de contacto: `hola@mineuri.com`. Documentar recepción, verificación de legitimidad de la solicitud, modificación, retirada de la web, revisión de caché y cumplimiento de plazos RGPD. Mantener política de conservación para los datos recibidos por email.
