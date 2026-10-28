@@ -148,3 +148,40 @@
 @media(max-width:1000px){.store-hero-grid{gap:25px}.store-hero-photo img{height:260px}.store-pathway-grid a{padding:15px 10px;font-size:12px}.store-pathway-grid a:first-child{padding-left:0}}
 @media(max-width:720px){.store-headline{padding:22px 0 29px}.store-breadcrumb{margin-bottom:20px}.store-hero-grid{grid-template-columns:1fr;gap:25px}.store-headline h1{font-size:clamp(38px,10vw,51px);margin:12px 0 13px}.store-headline p.store-hero-lead{font-size:15px}.store-hero-photo img{height:235px}.store-hero-photo{max-width:600px}.store-pathway-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.store-pathway-grid a{border-bottom:1px solid var(--line);padding:13px 10px}.store-pathway-grid a:first-child{padding-left:0}.store-pathway-grid a:nth-child(2){border-right:0}.store-pathway-grid a:nth-child(3),.store-pathway-grid a:nth-child(4){border-bottom:0}.store-pathway-grid a:nth-child(3){padding-left:0}.store-results{padding:27px 0 60px}.store-cover.store-cover--photographic{height:220px}}
 @media(prefers-reduced-motion:reduce){.store-cover--photographic img{transition:none}}
+
+
+/* Recursos v3: presentación editorial, navegación compacta y accesibilidad */
+.store-headline{background:linear-gradient(135deg,#F8FBF9 0%,#F7FAF8 66%,#EDF8F5 100%);padding:24px 0 45px}
+.store-breadcrumb{margin-bottom:22px;font-size:13px}
+.store-hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(26px,4vw,64px)}
+.store-headline h1{font-size:clamp(43px,5.2vw,75px);line-height:1.07;letter-spacing:-.052em;margin:16px 0 23px}
+.store-headline p.store-hero-lead{font-size:clamp(15px,1.35vw,19px);line-height:1.65;margin-bottom:24px}
+.store-hero-actions{gap:22px;margin-top:28px}
+.store-hero-actions .action{background:#8C4192;border-color:#8C4192;border-radius:8px;min-height:54px;padding:15px 25px;font-size:14px}
+.store-hero-actions .action:hover{background:#713576;border-color:#713576}
+.store-simple-link{font-size:14px;color:#0E5C7C}
+.store-audience-chips{display:flex;flex-wrap:wrap;gap:9px}
+.store-audience-chip{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:8px 13px;border-radius:999px;text-decoration:none;font-size:12px;font-weight:700;transition:transform .2s,box-shadow .2s}
+.store-audience-chip span{font-size:17px;line-height:1}
+.store-audience-chip:hover{transform:translateY(-2px);box-shadow:0 5px 14px #0E5C7C16}
+.chip-personas{color:#793385;background:#F4EAF6}
+.chip-psicologos{color:#146A56;background:#E1F4EA}
+.chip-neuro{color:#0E5C7C;background:#E2F1F7}
+.chip-centros{color:#926016;background:#FFF4DA}
+.store-hero-photo img{height:clamp(330px,34vw,475px);border-radius:19px;box-shadow:0 18px 42px #153B4820}
+.store-hero-photo figcaption{font-size:10px;margin-top:10px}
+.store-headline .store-hero-availability{margin-top:18px}
+.store-pathways{background:#fff}
+.store-pathway-grid a{padding-top:20px;padding-bottom:20px}
+.store-pathway-grid a:hover{background:#F6FAF8}
+.store-results{background:#FBFCFA;padding:60px 0 80px}
+.store-filters{border-radius:16px;box-shadow:0 12px 30px #0E5C7C0a}
+.store-product{border-radius:15px;box-shadow:0 7px 20px #0E5C7C0a}
+.store-cover.store-cover--photographic{height:235px}
+.store-product-body{padding:23px}
+.store-product-body h3{font-size:26px}
+.store-product-foot a:focus-visible,.store-audience-chip:focus-visible,.store-pathway-grid a:focus-visible{outline:3px solid #0E5C7C;outline-offset:3px}
+@media(min-width:961px){.store-headline .header-inner{min-height:72px}}
+@media(max-width:1000px){.store-hero-grid{gap:25px}.store-headline h1{font-size:clamp(40px,5vw,63px)}.store-hero-photo img{height:360px}.store-audience-chip{font-size:11px}}
+@media(max-width:720px){.store-headline{padding:24px 0 32px}.store-hero-grid{grid-template-columns:1fr;gap:26px}.store-headline h1{font-size:clamp(43px,10.7vw,60px)}.store-headline p.store-hero-lead{font-size:16px}.store-hero-photo img{height:260px;border-radius:14px}.store-hero-actions{margin-top:22px;gap:15px}.store-hero-actions .action{min-height:48px}.store-audience-chip{font-size:12px}.store-results{padding:35px 0 62px}.store-cover.store-cover--photographic{height:220px}.store-product-body h3{font-size:24px}}
+@media(prefers-reduced-motion:reduce){.store-audience-chip{transition:none}}
