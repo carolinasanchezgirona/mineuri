@@ -185,3 +185,11 @@
 @media(max-width:1000px){.store-hero-grid{gap:25px}.store-headline h1{font-size:clamp(40px,5vw,63px)}.store-hero-photo img{height:360px}.store-audience-chip{font-size:11px}}
 @media(max-width:720px){.store-headline{padding:24px 0 32px}.store-hero-grid{grid-template-columns:1fr;gap:26px}.store-headline h1{font-size:clamp(43px,10.7vw,60px)}.store-headline p.store-hero-lead{font-size:16px}.store-hero-photo img{height:260px;border-radius:14px}.store-hero-actions{margin-top:22px;gap:15px}.store-hero-actions .action{min-height:48px}.store-audience-chip{font-size:12px}.store-results{padding:35px 0 62px}.store-cover.store-cover--photographic{height:220px}.store-product-body h3{font-size:24px}}
 @media(prefers-reduced-motion:reduce){.store-audience-chip{transition:none}}
+
+
+/* Recursos v4: accesos por públicos equilibrados */
+.store-audience-chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;max-width:570px}
+.store-audience-chip{display:flex;justify-content:flex-start;min-width:0;min-height:49px;gap:11px;padding:11px 17px;border-radius:12px;font-size:13px;line-height:1.3}
+.store-audience-chip span{font-size:20px;min-width:23px;text-align:center}
+@media(min-width:721px) and (max-width:1050px){.store-audience-chips{gap:8px}.store-audience-chip{padding:10px 11px;font-size:11px;gap:7px}}
+@media(max-width:440px){.store-audience-chips{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.store-audience-chip{padding:10px 9px;font-size:11px;min-height:53px;gap:6px}.store-audience-chip span{font-size:17px;min-width:18px}}
