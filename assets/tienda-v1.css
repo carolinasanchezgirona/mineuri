@@ -236,3 +236,33 @@
 .store-collection-link span{margin-left:5px}
 @media(max-width:900px){.store-collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.store-collection-card{min-height:245px}.store-collection-card h3{margin-top:29px}}
 @media(max-width:620px){.store-collection-grid{grid-template-columns:1fr}.store-collection-card{min-height:0;padding:23px 24px}.store-collection-card h3{font-size:27px;margin:25px 0 10px}.store-collection-symbol{top:20px;right:22px}.store-advice{padding:48px 0 55px}}
+
+
+/* Recursos v7: biblioteca visual, portadas editoriales ilustrativas */
+.store-library{background:#FAFBF9;padding:64px 0 78px}
+.store-library .store-collections-intro{max-width:none;margin-bottom:29px}
+.store-library .store-collections-intro h2{font-size:clamp(35px,3.7vw,51px);margin:8px 0 10px}
+.store-library .store-collections-intro p{font-size:15px}
+.store-library .store-collection-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.store-library .store-collection-card{display:flex;flex-direction:column;overflow:hidden;border:1px solid #DDE9E3;border-radius:13px;padding:0;background:white;min-height:0;box-shadow:0 9px 24px #0E5C7C0a;color:#0E5C7C}
+.store-library .store-collection-art{width:100%;min-height:302px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:31px 20px}
+.store-library .art-wellbeing{background:#F6EAF3}.store-library .art-therapy{background:#E5F4ED}.store-library .art-cognition{background:#DFEFF4}
+.store-library .store-book-cover{position:relative;width:205px;height:256px;background:#fffdf9;border:1px solid #D9D3D0;box-shadow:8px 12px 0 #0E5C7C12,14px 19px 27px #0E5C7C18;padding:18px;display:flex;flex-direction:column;transform:rotate(-5deg);transition:transform .25s}
+.store-library .art-therapy .store-book-cover{transform:rotate(3deg);background:#F7FCF8}
+.store-library .art-cognition .store-book-cover{transform:rotate(-3deg);background:#F7FBFC}
+.store-library .store-collection-card:hover .store-book-cover{transform:rotate(0deg) translateY(-4px)}
+.store-library .book-brand{font:700 20px var(--font-title);color:#0E5C7C}
+.store-library .book-series{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8C4192;margin-top:11px}
+.store-library .store-book-cover strong{font:500 28px/1.06 var(--font-title);letter-spacing:-.04em;color:#0E5C7C;margin-top:15px}
+.store-library .book-graphic{font:400 60px/1 var(--font-title);color:#8C4192;opacity:.75;align-self:flex-end;margin-top:auto}
+.store-library .art-therapy .book-graphic{color:#198B82}.store-library .art-cognition .book-graphic{color:#0E5C7C}
+.store-library .store-book-cover small{font-size:9px;color:#496670;border-top:1px solid #D7E6E1;padding-top:7px;margin-top:6px}
+.store-library .store-collection-detail{padding:24px 25px 27px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.store-library .store-collection-kicker{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#7C4484;font-weight:800}
+.store-library .store-collection-card h3{margin:11px 0 9px;font-size:clamp(24px,2.2vw,30px);line-height:1.2;max-width:none}
+.store-library .store-collection-card p{font-size:13px;line-height:1.6;margin:0 0 18px}
+.store-library .store-collection-link{font-size:13px;font-weight:700;margin-top:auto}
+.store-library .store-collection-disclaimer{font-size:11px;color:#657980;margin:17px 0 0}
+@media(max-width:900px){.store-library .store-collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.store-library{padding:46px 0 55px}.store-library .store-collection-grid{grid-template-columns:1fr;gap:17px}.store-library .store-collection-art{min-height:245px}.store-library .store-book-cover{width:178px;height:217px}.store-library .store-book-cover strong{font-size:25px}.store-library .store-collection-detail{padding:19px 22px 23px}}
+@media(prefers-reduced-motion:reduce){.store-library .store-book-cover{transition:none}}
