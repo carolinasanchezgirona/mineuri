@@ -193,3 +193,23 @@
 .store-audience-chip span{font-size:20px;min-width:23px;text-align:center}
 @media(min-width:721px) and (max-width:1050px){.store-audience-chips{gap:8px}.store-audience-chip{padding:10px 11px;font-size:11px;gap:7px}}
 @media(max-width:440px){.store-audience-chips{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.store-audience-chip{padding:10px 9px;font-size:11px;min-height:53px;gap:6px}.store-audience-chip span{font-size:17px;min-width:18px}}
+
+
+/* Recursos v5: colecciones editoriales */
+.store-advice{padding:66px 0 76px;background:#EAF5F1}
+.store-collections-intro{max-width:780px;margin-bottom:30px}
+.store-collections-intro h2{font:500 clamp(34px,4vw,53px)/1.12 var(--font-title);letter-spacing:-.045em;margin:12px 0 16px;color:#0E5C7C}
+.store-collections-intro p{font-size:16px;line-height:1.7;max-width:750px;margin:0;color:#416069}
+.store-collection-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.store-collection-card{display:flex;flex-direction:column;align-items:flex-start;min-height:310px;padding:28px;border:1px solid #D7E5DF;border-radius:18px;text-decoration:none;color:#0E5C7C;transition:transform .2s,box-shadow .2s}
+.store-collection-personas{background:#F7EDF7}.store-collection-clinica{background:#E2F5ED}.store-collection-cognicion{background:#E0F1F6}
+.store-collection-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px #0E5C7C15}
+.store-collection-card .store-number{font:700 11px var(--font-body);text-transform:uppercase;letter-spacing:.12em;color:#7B3B84}
+.store-collection-symbol{align-self:flex-end;font:500 44px/1 var(--font-title);margin:-5px 0 17px;color:#8C4192}
+.store-collection-card h3{font:500 clamp(25px,2.5vw,34px)/1.13 var(--font-title);letter-spacing:-.035em;margin:0 0 13px;max-width:300px}
+.store-collection-card p{font-size:14px;line-height:1.65;color:#46646B;margin:0 0 25px}
+.store-collection-link{margin-top:auto;font-size:13px;font-weight:750;border-bottom:1px solid currentColor;padding-bottom:4px}
+.store-collection-card:focus-visible{outline:3px solid #0E5C7C;outline-offset:4px}
+@media(max-width:900px){.store-collection-grid{grid-template-columns:1fr}.store-collection-card{min-height:0;padding:24px}.store-collection-symbol{margin-top:-18px;margin-bottom:0}.store-collections-intro{margin-bottom:23px}}
+@media(max-width:720px){.store-advice{padding:48px 0 54px}.store-collections-intro h2{font-size:37px}.store-collections-intro p{font-size:14px}.store-collection-card h3{font-size:29px}}
+@media(prefers-reduced-motion:reduce){.store-collection-card{transition:none}}
