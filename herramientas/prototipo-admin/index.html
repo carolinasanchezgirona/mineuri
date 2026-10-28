@@ -27,12 +27,12 @@ function renderResourcePreview(){
  if(cover){const img=document.createElement('img');const url=publicCoverURL(cover);if(url){img.src=url;img.alt='Portada actual';node.append(img);}const span=document.createElement('span');span.textContent='Portada asociada: '+cover;node.append(span);}
  if(pdf){const wrap=document.createElement('span');wrap.textContent='PDF privado asociado: '+pdf+' ';node.append(wrap);
  const btn=document.createElement('button');btn.type='button';btn.className='secondary';btn.textContent='Abrir PDF (acceso temporal)';btn.addEventListener('click',async()=>{
- try{const path=pdf.split('/').map(encodeURIComponent).join('/');const signed=await api('/storage/v1/object/sign/mineuri-private/'+path,{method:'POST',body:{expiresIn:90}});if(!signed.signedURL)throw Error('No se pudo generar el enlace privado');const a=document.createElement('a');a.href=new URL(signed.signedURL,URL).href;a.target='_blank';a.rel='noopener noreferrer';a.click();}catch(err){status('No se pudo abrir el PDF: '+err.message);}});node.append(btn);}
+ try{const path=pdf.split('/').map(encodeURIComponent).join('/');const signed=await api('/storage/v1/object/sign/mineuri-private/'+path,{method:'POST',body:{expiresIn:90}});if(!signed.signedURL)throw Error('No se pudo generar el enlace privado');const a=document.createElement('a');a.href=new window.URL(signed.signedURL,URL).href;a.target='_blank';a.rel='noopener noreferrer';a.click();}catch(err){status('No se pudo abrir el PDF: '+err.message);}});node.append(btn);}
  if(!cover&&!pdf){node.textContent='Aún no hay portada ni PDF asociados a esta ficha.';}
 }
 function fillResource(x){
  const form=$('#resource-form');for(const k of ['id','title','slug','summary','audience','format','status','topic','cover_path','file_path'])form.elements[k].value=x?.[k]??'';
- form.elements.price.value=x?.price_cents==null?'':(x.price_cents/100).toFixed(2);form.elements.is_free.checked=!!x?.is_free;
+ form.elements.price.value=x?.price_cents==null?'':(x.price_cents/100).toFixed(2);form.elements.is_free.checked=!!x?.is_free;if(!x){form.elements.status.value='draft';form.elements.audience.value='personas';form.elements.format.value='pdf';}
  $('#resource-cover-upload').value='';$('#resource-pdf-upload').value='';
  $('#resource-form-title').textContent=x?'Editar recurso: '+x.title:'Nuevo recurso';renderResourcePreview();
 }
