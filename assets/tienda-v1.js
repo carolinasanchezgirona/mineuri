@@ -63,8 +63,12 @@
      const cover=document.createElement("div");cover.className="store-cover mint";
      cover.style.cssText="min-height:180px;display:flex;align-items:center;justify-content:center;padding:25px";
      const label=document.createElement("strong");label.textContent=p.title;label.style.font="500 27px/1.2 Georgia,serif";cover.append(label);
-     if(p.cover_path&&p.cover_path.startsWith("https://qtuzwzanifviukqcfzwa.supabase.co/storage/v1/object/public/mineuri-public/")){
-      const im=document.createElement("img");im.src=p.cover_path;im.alt="Portada del recurso: "+p.title;im.loading="lazy";im.style.cssText="width:100%;height:100%;object-fit:cover;position:absolute;inset:0";cover.style.position="relative";cover.replaceChildren(im);
+     const publicStorageBase="https://qtuzwzanifviukqcfzwa.supabase.co/storage/v1/object/public/mineuri-public/";
+     let coverUrl=null;
+     if(typeof p.cover_path==="string" && /^resources\/[a-z0-9-]+\.(?:jpg|jpeg|png|webp)$/i.test(p.cover_path)){coverUrl=publicStorageBase+p.cover_path.split("/").map(encodeURIComponent).join("/");}
+     else if(typeof p.cover_path==="string" && p.cover_path.startsWith(publicStorageBase)){coverUrl=p.cover_path;}
+     if(coverUrl){
+      const im=document.createElement("img");im.src=coverUrl;im.alt="Portada del recurso: "+p.title;im.loading="lazy";im.style.cssText="width:100%;height:100%;object-fit:cover;position:absolute;inset:0";cover.style.position="relative";cover.replaceChildren(im);
      }
      const body=document.createElement("div");body.className="store-product-body";
      const tag=document.createElement("div");tag.className="store-tag-row";
@@ -75,7 +79,20 @@
      const desc=document.createElement("p");desc.textContent=p.summary||"Consulta próximamente los detalles de este recurso.";
      const foot=document.createElement("div");foot.className="store-product-foot";
      const note=document.createElement("span");note.className="store-price";note.textContent="No disponible para compra";
-     foot.append(note);body.append(tag,title,desc,foot);card.append(cover,body);list.append(card);
+     const details=document.createElement("button");details.type="button";details.className="store-detail-trigger";details.textContent="Ver información ↗";details.setAttribute("aria-label","Ver información sobre "+p.title);
+     details.addEventListener("click",()=>{
+      const dialog=document.createElement("dialog");dialog.className="store-detail-dialog";
+      const close=document.createElement("button");close.type="button";close.className="store-detail-close";close.setAttribute("aria-label","Cerrar ficha");close.textContent="×";
+      close.addEventListener("click",()=>dialog.close());
+      const inner=document.createElement("div"),heading=document.createElement("h2"),intro=document.createElement("p"),meta=document.createElement("p"),notice=document.createElement("p");
+      heading.textContent=p.title;intro.textContent=p.summary||"Información en preparación.";
+      meta.textContent=[p.audience,p.topic,p.format].filter(Boolean).join(" · ");
+      notice.textContent="Ficha informativa. La compra y la descarga digital aún no están habilitadas.";
+      inner.append(heading,meta,intro,notice);dialog.append(close,inner);
+      if(coverUrl){const photo=document.createElement("img");photo.src=coverUrl;photo.alt="Portada de "+p.title;photo.loading="lazy";inner.prepend(photo);}
+      document.body.append(dialog);dialog.addEventListener("close",()=>dialog.remove(),{once:true});dialog.showModal();
+     });
+     foot.append(note,details);body.append(tag,title,desc,foot);card.append(cover,body);list.append(card);
     }
     update();
    }catch(error){console.warn("Mineuri: no se pudo sincronizar el catálogo público.");}
