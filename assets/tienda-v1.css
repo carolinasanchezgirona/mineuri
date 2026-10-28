@@ -276,3 +276,16 @@
 .store-library .store-collection-card h3{font-size:clamp(23px,2vw,28px)}
 @media(max-width:620px){.store-library .store-collection-art{height:225px}}
 @media(prefers-reduced-motion:reduce){.store-library .store-collection-art img{transition:none}}
+
+
+/* Recursos v9: ficha dinámica y vista informativa del catálogo */
+.store-detail-trigger{border:0;background:transparent;padding:4px 0;color:#0e5c7c;font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.store-detail-trigger:focus-visible,.store-detail-close:focus-visible{outline:3px solid #8c4192;outline-offset:3px}
+.store-detail-dialog{width:min(620px,calc(100% - 26px));max-height:85vh;overflow:auto;border:1px solid #d7e5df;border-radius:18px;box-shadow:0 25px 75px #163d4466;padding:30px;background:#fff;color:#154e66}
+.store-detail-dialog::backdrop{background:#102b35aa}
+.store-detail-dialog h2{font:500 clamp(29px,4vw,41px)/1.14 var(--font-title);margin:15px 45px 14px 0}
+.store-detail-dialog p{font-size:14px;line-height:1.7;color:#46646b}
+.store-detail-dialog p:last-child{padding:14px;background:#eaf5f2;border-radius:10px}
+.store-detail-dialog img{display:block;width:100%;max-height:270px;object-fit:cover;border-radius:10px}
+.store-detail-close{position:absolute;top:14px;right:15px;background:#f1f7f4;border:0;border-radius:50%;width:40px;height:40px;font-size:28px;color:#154e66;cursor:pointer}
+@media(max-width:600px){.store-detail-dialog{padding:19px}.store-product-foot{align-items:flex-start;flex-wrap:wrap}}
