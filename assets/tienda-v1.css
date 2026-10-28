@@ -213,3 +213,26 @@
 @media(max-width:900px){.store-collection-grid{grid-template-columns:1fr}.store-collection-card{min-height:0;padding:24px}.store-collection-symbol{margin-top:-18px;margin-bottom:0}.store-collections-intro{margin-bottom:23px}}
 @media(max-width:720px){.store-advice{padding:48px 0 54px}.store-collections-intro h2{font-size:37px}.store-collections-intro p{font-size:14px}.store-collection-card h3{font-size:29px}}
 @media(prefers-reduced-motion:reduce){.store-collection-card{transition:none}}
+
+
+/* Recursos v6: colecciones con estética editorial y profesional */
+.store-advice{background:#F6FAF8;padding:68px 0 76px}
+.store-collections-intro{max-width:820px;margin-bottom:28px}
+.store-collections-intro h2{font-size:clamp(34px,3.5vw,46px);max-width:780px}
+.store-collections-intro p{font-size:15px;line-height:1.7}
+.store-collection-grid{gap:16px}
+.store-collection-card{position:relative;min-height:270px;padding:28px 28px 25px;background:#fff;border:1px solid #D9E6E1;border-top:4px solid #8C4192;border-radius:10px;box-shadow:0 5px 16px #0E5C7C08}
+.store-collection-personas,.store-collection-clinica,.store-collection-cognicion{background:#fff}
+.store-collection-clinica{border-top-color:#198B82}
+.store-collection-cognicion{border-top-color:#0E5C7C}
+.store-collection-card:hover{transform:translateY(-3px);box-shadow:0 14px 27px #0E5C7C13;border-color:#B6D4CB}
+.store-collection-card .store-number{font-size:10px;letter-spacing:.1em;color:#687B81}
+.store-collection-symbol{position:absolute;top:23px;right:26px;font:400 26px/1 var(--font-title);color:#8C4192;opacity:.7;margin:0}
+.store-collection-clinica .store-collection-symbol{color:#198B82}
+.store-collection-cognicion .store-collection-symbol{color:#0E5C7C}
+.store-collection-card h3{font-size:clamp(25px,2.15vw,30px);line-height:1.18;max-width:290px;margin:37px 0 12px}
+.store-collection-card p{font-size:13px;line-height:1.65;margin-bottom:23px;max-width:330px}
+.store-collection-link{font-size:12px;border:0;padding:0;color:#0E5C7C}
+.store-collection-link span{margin-left:5px}
+@media(max-width:900px){.store-collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.store-collection-card{min-height:245px}.store-collection-card h3{margin-top:29px}}
+@media(max-width:620px){.store-collection-grid{grid-template-columns:1fr}.store-collection-card{min-height:0;padding:23px 24px}.store-collection-card h3{font-size:27px;margin:25px 0 10px}.store-collection-symbol{top:20px;right:22px}.store-advice{padding:48px 0 55px}}
