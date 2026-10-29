@@ -9,6 +9,7 @@
   const topic = document.querySelector("#area-recursos");
   const format = document.querySelector("#formato-recursos");
   const audience = [...document.querySelectorAll('input[name="destinatario"]')];
+  const highlights = [...document.querySelectorAll('input[name="destacados"]')];
   const availability = document.querySelector("#solo-disponibles");
   const reset = document.querySelector("[data-store-reset]");
   const count = document.querySelector("[data-store-count]");
@@ -20,10 +21,14 @@
   if(audienceOption)audienceOption.checked=true;
   if(params.get("area") && [...topic.options].some(o=>o.value===params.get("area")))topic.value=params.get("area");
   if(params.get("formato") && [...format.options].some(o=>o.value===params.get("formato")))format.value=params.get("formato");
-  if(params.get("tipo")==="gratuito"||params.get("solo")==="disponibles")availability.checked=true;
+  if(params.get("tipo")==="gratuito"){const free=highlights.find(el=>el.value==="gratuitos");if(free)free.checked=true;}
+  if(params.get("tipo")==="recientes"){const recent=highlights.find(el=>el.value==="recientes");if(recent)recent.checked=true;}
+  if(params.get("solo")==="disponibles")availability.checked=true;
   if(params.get("q"))input.value=params.get("q").slice(0,100);
   function update(){
    const selectedAudience=(audience.find(a=>a.checked)||{}).value||"todos";
+   const highlighted=(highlights.find(a=>a.checked)||{}).value||"todos";
+   const recentCutoff=Date.now()-30*24*60*60*1000;
    const q=norm(input.value);
    let shown=0;
    for(const card of cards()){
@@ -32,6 +37,8 @@
      (topic.value==="todos"||card.dataset.topic===topic.value)&&
      (format.value==="todos"||card.dataset.format===format.value)&&
      (!availability.checked||card.dataset.available==="true")&&
+     (highlighted!=="gratuitos"||card.dataset.free==="true")&&
+     (highlighted!=="recientes"||(card.dataset.createdAt && Date.parse(card.dataset.createdAt)>=recentCutoff))&&
      (!q||text.includes(q));
     card.hidden=!match;
     if(match)shown++;
@@ -39,16 +46,17 @@
    count.textContent=shown===1?"1 recurso encontrado":shown+" recursos encontrados";
    empty.hidden=shown!==0;
   }
-  [input,topic,format,availability,...audience].forEach(el=>el.addEventListener(el===input?"input":"change",update));
+  [input,topic,format,availability,...audience,...highlights].forEach(el=>el.addEventListener(el===input?"input":"change",update));
   reset.addEventListener("click",()=>{
    input.value="";topic.value="todos";format.value="todos";availability.checked=false;
    const all=audience.find(el=>el.value==="todos");if(all)all.checked=true;
+   const allHighlights=highlights.find(el=>el.value==="todos");if(allHighlights)allHighlights.checked=true;
    update();
   });
   update();
   // Se incluyen solo publicaciones aprobadas en Supabase. Los borradores no son accesibles.
   async function loadPublished(){
-   const endpoint="https://qtuzwzanifviukqcfzwa.supabase.co/rest/v1/resources?select=id,slug,title,summary,audience,topic,format,is_free,price_cents,cover_path,status&status=eq.published&order=created_at.desc&limit=100";
+   const endpoint="https://qtuzwzanifviukqcfzwa.supabase.co/rest/v1/resources?select=id,slug,title,summary,audience,topic,format,is_free,price_cents,cover_path,status,created_at&status=eq.published&order=created_at.desc&limit=100";
    const key="sb_publishable_G1q_gbdK6tF1JUb9N4mcdg_G0xEEif-";
    try{
     const res=await fetch(endpoint,{headers:{apikey:key},signal:AbortSignal.timeout(8000)});
@@ -59,7 +67,7 @@
      const card=document.createElement("article");card.className="store-product";card.dataset.product="";
      card.dataset.audience=p.audience;card.dataset.topic=p.topic||"";card.dataset.format=(p.format==="pdf"?"cuaderno":p.format)||"";
      // No se atribuye disponibilidad comercial hasta habilitar entrega segura.
-     card.dataset.available=p.is_free?"true":"false";card.dataset.search=[p.title,p.summary,p.audience,p.topic].join(" ");
+     card.dataset.available=p.is_free?"true":"false";card.dataset.free=p.is_free?"true":"false";card.dataset.createdAt=p.created_at||"";card.dataset.search=[p.title,p.summary,p.audience,p.topic].join(" ");
      const cover=document.createElement("div");cover.className="store-cover mint";
      cover.style.cssText="min-height:180px;display:flex;align-items:center;justify-content:center;padding:25px";
      const label=document.createElement("strong");label.textContent=p.title;label.style.font="500 27px/1.2 Georgia,serif";cover.append(label);
