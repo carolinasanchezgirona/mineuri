@@ -57,9 +57,9 @@
     for(const p of data){
      if(!p||!p.id||!p.title||!p.slug||!p.audience)continue;
      const card=document.createElement("article");card.className="store-product";card.dataset.product="";
-     card.dataset.audience=p.audience;card.dataset.topic=p.topic||"";card.dataset.format=p.format||"";
+     card.dataset.audience=p.audience;card.dataset.topic=p.topic||"";card.dataset.format=(p.format==="pdf"?"cuaderno":p.format)||"";
      // No se atribuye disponibilidad comercial hasta habilitar entrega segura.
-     card.dataset.available="false";card.dataset.search=[p.title,p.summary,p.audience,p.topic].join(" ");
+     card.dataset.available=p.is_free?"true":"false";card.dataset.search=[p.title,p.summary,p.audience,p.topic].join(" ");
      const cover=document.createElement("div");cover.className="store-cover mint";
      cover.style.cssText="min-height:180px;display:flex;align-items:center;justify-content:center;padding:25px";
      const label=document.createElement("strong");label.textContent=p.title;label.style.font="500 27px/1.2 Georgia,serif";cover.append(label);
@@ -73,12 +73,12 @@
      const body=document.createElement("div");body.className="store-product-body";
      const tag=document.createElement("div");tag.className="store-tag-row";
      const who=document.createElement("span");who.className="store-tag";who.textContent=p.audience;
-     const state=document.createElement("span");state.className="store-tag upcoming";state.textContent="Ficha publicada · entrega en preparación";
+     const state=document.createElement("span");state.className="store-tag upcoming";state.textContent=p.is_free?"Gratuito · publicado":"Ficha publicada · entrega en preparación";
      tag.append(who,state);
      const title=document.createElement("h3");title.textContent=p.title;
      const desc=document.createElement("p");desc.textContent=p.summary||"Consulta próximamente los detalles de este recurso.";
      const foot=document.createElement("div");foot.className="store-product-foot";
-     const note=document.createElement("span");note.className="store-price";note.textContent="No disponible para compra";
+     const note=document.createElement("span");note.className="store-price";note.textContent=p.is_free?"Gratis":(Number.isFinite(p.price_cents)?(p.price_cents/100).toFixed(2).replace(".",",")+" €":"Consultar disponibilidad");
      const details=document.createElement("button");details.type="button";details.className="store-detail-trigger";details.textContent="Ver información ↗";details.setAttribute("aria-label","Ver información sobre "+p.title);
      details.addEventListener("click",()=>{
       const dialog=document.createElement("dialog");dialog.className="store-detail-dialog";
@@ -87,7 +87,7 @@
       const inner=document.createElement("div"),heading=document.createElement("h2"),intro=document.createElement("p"),meta=document.createElement("p"),notice=document.createElement("p");
       heading.textContent=p.title;intro.textContent=p.summary||"Información en preparación.";
       meta.textContent=[p.audience,p.topic,p.format].filter(Boolean).join(" · ");
-      notice.textContent="Ficha informativa. La compra y la descarga digital aún no están habilitadas.";
+      notice.textContent=p.is_free?"Recurso gratuito publicado. La descarga se habilitará cuando esté configurada la entrega segura del archivo.":"Ficha informativa. La compra y la descarga digital aún no están habilitadas.";
       inner.append(heading,meta,intro,notice);dialog.append(close,inner);
       if(coverUrl){const photo=document.createElement("img");photo.src=coverUrl;photo.alt="Portada de "+p.title;photo.loading="lazy";inner.prepend(photo);}
       document.body.append(dialog);dialog.addEventListener("close",()=>dialog.remove(),{once:true});dialog.showModal();
@@ -95,7 +95,7 @@
      foot.append(note,details);body.append(tag,title,desc,foot);card.append(cover,body);list.append(card);
     }
     update();
-   }catch(error){console.warn("Mineuri: no se pudo sincronizar el catálogo público.");}
+   }catch(error){console.error("Mineuri: fallo de conexión con recursos publicados",error);const aviso=document.createElement("p");aviso.setAttribute("role","alert");aviso.textContent="No se han podido cargar los nuevos recursos. Vuelve a intentarlo más tarde.";aviso.style.cssText="color:#9b2929;margin:12px 0";list.parentElement.insertBefore(aviso,list);}
   }
   loadPublished();
  };
