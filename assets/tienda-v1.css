@@ -355,3 +355,74 @@
 .store-download-link:focus-visible,.store-detail-trigger:focus-visible{outline:3px solid #8c4192;outline-offset:3px}
 .store-detail-dialog .store-download-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 15px;border-radius:10px;background:#0e5c7c;color:white;text-decoration:none;margin-top:8px}
 @media(max-width:720px){.store-product .store-product-foot{align-items:stretch}}
+
+/* Catálogo real: tarjetas compactas. Mantener portada entera, sin recortar. */
+.store-results .store-grid{
+ max-width:720px;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:16px;
+ align-items:start;
+}
+.store-grid .store-product--live{
+ min-width:0;
+ width:100%;
+ border-radius:12px;
+ box-shadow:0 4px 15px #0e5c7c0a;
+}
+.store-product--live .store-cover{
+ height:166px;
+ min-height:166px;
+ padding:12px;
+ background:#f8faf9;
+}
+.store-product--live .store-cover img{
+ object-fit:contain!important;
+ width:100%;
+ height:100%;
+}
+.store-product--live .store-product-body{
+ padding:15px 16px 16px;
+}
+.store-product--live .store-tag-row{
+ margin:0 0 8px;
+ gap:5px;
+}
+.store-product--live .store-tag{
+ font-size:9px;
+ line-height:1.3;
+ padding:4px 6px;
+}
+.store-product--live .store-product-body h3{
+ font-size:20px;
+ line-height:1.18;
+ margin:0 0 8px;
+}
+.store-product--live .store-product-body>p{
+ font-size:12px;
+ line-height:1.5;
+ margin:0 0 12px;
+ max-height:3em;
+ -webkit-line-clamp:2;
+}
+.store-product--live .store-product-foot{
+ gap:8px;
+ padding-top:10px;
+}
+.store-product--live .store-product-foot>.store-download-link{
+ min-height:40px;
+ padding:9px 12px;
+ font-size:12px;
+ border-radius:9px;
+ text-align:center;
+ justify-content:center;
+}
+.store-product--live .store-resource-meta>.store-price{font-size:13px}
+.store-product--live .store-resource-meta>.store-detail-trigger{font-size:12px}
+@media(max-width:720px){
+ .store-results .store-grid{
+   max-width:380px;
+   margin-inline:auto;
+   grid-template-columns:minmax(0,1fr);
+ }
+ .store-product--live .store-cover{height:175px;min-height:175px}
+}
