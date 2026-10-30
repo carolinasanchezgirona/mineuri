@@ -1,0 +1,2 @@
+/* Escuela: comparte la arquitectura visual y los componentes del catálogo de Recursos. */
+.store-headline{padding:58px 0 48px}.store-headline h1{font-size:clamp(45px,6vw,72px);max-width:850px}.store-results{padding-top:42px}.school-pending{font-size:12px;color:var(--muted);font-weight:700}.store-product[hidden]{display:none!important}.store-hero-availability{font-size:13px!important;margin-top:20px}.store-cover h3{font-size:clamp(27px,2.5vw,36px)}
