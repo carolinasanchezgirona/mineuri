@@ -6,6 +6,7 @@
  const audienceNames = values => values.map(v=>AUDIENCE_LABELS[v]||v).join(", ");
  const norm = value => (value || "").toString().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
  const init = () => {
+  const downloadEndpoint = "https://qtuzwzanifviukqcfzwa.supabase.co/functions/v1/public-resource-download";
   const list = document.querySelector("[data-store-products]");
   if(!list)return;
   const input = document.querySelector("#buscar-recursos");
@@ -72,7 +73,7 @@
      const card=document.createElement("article");card.className="store-product";card.dataset.product="";
      const recipientList=getAudiences(p);
      card.dataset.audience=recipientList.join(" ");card.dataset.topic=p.topic||"";card.dataset.format=p.format||"";
-     // No se atribuye disponibilidad comercial hasta habilitar entrega segura.
+     // Solo los recursos gratuitos publicados permiten descargar directamente.
      card.dataset.available=p.is_free?"true":"false";card.dataset.free=p.is_free?"true":"false";card.dataset.createdAt=p.created_at||"";card.dataset.search=[p.title,p.summary,audienceNames(recipientList),p.topic].join(" ");
      const cover=document.createElement("div");cover.className="store-cover mint";
      cover.style.cssText="min-height:180px;display:flex;align-items:center;justify-content:center;padding:25px";
@@ -93,7 +94,18 @@
      const desc=document.createElement("p");desc.textContent=p.summary||"Consulta próximamente los detalles de este recurso.";
      const foot=document.createElement("div");foot.className="store-product-foot";
      const note=document.createElement("span");note.className="store-price";note.textContent=p.is_free?"Gratis":(Number.isFinite(p.price_cents)?(p.price_cents/100).toFixed(2).replace(".",",")+" €":"Consultar disponibilidad");
-     const details=document.createElement("button");details.type="button";details.className="store-detail-trigger";details.textContent="Ver información ↗";details.setAttribute("aria-label","Ver información sobre "+p.title);
+     const details=document.createElement("button");details.type="button";details.className="store-detail-trigger";details.textContent="Ver información";details.setAttribute("aria-label","Ver información sobre "+p.title);
+     const downloadUrl=(p.is_free && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.slug)) ? downloadEndpoint+"?slug="+encodeURIComponent(p.slug) : null;
+     function makeDownloadLink(){
+      const link=document.createElement("a");
+      link.className="store-download-link";
+      link.textContent="↓ Descargar PDF";
+      link.href=downloadUrl;
+      link.target="_blank";
+      link.rel="noopener noreferrer";
+      link.setAttribute("aria-label","Descargar gratuitamente el PDF "+p.title);
+      return link;
+     }
      details.addEventListener("click",()=>{
       const dialog=document.createElement("dialog");dialog.className="store-detail-dialog";
       const close=document.createElement("button");close.type="button";close.className="store-detail-close";close.setAttribute("aria-label","Cerrar ficha");close.textContent="×";
@@ -101,12 +113,13 @@
       const inner=document.createElement("div"),heading=document.createElement("h2"),intro=document.createElement("p"),meta=document.createElement("p"),notice=document.createElement("p");
       heading.textContent=p.title;intro.textContent=p.summary||"Información en preparación.";
       meta.textContent=[audienceNames(recipientList),p.topic,p.format].filter(Boolean).join(" · ");
-      notice.textContent=p.is_free?"Recurso gratuito publicado. La descarga se habilitará cuando esté configurada la entrega segura del archivo.":"Ficha informativa. La compra y la descarga digital aún no están habilitadas.";
-      inner.append(heading,meta,intro,notice);dialog.append(close,inner);
+      notice.textContent=p.is_free?"PDF gratuito: descarga directa disponible.":"Ficha informativa. La compra y la descarga digital aún no están habilitadas.";
+      inner.append(heading,meta,intro,notice);if(downloadUrl)inner.append(makeDownloadLink());dialog.append(close,inner);
       if(coverUrl){const photo=document.createElement("img");photo.src=coverUrl;photo.alt="Portada de "+p.title;photo.loading="lazy";inner.prepend(photo);}
       document.body.append(dialog);dialog.addEventListener("close",()=>dialog.remove(),{once:true});dialog.showModal();
      });
-     foot.append(note,details);body.append(tag,title,desc,foot);card.append(cover,body);list.append(card);
+     const actions=document.createElement("div");actions.className="store-product-actions";actions.append(details);if(downloadUrl)actions.append(makeDownloadLink());
+     foot.append(note,actions);body.append(tag,title,desc,foot);card.append(cover,body);list.append(card);
     }
     update();
    }catch(error){console.error("Mineuri: fallo de conexión con recursos publicados",error);const aviso=document.createElement("p");aviso.setAttribute("role","alert");aviso.textContent="No se han podido cargar los nuevos recursos. Vuelve a intentarlo más tarde.";aviso.style.cssText="color:#9b2929;margin:12px 0";list.parentElement.insertBefore(aviso,list);}
