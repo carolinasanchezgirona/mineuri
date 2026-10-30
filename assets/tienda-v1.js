@@ -70,14 +70,14 @@
     const data=await res.json();if(!Array.isArray(data))return;
     for(const p of data){
      if(!p||!p.id||!p.title||!p.slug||!p.audience)continue;
-     const card=document.createElement("article");card.className="store-product";card.dataset.product="";
+     const card=document.createElement("article");card.className="store-product store-product--live";card.dataset.product="";
      const recipientList=getAudiences(p);
      card.dataset.audience=recipientList.join(" ");card.dataset.topic=p.topic||"";card.dataset.format=p.format||"";
      // Solo los recursos gratuitos publicados permiten descargar directamente.
      card.dataset.available=p.is_free?"true":"false";card.dataset.free=p.is_free?"true":"false";card.dataset.createdAt=p.created_at||"";card.dataset.search=[p.title,p.summary,audienceNames(recipientList),p.topic].join(" ");
      const cover=document.createElement("div");cover.className="store-cover mint";
-     cover.style.cssText="min-height:180px;display:flex;align-items:center;justify-content:center;padding:25px";
-     const label=document.createElement("strong");label.textContent=p.title;label.style.font="500 27px/1.2 Georgia,serif";cover.append(label);
+     cover.style.cssText="display:flex;align-items:center;justify-content:center";
+     const label=document.createElement("strong");label.textContent=p.title;label.style.font="500 21px/1.2 Georgia,serif";cover.append(label);
      const publicStorageBase="https://qtuzwzanifviukqcfzwa.supabase.co/storage/v1/object/public/mineuri-public/";
      let coverUrl=null;
      if(typeof p.cover_path==="string" && /^resources\/[a-z0-9-]+\.(?:jpg|jpeg|png|webp)$/i.test(p.cover_path)){coverUrl=publicStorageBase+p.cover_path.split("/").map(encodeURIComponent).join("/");}
