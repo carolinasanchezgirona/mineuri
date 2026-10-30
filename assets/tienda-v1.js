@@ -1,6 +1,9 @@
 /* Mineuri: explorador de recursos, sin analítica ni almacenamiento de datos personales. */
 (() => {
  "use strict";
+ const AUDIENCE_LABELS={personas:"Personas y familias",psicologos:"Psicólogos",neuropsicologos:"Neuropsicólogos",centros:"Centros"};
+ const getAudiences = p => Array.isArray(p.audiences) && p.audiences.length ? p.audiences : (p.audience ? [p.audience] : []);
+ const audienceNames = values => values.map(v=>AUDIENCE_LABELS[v]||v).join(", ");
  const norm = value => (value || "").toString().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
  const init = () => {
   const list = document.querySelector("[data-store-products]");
@@ -56,7 +59,7 @@
   update();
   // Se incluyen solo publicaciones aprobadas en Supabase. Los borradores no son accesibles.
   async function loadPublished(){
-   const endpoint="https://qtuzwzanifviukqcfzwa.supabase.co/rest/v1/resources?select=id,slug,title,summary,audience,topic,format,is_free,price_cents,cover_path,status,created_at&status=eq.published&order=created_at.desc&limit=100";
+   const endpoint="https://qtuzwzanifviukqcfzwa.supabase.co/rest/v1/resources?select=id,slug,title,summary,audience,audiences,topic,format,is_free,price_cents,cover_path,status,created_at&status=eq.published&order=created_at.desc&limit=100";
    const key="sb_publishable_G1q_gbdK6tF1JUb9N4mcdg_G0xEEif-";
    try{
     const res=await fetch(endpoint,{headers:{apikey:key},signal:AbortSignal.timeout(8000)});
@@ -65,9 +68,10 @@
     for(const p of data){
      if(!p||!p.id||!p.title||!p.slug||!p.audience)continue;
      const card=document.createElement("article");card.className="store-product";card.dataset.product="";
-     card.dataset.audience=p.audience;card.dataset.topic=p.topic||"";card.dataset.format=(p.format==="pdf"?"cuaderno":p.format)||"";
+     const recipientList=getAudiences(p);
+     card.dataset.audience=recipientList.join(" ");card.dataset.topic=p.topic||"";card.dataset.format=(p.format==="pdf"?"cuaderno":p.format)||"";
      // No se atribuye disponibilidad comercial hasta habilitar entrega segura.
-     card.dataset.available=p.is_free?"true":"false";card.dataset.free=p.is_free?"true":"false";card.dataset.createdAt=p.created_at||"";card.dataset.search=[p.title,p.summary,p.audience,p.topic].join(" ");
+     card.dataset.available=p.is_free?"true":"false";card.dataset.free=p.is_free?"true":"false";card.dataset.createdAt=p.created_at||"";card.dataset.search=[p.title,p.summary,audienceNames(recipientList),p.topic].join(" ");
      const cover=document.createElement("div");cover.className="store-cover mint";
      cover.style.cssText="min-height:180px;display:flex;align-items:center;justify-content:center;padding:25px";
      const label=document.createElement("strong");label.textContent=p.title;label.style.font="500 27px/1.2 Georgia,serif";cover.append(label);
@@ -80,7 +84,7 @@
      }
      const body=document.createElement("div");body.className="store-product-body";
      const tag=document.createElement("div");tag.className="store-tag-row";
-     const who=document.createElement("span");who.className="store-tag";who.textContent=p.audience;
+     const who=document.createElement("span");who.className="store-tag";who.textContent=audienceNames(recipientList);
      const state=document.createElement("span");state.className="store-tag upcoming";state.textContent=p.is_free?"Gratuito · publicado":"Ficha publicada · entrega en preparación";
      tag.append(who,state);
      const title=document.createElement("h3");title.textContent=p.title;
@@ -94,7 +98,7 @@
       close.addEventListener("click",()=>dialog.close());
       const inner=document.createElement("div"),heading=document.createElement("h2"),intro=document.createElement("p"),meta=document.createElement("p"),notice=document.createElement("p");
       heading.textContent=p.title;intro.textContent=p.summary||"Información en preparación.";
-      meta.textContent=[p.audience,p.topic,p.format].filter(Boolean).join(" · ");
+      meta.textContent=[audienceNames(recipientList),p.topic,p.format].filter(Boolean).join(" · ");
       notice.textContent=p.is_free?"Recurso gratuito publicado. La descarga se habilitará cuando esté configurada la entrega segura del archivo.":"Ficha informativa. La compra y la descarga digital aún no están habilitadas.";
       inner.append(heading,meta,intro,notice);dialog.append(close,inner);
       if(coverUrl){const photo=document.createElement("img");photo.src=coverUrl;photo.alt="Portada de "+p.title;photo.loading="lazy";inner.prepend(photo);}
