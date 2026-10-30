@@ -291,45 +291,67 @@
 .store-detail-close{position:absolute;top:14px;right:15px;background:#f1f7f4;border:0;border-radius:50%;width:40px;height:40px;font-size:28px;color:#154e66;cursor:pointer}
 @media(max-width:600px){.store-detail-dialog{padding:19px}.store-product-foot{align-items:flex-start;flex-wrap:wrap}}
 
-/* Footer de tarjetas: precio y ficha en una fila; descargar en la siguiente. */
-.store-product-foot{
- display:grid;
- grid-template-columns:minmax(0,1fr) auto;
- grid-template-rows:auto auto;
- align-items:center;
- column-gap:12px;
- row-gap:12px;
+/* Tarjetas de recursos: dos filas sin alineaciones ambiguas. */
+.store-product .store-product-foot{
+ box-sizing:border-box;
+ display:flex;
+ flex-direction:column;
+ align-items:stretch;
+ justify-content:flex-start;
+ gap:12px;
+ width:100%;
+ min-width:0;
  margin-top:auto;
  padding-top:15px;
+ border-top:1px solid #d9e8e3;
 }
-.store-product-foot>.store-price{grid-column:1;grid-row:1;font-size:14px;font-weight:750}
-.store-product-foot>.store-detail-trigger{
- grid-column:2;grid-row:1;
- justify-self:end;
- font-size:12px;font-weight:650;
- border:0;background:transparent;padding:4px 0;
- color:#0e5c7c;text-decoration:underline;
- text-underline-offset:3px;white-space:nowrap;cursor:pointer
+.store-product .store-resource-meta{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:12px;
+ width:100%;
+ min-width:0;
 }
-.store-download-link{
- display:inline-flex;
+.store-product .store-resource-meta>.store-price{
+ font-size:14px;
+ font-weight:750;
+ line-height:1.4;
+}
+.store-product .store-resource-meta>.store-detail-trigger{
+ font-size:12px;
+ font-weight:650;
+ background:transparent;
+ border:0;
+ padding:4px 0;
+ color:#0e5c7c;
+ text-decoration:underline;
+ text-underline-offset:3px;
+ white-space:nowrap;
+ cursor:pointer;
+}
+.store-product .store-product-foot>.store-download-link{
+ box-sizing:border-box;
+ display:flex;
  align-items:center;
  justify-content:center;
- box-sizing:border-box;
- gap:7px;
+ flex:0 0 auto;
+ align-self:stretch;
+ width:100%;
+ max-width:none;
  min-height:44px;
+ margin:0;
  padding:10px 15px;
  background:#0e5c7c;
  border:1px solid #0e5c7c;
  border-radius:10px;
- color:#fff!important;
- text-decoration:none!important;
+ color:#fff;
  text-align:center;
+ text-decoration:none;
  font:700 13px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;
- transition:background .15s ease
+ transition:background .15s ease;
 }
-.store-product-foot>.store-download-link{grid-column:1/-1;grid-row:2;width:100%}
-.store-download-link:hover{background:#09435a;color:#fff!important}
+.store-product .store-product-foot>.store-download-link:hover{background:#09435a}
 .store-download-link:focus-visible,.store-detail-trigger:focus-visible{outline:3px solid #8c4192;outline-offset:3px}
-.store-detail-dialog .store-download-link{margin-top:8px}
-@media(max-width:720px){.store-product-foot{align-items:center}}
+.store-detail-dialog .store-download-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 15px;border-radius:10px;background:#0e5c7c;color:white;text-decoration:none;margin-top:8px}
+@media(max-width:720px){.store-product .store-product-foot{align-items:stretch}}
