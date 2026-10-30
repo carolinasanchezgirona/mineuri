@@ -118,8 +118,10 @@
       if(coverUrl){const photo=document.createElement("img");photo.src=coverUrl;photo.alt="Portada de "+p.title;photo.loading="lazy";inner.prepend(photo);}
       document.body.append(dialog);dialog.addEventListener("close",()=>dialog.remove(),{once:true});dialog.showModal();
      });
-     // Price and details share the first row; the primary download action takes the full second row.
-     foot.append(note,details);if(downloadUrl)foot.append(makeDownloadLink());
+     // A dedicated full-width footer makes the download CTA align perfectly with the card content.
+     const topRow=document.createElement("div");topRow.className="store-resource-meta";
+     topRow.append(note,details);foot.append(topRow);
+     if(downloadUrl)foot.append(makeDownloadLink());
      body.append(tag,title,desc,foot);card.append(cover,body);list.append(card);
     }
     update();
