@@ -57,6 +57,8 @@
    update();
   });
   update();
+  count.textContent="Cargando recursos…";
+  empty.hidden=true;
   // Se incluyen solo publicaciones aprobadas en Supabase. Los borradores no son accesibles.
   async function loadPublished(){
    const endpoint="https://qtuzwzanifviukqcfzwa.supabase.co/rest/v1/resources?select=id,slug,title,summary,audience,audiences,topic,format,is_free,price_cents,cover_path,status,created_at&status=eq.published&order=created_at.desc&limit=100";
@@ -69,7 +71,7 @@
      if(!p||!p.id||!p.title||!p.slug||!p.audience)continue;
      const card=document.createElement("article");card.className="store-product";card.dataset.product="";
      const recipientList=getAudiences(p);
-     card.dataset.audience=recipientList.join(" ");card.dataset.topic=p.topic||"";card.dataset.format=(p.format==="pdf"?"cuaderno":p.format)||"";
+     card.dataset.audience=recipientList.join(" ");card.dataset.topic=p.topic||"";card.dataset.format=p.format||"";
      // No se atribuye disponibilidad comercial hasta habilitar entrega segura.
      card.dataset.available=p.is_free?"true":"false";card.dataset.free=p.is_free?"true":"false";card.dataset.createdAt=p.created_at||"";card.dataset.search=[p.title,p.summary,audienceNames(recipientList),p.topic].join(" ");
      const cover=document.createElement("div");cover.className="store-cover mint";
@@ -80,7 +82,7 @@
      if(typeof p.cover_path==="string" && /^resources\/[a-z0-9-]+\.(?:jpg|jpeg|png|webp)$/i.test(p.cover_path)){coverUrl=publicStorageBase+p.cover_path.split("/").map(encodeURIComponent).join("/");}
      else if(typeof p.cover_path==="string" && p.cover_path.startsWith(publicStorageBase)){coverUrl=p.cover_path;}
      if(coverUrl){
-      const im=document.createElement("img");im.src=coverUrl;im.alt="Portada del recurso: "+p.title;im.loading="lazy";im.style.cssText="width:100%;height:100%;object-fit:cover;position:absolute;inset:0";cover.style.position="relative";cover.replaceChildren(im);
+      const im=document.createElement("img");im.src=coverUrl;im.alt="Portada del recurso: "+p.title;im.loading="lazy";im.style.cssText="width:100%;height:100%;object-fit:contain;position:absolute;inset:0;background:#f8faf9";cover.style.position="relative";cover.replaceChildren(im);
      }
      const body=document.createElement("div");body.className="store-product-body";
      const tag=document.createElement("div");tag.className="store-tag-row";
