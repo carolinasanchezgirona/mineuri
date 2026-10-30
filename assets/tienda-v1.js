@@ -118,8 +118,9 @@
       if(coverUrl){const photo=document.createElement("img");photo.src=coverUrl;photo.alt="Portada de "+p.title;photo.loading="lazy";inner.prepend(photo);}
       document.body.append(dialog);dialog.addEventListener("close",()=>dialog.remove(),{once:true});dialog.showModal();
      });
-     const actions=document.createElement("div");actions.className="store-product-actions";actions.append(details);if(downloadUrl)actions.append(makeDownloadLink());
-     foot.append(note,actions);body.append(tag,title,desc,foot);card.append(cover,body);list.append(card);
+     // Price and details share the first row; the primary download action takes the full second row.
+     foot.append(note,details);if(downloadUrl)foot.append(makeDownloadLink());
+     body.append(tag,title,desc,foot);card.append(cover,body);list.append(card);
     }
     update();
    }catch(error){console.error("Mineuri: fallo de conexión con recursos publicados",error);const aviso=document.createElement("p");aviso.setAttribute("role","alert");aviso.textContent="No se han podido cargar los nuevos recursos. Vuelve a intentarlo más tarde.";aviso.style.cssText="color:#9b2929;margin:12px 0";list.parentElement.insertBefore(aviso,list);}
