@@ -48,6 +48,7 @@
 .store-tag.upcoming{color:#6C3172;background:#F6EAF5;border-color:#E7CAE7}
 .store-product-body h3{font:500 26px/1.15 var(--font-title);margin:3px 0 10px;letter-spacing:-.035em}
 .store-product-body p{font-size:13px;color:#526B70;margin:0 0 22px;line-height:1.75}
+.store-product-body>p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;max-height:calc(2 * 1.75em)}
 .store-product-foot{border-top:1px solid #D9E8E3;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto}
 .store-price{font-size:13px;font-weight:800;color:#0E5C7C}
 .store-product-foot a{font-size:13px;font-weight:800;text-decoration:underline;text-underline-offset:5px}
