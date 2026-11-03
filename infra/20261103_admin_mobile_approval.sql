@@ -159,6 +159,13 @@ begin
     end if;
     return jsonb_build_object('ok',true,'decision',decision);
   end if;
+  if action = 'notify' then
+    uid := (args->>'user_id')::uuid;
+    select coalesce(jsonb_agg(jsonb_build_object('device_id',d.id,'subscription',d.push_subscription)),'[]'::jsonb)
+      into rec from admin_mfa_private.devices d
+      where d.user_id=uid and d.revoked_at is null and d.push_subscription is not null;
+    return rec;
+  end if;
   if action = 'pushes' then
     select coalesce(jsonb_agg(jsonb_build_object('device_id',d.id,'subscription',d.push_subscription)),'[]'::jsonb) into rec
       from admin_mfa_private.devices d where d.user_id=uid and d.revoked_at is null and d.push_subscription is not null;
