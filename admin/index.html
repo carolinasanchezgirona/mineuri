@@ -29,6 +29,7 @@ async function completeAdminLogin(){
  status('Acceso confirmado.');
 }
 async function beginMobileApproval(){
+ if(mfaTimer){clearInterval(mfaTimer);mfaTimer=null;}
  const result=await window.AdminMobile.api('request',{client_label:'Mineuri Admin · Navegador'},token);
  if(!result.paired && !result.request_id) {await completeAdminLogin();return;}
  $('#login').classList.add('hidden');$('#mfa-box').classList.remove('hidden');
