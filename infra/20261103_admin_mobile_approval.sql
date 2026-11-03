@@ -91,15 +91,19 @@ begin
 
   if action = 'enroll' then
     -- Nunca permitir añadir otro teléfono solo con la contraseña.
+    did := (args->>'device_id')::uuid;
+    if did is null then raise exception 'Missing device id'; end if;
+    if exists(select 1 from admin_mfa_private.devices d where d.id=did and d.user_id=uid and d.revoked_at is null) then
+      return jsonb_build_object('device_id',did,'paired',true);
+    end if;
     select exists(select 1 from admin_mfa_private.devices d where d.user_id=uid and d.revoked_at is null) into already;
     if already and not exists(
       select 1 from admin_mfa_private.approved_sessions s where s.user_id=uid and s.session_id=sid and s.expires_at>now()
     ) then raise exception 'First approve access using an existing phone'; end if;
     if not (args ? 'public_key') then raise exception 'Missing device public key'; end if;
     push_data := args->'push_subscription';
-    insert into admin_mfa_private.devices (user_id,public_key,push_subscription,device_label)
-      values(uid,args->'public_key',push_data,left(coalesce(args->>'label','Mi móvil'),50))
-      returning id into did;
+    insert into admin_mfa_private.devices (id,user_id,public_key,push_subscription,device_label)
+      values(did,uid,args->'public_key',push_data,left(coalesce(args->>'label','Mi móvil'),50));
     insert into admin_mfa_private.approved_sessions(user_id,session_id,expires_at)
       values(uid,sid,now()+interval '12 hours')
       on conflict(user_id,session_id) do update set approved_at=now(),expires_at=excluded.expires_at;
