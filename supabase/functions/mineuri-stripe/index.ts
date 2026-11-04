@@ -13,6 +13,20 @@ function adminKey() {
   } catch { return ""; }
 }
 const ADMIN_KEY = adminKey();
+async function checkoutMode() {
+  if (!BASE || !ADMIN_KEY) return "off";
+  try {
+    const query = new URL(BASE + "/rest/v1/site_settings");
+    query.searchParams.set("select", "value");
+    query.searchParams.set("key", "eq.stripe_checkout_mode");
+    query.searchParams.set("limit", "1");
+    const r = await fetch(query, { headers: { apikey: ADMIN_KEY, Authorization: "Bearer " + ADMIN_KEY }, signal: AbortSignal.timeout(5000) });
+    if (!r.ok) return "off";
+    const list = await r.json();
+    const mode = list?.[0]?.value?.mode;
+    return mode === "test" || mode === "live" ? mode : "off";
+  } catch { return "off"; }
+}
 const headers = (req) => {
   const origin = req.headers.get("origin") || "";
   return {
@@ -48,7 +62,11 @@ async function stripe(path, init) {
   return data;
 }
 async function createCheckout(req, slug) {
-  if (!STRIPE_KEY || !WEBHOOK_SECRET || !BASE || !ADMIN_KEY) return reply(req, 503, { error: "La compra aún no está activada." });
+  const mode = await checkoutMode();
+  if (!STRIPE_KEY || !WEBHOOK_SECRET || !BASE || !ADMIN_KEY || mode === "off" ||
+      (mode === "live" && !STRIPE_KEY.startsWith("sk_live_")) ||
+      (mode === "test" && !STRIPE_KEY.startsWith("sk_test_")))
+    return reply(req, 503, { error: "La compra aún no está activada." });
   if (typeof slug !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || slug.length > 120)
     return reply(req, 400, { error: "Recurso no válido." });
   const item = await getResource("slug", slug);
@@ -120,7 +138,8 @@ async function download(req, sessionId) {
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: headers(req) });
   if (req.method === "GET") {
-    return reply(req, 200, { enabled: STRIPE_KEY.startsWith("sk_live_") && WEBHOOK_SECRET.startsWith("whsec_") && !!ADMIN_KEY });
+    const mode = await checkoutMode();
+    return reply(req, 200, { enabled: mode === "live" && STRIPE_KEY.startsWith("sk_live_") && WEBHOOK_SECRET.startsWith("whsec_") && !!ADMIN_KEY });
   }
   if (req.method !== "POST") return reply(req, 405, { error: "Método no permitido." });
   if (req.headers.get("origin") && !ORIGINS.has(req.headers.get("origin"))) return reply(req, 403, { error: "Origen no autorizado." });
