@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="robots" content="noindex,nofollow,noarchive">
+ <meta name="referrer" content="no-referrer">
+ <title>Tu compra en Mineuri · Descarga segura</title>
+ <meta name="description" content="Accede de manera segura a tu recurso adquirido en Mineuri.">
+ <link rel="icon" href="../../assets/favicon-mineuri-v2.png">
+ <link rel="stylesheet" href="../../assets/mineuri-paleta-v2.css">
+ <link rel="stylesheet" href="../../assets/ecosistema.css">
+ <style>
+  body{background:#f5faf8;color:#163d51;margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+  main{max-width:660px;margin:8vh auto;padding:20px}
+  .purchase-card{background:white;border:1px solid #dceae5;border-radius:22px;padding:clamp(25px,5vw,48px);box-shadow:0 14px 40px #0e5c7c10}
+  .eyebrow{color:#008e98;font-size:12px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
+  h1{font-family:Georgia,serif;font-size:clamp(34px,5vw,47px);line-height:1.12;color:#102c48;margin:16px 0}
+  p{line-height:1.7;color:#46616e}
+  .buy-action{appearance:none;border:0;border-radius:12px;display:inline-flex;padding:14px 23px;align-items:center;justify-content:center;background:#0e5c7c;color:white;font-weight:750;min-height:48px;text-decoration:none;font-size:15px;cursor:pointer}
+  .buy-action[hidden]{display:none}
+  .buy-action:disabled{opacity:.5;cursor:wait}
+  .secondary-link{display:inline-block;margin-top:18px;color:#0e5c7c;text-decoration:underline}
+  .notice{border-left:3px solid #0ab5b9;padding:10px 15px;background:#e9f8f4;border-radius:7px;font-size:14px}
+  :focus-visible{outline:3px solid #7d68db;outline-offset:3px}
+ </style>
+</head>
+<body>
+ <main>
+  <div class="purchase-card">
+   <div class="eyebrow">Mineuri · Compra de recursos</div>
+   <h1>Tu recurso, a un paso.</h1>
+   <p role="status" aria-live="polite" id="purchase-status">Comprobando tu pago con Stripe…</p>
+   <p id="resource-name" hidden></p>
+   <div id="purchase-actions">
+    <a id="download-action" class="buy-action" hidden rel="noopener noreferrer" target="_blank">Descargar PDF</a>
+    <button id="retry-action" class="buy-action" hidden type="button">Comprobar de nuevo</button>
+   </div>
+   <p id="security-note" class="notice" hidden>El enlace de descarga caduca por seguridad. Si caduca, pulsa «Comprobar de nuevo» para generar otro.</p>
+   <a href="../../tienda/" class="secondary-link">Volver a los recursos</a>
+  </div>
+ </main>
+ <script>
+ (() => {
+  "use strict";
+  const endpoint="https://qtuzwzanifviukqcfzwa.supabase.co/functions/v1/mineuri-stripe";
+  const sessionId=new URL(location.href).searchParams.get("session_id")||"";
+  const status=document.getElementById("purchase-status");
+  const name=document.getElementById("resource-name");
+  const link=document.getElementById("download-action");
+  const retry=document.getElementById("retry-action");
+  const note=document.getElementById("security-note");
+  async function checkPurchase(){
+   link.hidden=true;note.hidden=true;retry.hidden=true;
+   status.textContent="Comprobando tu pago con Stripe…";
+   if(!/^cs_(live|test)_[A-Za-z0-9]{15,250}$/.test(sessionId)){
+    status.textContent="No se ha encontrado una referencia de compra válida.";return;
+   }
+   try{
+    const res=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({action:"download",session_id:sessionId}),signal:AbortSignal.timeout(20000)});
+    const data=await res.json();
+    if(!res.ok||!data.download_url)throw Error(data.error||"No se ha podido obtener tu recurso.");
+    const downloadUrl=new URL(data.download_url);
+    if(downloadUrl.protocol!=="https:"||!downloadUrl.hostname.endsWith(".supabase.co"))
+      throw Error("La ruta de descarga no es válida.");
+    status.textContent="¡Pago confirmado! Tu cuaderno está disponible para descargar.";
+    name.textContent=data.title||"Recurso de Mineuri";name.hidden=false;
+    link.href=downloadUrl.toString();link.hidden=false;retry.hidden=false;retry.textContent="Generar otro enlace";
+    note.hidden=false;
+   }catch(e){
+    status.textContent=e instanceof Error?e.message:"No se pudo confirmar el pago.";
+    retry.textContent="Comprobar de nuevo";retry.hidden=false;
+   }
+  }
+  retry.addEventListener("click",checkPurchase);
+  checkPurchase();
+ })();
+ </script>
+</body>
+</html>
