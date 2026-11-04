@@ -7,6 +7,7 @@
  const norm = value => (value || "").toString().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
  const init = () => {
   const downloadEndpoint = "https://qtuzwzanifviukqcfzwa.supabase.co/functions/v1/public-resource-download";
+  const stripeEndpoint = "https://qtuzwzanifviukqcfzwa.supabase.co/functions/v1/mineuri-stripe";
   const list = document.querySelector("[data-store-products]");
   if(!list)return;
   const input = document.querySelector("#buscar-recursos");
@@ -68,13 +69,18 @@
     const res=await fetch(endpoint,{headers:{apikey:key},signal:AbortSignal.timeout(8000)});
     if(!res.ok)throw Error("Catálogo temporalmente inaccesible");
     const data=await res.json();if(!Array.isArray(data))return;
+    let stripeEnabled=false;
+    try {
+     const statusRes=await fetch(stripeEndpoint,{method:"GET",signal:AbortSignal.timeout(6000)});
+     if(statusRes.ok){const status=await statusRes.json();stripeEnabled=status.enabled===true;}
+    }catch(e){console.info("Mineuri: pagos aún no configurados");}
     for(const p of data){
      if(!p||!p.id||!p.title||!p.slug||!p.audience)continue;
      const card=document.createElement("article");card.className="store-product store-product--live";card.dataset.product="";
      const recipientList=getAudiences(p);
      card.dataset.audience=recipientList.join(" ");card.dataset.topic=p.topic||"";card.dataset.format=p.format||"";
      // Solo los recursos gratuitos publicados permiten descargar directamente.
-     card.dataset.available=p.is_free?"true":"false";card.dataset.free=p.is_free?"true":"false";card.dataset.createdAt=p.created_at||"";card.dataset.search=[p.title,p.summary,audienceNames(recipientList),p.topic].join(" ");
+     card.dataset.available=(p.is_free||stripeEnabled)?"true":"false";card.dataset.free=p.is_free?"true":"false";card.dataset.createdAt=p.created_at||"";card.dataset.search=[p.title,p.summary,audienceNames(recipientList),p.topic].join(" ");
      const cover=document.createElement("div");cover.className="store-cover mint";
      cover.style.cssText="display:flex;align-items:center;justify-content:center";
      const label=document.createElement("strong");label.textContent=p.title;label.style.font="500 21px/1.2 Georgia,serif";cover.append(label);
@@ -88,7 +94,7 @@
      const body=document.createElement("div");body.className="store-product-body";
      const tag=document.createElement("div");tag.className="store-tag-row";
      const who=document.createElement("span");who.className="store-tag";who.textContent=audienceNames(recipientList);
-     const state=document.createElement("span");state.className="store-tag upcoming";state.textContent=p.is_free?"Gratuito · publicado":"Ficha publicada · entrega en preparación";
+     const state=document.createElement("span");state.className="store-tag upcoming";state.textContent=p.is_free?"Gratuito · publicado":(stripeEnabled?"Compra segura con Stripe":"Ficha publicada · venta en preparación");
      tag.append(who,state);
      const title=document.createElement("h3");title.textContent=p.title;
      const desc=document.createElement("p");desc.textContent=p.summary||"Consulta próximamente los detalles de este recurso.";
@@ -96,6 +102,26 @@
      const note=document.createElement("span");note.className="store-price";note.textContent=p.is_free?"Gratis":(Number.isFinite(p.price_cents)?(p.price_cents/100).toFixed(2).replace(".",",")+" €":"Consultar disponibilidad");
      const details=document.createElement("button");details.type="button";details.className="store-detail-trigger";details.textContent="Ver información";details.setAttribute("aria-label","Ver información sobre "+p.title);
      const downloadUrl=(p.is_free && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.slug)) ? downloadEndpoint+"?slug="+encodeURIComponent(p.slug) : null;
+     function makeBuyButton(){
+      const button=document.createElement("button");
+      button.type="button";button.className="store-download-link";button.textContent="Comprar de forma segura";
+      button.setAttribute("aria-label","Comprar "+p.title+" a través de Stripe");
+      button.addEventListener("click",async()=>{
+       button.disabled=true;button.textContent="Abriendo pago seguro…";
+       try{
+        const response=await fetch(stripeEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"checkout",slug:p.slug}),signal:AbortSignal.timeout(18000)});
+        const data=await response.json();
+        if(!response.ok||!data.url)throw Error(data.error||"No se pudo iniciar la compra");
+        const next=new URL(data.url);
+        if(next.protocol!=="https:"||next.hostname!=="checkout.stripe.com")throw Error("Enlace de pago no válido");
+        window.location.assign(next.toString());
+       }catch(error){
+        window.alert(error instanceof Error?error.message:"No se pudo iniciar el pago.");
+        button.disabled=false;button.textContent="Comprar de forma segura";
+       }
+      });
+      return button;
+     }
      function makeDownloadLink(){
       const link=document.createElement("a");
       link.className="store-download-link";
@@ -113,15 +139,15 @@
       const inner=document.createElement("div"),heading=document.createElement("h2"),intro=document.createElement("p"),meta=document.createElement("p"),notice=document.createElement("p");
       heading.textContent=p.title;intro.textContent=p.summary||"Información en preparación.";
       meta.textContent=[audienceNames(recipientList),p.topic,p.format].filter(Boolean).join(" · ");
-      notice.textContent=p.is_free?"PDF gratuito: descarga directa disponible.":"Ficha informativa. La compra y la descarga digital aún no están habilitadas.";
-      inner.append(heading,meta,intro,notice);if(downloadUrl)inner.append(makeDownloadLink());dialog.append(close,inner);
+      notice.textContent=p.is_free?"PDF gratuito: descarga directa disponible.":(stripeEnabled?"Compra segura con Stripe. Tras confirmar el pago podrás descargar el PDF.":"Ficha informativa. La compra y la descarga digital aún no están habilitadas.");
+      inner.append(heading,meta,intro,notice);if(downloadUrl)inner.append(makeDownloadLink());else if(stripeEnabled)inner.append(makeBuyButton());dialog.append(close,inner);
       if(coverUrl){const photo=document.createElement("img");photo.src=coverUrl;photo.alt="Portada de "+p.title;photo.loading="lazy";inner.prepend(photo);}
       document.body.append(dialog);dialog.addEventListener("close",()=>dialog.remove(),{once:true});dialog.showModal();
      });
      // A dedicated full-width footer makes the download CTA align perfectly with the card content.
      const topRow=document.createElement("div");topRow.className="store-resource-meta";
      topRow.append(note,details);foot.append(topRow);
-     if(downloadUrl)foot.append(makeDownloadLink());
+     if(downloadUrl)foot.append(makeDownloadLink());else if(stripeEnabled)foot.append(makeBuyButton());
      body.append(tag,title,desc,foot);card.append(cover,body);list.append(card);
     }
     update();
