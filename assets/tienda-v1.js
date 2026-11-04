@@ -1,7 +1,7 @@
 /* Mineuri: explorador de recursos, sin analítica ni almacenamiento de datos personales. */
 (() => {
  "use strict";
- const AUDIENCE_LABELS={personas:"Personas y familias",psicologos:"Psicólogos",neuropsicologos:"Neuropsicólogos",centros:"Centros"};
+ const AUDIENCE_LABELS={personas:"Público general",psicologos:"Psicólogos",neuropsicologos:"Neuropsicólogos",centros:"Centros"};
  const getAudiences = p => Array.isArray(p.audiences) && p.audiences.length ? p.audiences : (p.audience ? [p.audience] : []);
  const audienceNames = values => values.map(v=>AUDIENCE_LABELS[v]||v).join(", ");
  const norm = value => (value || "").toString().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
