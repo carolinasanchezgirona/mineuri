@@ -47,3 +47,42 @@ body{background:#F5F6EB;color:#344F62}
 .eco-avatar{background:#E5D8C6;color:#805B64}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline-color:#344F62}
 @media(max-width:680px){.site-header::after{height:2px}}
+
+/* Simplificación editorial de portada y catálogo, noviembre 2026 */
+.mini-ribbon{display:none!important}
+.site-header .header-inner{min-height:70px;gap:20px}
+.site-header .brand{font-size:clamp(26px,2.5vw,31px);letter-spacing:-1.4px}
+.site-header .brand-mark{height:34px!important;width:34px!important;flex:0 0 34px}
+.site-header .nav-links{gap:12px}
+.site-header .nav-links .nav-cta{padding:9px 18px;border-radius:8px;min-height:42px;display:inline-flex;align-items:center}
+.store-headline{padding:34px 0 52px;background:#F5F6EB}
+.store-headline::after{display:none!important}
+.store-breadcrumb{margin-bottom:28px}
+.store-hero-grid{grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);gap:clamp(30px,5vw,72px);align-items:center}
+.store-headline h1{font-size:clamp(44px,4.4vw,65px);line-height:1.11;max-width:530px;margin:15px 0 22px}
+.store-headline p.store-hero-lead{font-size:clamp(15px,1.2vw,18px);line-height:1.7;max-width:470px;margin-bottom:0;color:#536473}
+.store-hero-actions{margin-top:26px}
+.store-hero-actions .action{background:#344F62;border-color:#344F62;border-radius:8px;min-height:48px;padding:12px 22px;font-size:13px}
+.store-hero-actions .action:hover{background:#805B64;border-color:#805B64}
+.store-hero-photo img{height:clamp(290px,30vw,420px);border-radius:12px;box-shadow:none}
+.store-hero-photo figcaption{font-size:11px;line-height:1.5;color:#536473;max-width:590px;margin-top:10px}
+.store-results{padding-top:48px}
+.store-filters{box-shadow:none}
+.store-filters h2{font-size:25px}
+.store-field{margin-bottom:19px}
+.store-audience-chips{display:none}
+@media(max-width:720px){
+ .site-header .header-inner{min-height:62px;gap:10px}
+ .site-header .brand{font-size:26px}
+ .site-header .brand-mark{height:30px!important;width:30px!important;flex-basis:30px}
+ .site-header .nav-links{width:auto;overflow:visible;flex:0 0 auto}
+ .site-header .nav-links .nav-cta{font-size:12px;padding:7px 13px;min-height:38px}
+ .store-headline{padding:24px 0 34px}
+ .store-breadcrumb{margin-bottom:20px}
+ .store-hero-grid{grid-template-columns:1fr;gap:24px}
+ .store-headline h1{font-size:clamp(39px,9vw,52px);margin:12px 0 16px}
+ .store-headline p.store-hero-lead{font-size:15px}
+ .store-hero-photo img{height:clamp(220px,55vw,300px)}
+ .store-hero-actions{margin-top:22px}
+ .store-results{padding-top:35px}
+}
