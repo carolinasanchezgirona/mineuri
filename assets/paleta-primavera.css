@@ -1,0 +1,49 @@
+/* Mineuri · nueva identidad cromática */
+:root{--paper:#F5F6EB;--white:#fff;--ink:#344F62;--muted:#536473;--brand:#A87078;--brand-dark:#805B64;--coral:#D0A19D;--coral-dark:#805B64;--line:#DEDCCF;--sea:#E5D8C6;--olive:#B6BAA8;--peach:#E5D8C6;--navy:#344F62;--teal:#83A0B6;--yellow:#D0A19D;--forest:#536473}
+body{background:#F5F6EB;color:#344F62}
+.site-header{background:#F5F6EB;border-bottom:1px solid #DEDCCF}
+.site-header::after{background:linear-gradient(90deg,#F5F6EB 0 20%,#B6BAA8 20% 40%,#D0A19D 40% 60%,#E5D8C6 60% 80%,#83A0B6 80% 100%)!important;height:3px}
+.mini-ribbon{background:#E5D8C6;color:#344F62;border-color:#DEDCCF}
+.brand{color:#344F62}
+.brand-mark,.site-header .brand-mark,.site-footer .brand-mark{background-image:url("./mineuri-icon.svg")!important;background-size:cover!important;background-position:center!important;background-color:transparent!important;border:0!important;border-radius:12px!important}
+.brand-mark::after{display:none!important}
+.nav-links .nav-cta,.action{background:#344F62;border-color:#344F62;color:#F5F6EB}
+.nav-links .nav-cta:hover,.action:hover{background:#805B64;border-color:#805B64;color:#fff}
+.action--light{background:transparent;color:#344F62}
+.action--light:hover{background:#344F62;color:#fff}
+.eyebrow,.accent,.store-headline h1 em{color:#805B64}
+.hero{background:#F5F6EB}.blob{background:#E5D8C6}
+.sheet--back{background:#E5D8C6}.sheet--small{background:#B6BAA8}
+.paper-visual span:first-child{border-color:#D0A19D}
+.paper-visual span:nth-child(2){background:#B6BAA8}
+.paper-visual span:nth-child(3){background:#83A0B6}
+.stamp{background:#D0A19D;border-color:#A87078;color:#344F62}
+.section--white{background:#fff}
+.product-cover{background:#E5D8C6}
+.editorial-grid--two article:nth-child(2) .product-cover{background:#B6BAA8}
+.resource-strip{background:#E5D8C6}
+.site-footer,.feature-school{background:#344F62;color:#F5F6EB}
+.site-footer a{color:#F5F6EB}.site-footer p,.footer-small{color:#E5D8C6!important}
+.store-headline{background:radial-gradient(ellipse at 90% 5%,#E5D8C6,transparent 50%),#F5F6EB}
+.store-headline::after{border-color:#D0A19D;opacity:.24}
+.store-hero-copy em{color:#805B64!important}
+.store-filters{background:#fff;border-color:#DEDCCF;box-shadow:0 8px 20px #344F620a}
+.store-product{background:#fff;border-color:#DEDCCF;box-shadow:0 7px 18px #344F620d}
+.store-product:hover{box-shadow:0 12px 24px #344F6215}
+.store-cover{color:#344F62}
+.store-cover.purple{background:#E8CFCA}.store-cover.mint{background:#DCE6E8}
+.store-cover.green{background:#DDE0D3}.store-cover.yellow{background:#E5D8C6}.store-cover.blue{background:#C8D6E0}
+.store-tag{border-color:#DEDCCF;color:#536473}
+.store-tag.free{color:#344F62;background:#E5E8D9;border-color:#B6BAA8}
+.store-tag.upcoming{color:#805B64;background:#F4E6E3;border-color:#D0A19D}
+.store-input,.store-select{background:#fff;color:#344F62;border-color:#B6BAA8}
+.store-choice input{accent-color:#805B64}.store-reset{color:#805B64}
+.store-audience-chip{border-color:#DEDCCF!important;background:#F5F6EB!important;color:#344F62!important}
+.store-results,.eco-hero{background:#F5F6EB}
+.eco-lavender,.eco-yellow,.eco-poster{background:#E5D8C6}
+.eco-research-grid article:nth-child(2){background:#E5D8C6}
+.eco-research-grid article:nth-child(3){background:#B6BAA8}
+.eco-filter,.eco-feature{background:#F5F6EB;border-color:#DEDCCF}
+.eco-avatar{background:#E5D8C6;color:#805B64}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline-color:#344F62}
+@media(max-width:680px){.site-header::after{height:2px}}
